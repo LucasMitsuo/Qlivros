@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLivrosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TabBairro">
+          <Key>
+            <PropertyRef Name="idBairro" />
+          </Key>
+          <Property Name="idBairro" Type="int" Nullable="false" />
+          <Property Name="nmBairro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fkIdCidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabCidade">
+          <Key>
+            <PropertyRef Name="idCidade" />
+          </Key>
+          <Property Name="idCidade" Type="int" Nullable="false" />
+          <Property Name="nmCidade" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fkIdEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="nmEstado" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabExemplar">
+          <Key>
+            <PropertyRef Name="idExemplar" />
+          </Key>
+          <Property Name="idExemplar" Type="int" Nullable="false" />
+          <Property Name="nmEditora" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="nmAutor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="dsEdicao" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fkIdTitulo" Type="int" Nullable="false" />
+          <Property Name="dsStatus" Type="int" Nullable="false" />
+          <Property Name="dsObs" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TabHistorico">
+          <Key>
+            <PropertyRef Name="idHistorico" />
+          </Key>
+          <Property Name="idHistorico" Type="int" Nullable="false" />
+          <Property Name="dtHistorico" Type="date" Nullable="false" />
+          <Property Name="dsStatus" Type="int" Nullable="false" />
+          <Property Name="fkIdExemplar" Type="int" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabLeitor">
+          <Key>
+            <PropertyRef Name="idLeitor" />
+          </Key>
+          <Property Name="idLeitor" Type="int" Nullable="false" />
+          <Property Name="dsEmail" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="dsLogin" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dsSenha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nmLeitor" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="dsSexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dtNasc" Type="date" Nullable="false" />
+          <Property Name="numCel" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="dsRgLeitor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="noEnd" Type="int" Nullable="false" />
+          <Property Name="dsComplementoEnd" Type="varchar" MaxLength="70" />
+          <Property Name="dsReferenciaEnd" Type="varchar" MaxLength="70" />
+          <Property Name="imFoto" Type="varchar" MaxLength="300" />
+          <Property Name="fkIdCepEnd" Type="int" Nullable="false" />
+          <Property Name="dsStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabLog">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" Nullable="false" />
+          <Property Name="dtLog" Type="datetime" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabLogradouroEnd">
+          <Key>
+            <PropertyRef Name="idCepEnd" />
+          </Key>
+          <Property Name="idCepEnd" Type="int" Nullable="false" />
+          <Property Name="nmLogradouro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fkIdBairro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabMensagem">
+          <Key>
+            <PropertyRef Name="idMensagem" />
+          </Key>
+          <Property Name="idMensagem" Type="int" Nullable="false" />
+          <Property Name="dsMensagem" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="fkIdLeitor2" Type="int" Nullable="false" />
+          <Property Name="fkIdLeitor1" Type="int" Nullable="false" />
+          <Property Name="fkIdSala" Type="int" Nullable="false" />
+          <Property Name="dtMensagem" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabResenha">
+          <Key>
+            <PropertyRef Name="idResenha" />
+          </Key>
+          <Property Name="idResenha" Type="int" Nullable="false" />
+          <Property Name="dsResenha" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="dsTipoResenha" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="int" Nullable="false" />
+          <Property Name="fkIdExemplar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabSalaChat">
+          <Key>
+            <PropertyRef Name="idSala" />
+            <PropertyRef Name="fkIdLeitor" />
+            <PropertyRef Name="fkIdLeitor2" />
+          </Key>
+          <Property Name="idSala" Type="int" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="int" Nullable="false" />
+          <Property Name="fkIdLeitor2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TabTitulo">
+          <Key>
+            <PropertyRef Name="idTitulo" />
+          </Key>
+          <Property Name="idTitulo" Type="int" Nullable="false" />
+          <Property Name="nmTitulo" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <Association Name="TabBairro_TabCidade_FK">
+          <End Role="TabCidade" Type="Self.TabCidade" Multiplicity="1" />
+          <End Role="TabBairro" Type="Self.TabBairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabCidade">
+              <PropertyRef Name="idCidade" />
+            </Principal>
+            <Dependent Role="TabBairro">
+              <PropertyRef Name="fkIdCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabCidade_TabEstado_FK">
+          <End Role="TabEstado" Type="Self.TabEstado" Multiplicity="1" />
+          <End Role="TabCidade" Type="Self.TabCidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabEstado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="TabCidade">
+              <PropertyRef Name="fkIdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabExemplar_TabTitulo_FK">
+          <End Role="TabTitulo" Type="Self.TabTitulo" Multiplicity="1" />
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabTitulo">
+              <PropertyRef Name="idTitulo" />
+            </Principal>
+            <Dependent Role="TabExemplar">
+              <PropertyRef Name="fkIdTitulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabHistorico_TabExemplar_FK">
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="1" />
+          <End Role="TabHistorico" Type="Self.TabHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabExemplar">
+              <PropertyRef Name="idExemplar" />
+            </Principal>
+            <Dependent Role="TabHistorico">
+              <PropertyRef Name="fkIdExemplar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabHistorico_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabHistorico" Type="Self.TabHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabHistorico">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLeitor_TabLogradouroEnd_FK">
+          <End Role="TabLogradouroEnd" Type="Self.TabLogradouroEnd" Multiplicity="1" />
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLogradouroEnd">
+              <PropertyRef Name="idCepEnd" />
+            </Principal>
+            <Dependent Role="TabLeitor">
+              <PropertyRef Name="fkIdCepEnd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLog_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabLog" Type="Self.TabLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabLog">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLogradouroEnd_TabBairro_FK">
+          <End Role="TabBairro" Type="Self.TabBairro" Multiplicity="1" />
+          <End Role="TabLogradouroEnd" Type="Self.TabLogradouroEnd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabBairro">
+              <PropertyRef Name="idBairro" />
+            </Principal>
+            <Dependent Role="TabLogradouroEnd">
+              <PropertyRef Name="fkIdBairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabMensagem_TabSalaChat_FK">
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="1" />
+          <End Role="TabMensagem" Type="Self.TabMensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor" />
+              <PropertyRef Name="fkIdLeitor2" />
+              <PropertyRef Name="idSala" />
+            </Principal>
+            <Dependent Role="TabMensagem">
+              <PropertyRef Name="fkIdLeitor2" />
+              <PropertyRef Name="fkIdLeitor1" />
+              <PropertyRef Name="fkIdSala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabResenha_TabExemplar_FK">
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="1" />
+          <End Role="TabResenha" Type="Self.TabResenha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabExemplar">
+              <PropertyRef Name="idExemplar" />
+            </Principal>
+            <Dependent Role="TabResenha">
+              <PropertyRef Name="fkIdExemplar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabResenha_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabResenha" Type="Self.TabResenha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabResenha">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabSalaChat_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabSalaChat_TabLeitor_FKv2">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLivrosModelStoreContainer">
+          <EntitySet Name="TabBairro" EntityType="Self.TabBairro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabCidade" EntityType="Self.TabCidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabEstado" EntityType="Self.TabEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabExemplar" EntityType="Self.TabExemplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabHistorico" EntityType="Self.TabHistorico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabLeitor" EntityType="Self.TabLeitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabLog" EntityType="Self.TabLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabLogradouroEnd" EntityType="Self.TabLogradouroEnd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabMensagem" EntityType="Self.TabMensagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabResenha" EntityType="Self.TabResenha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabSalaChat" EntityType="Self.TabSalaChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabTitulo" EntityType="Self.TabTitulo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="TabBairro_TabCidade_FK" Association="Self.TabBairro_TabCidade_FK">
+            <End Role="TabCidade" EntitySet="TabCidade" />
+            <End Role="TabBairro" EntitySet="TabBairro" />
+          </AssociationSet>
+          <AssociationSet Name="TabCidade_TabEstado_FK" Association="Self.TabCidade_TabEstado_FK">
+            <End Role="TabEstado" EntitySet="TabEstado" />
+            <End Role="TabCidade" EntitySet="TabCidade" />
+          </AssociationSet>
+          <AssociationSet Name="TabExemplar_TabTitulo_FK" Association="Self.TabExemplar_TabTitulo_FK">
+            <End Role="TabTitulo" EntitySet="TabTitulo" />
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+          </AssociationSet>
+          <AssociationSet Name="TabHistorico_TabExemplar_FK" Association="Self.TabHistorico_TabExemplar_FK">
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+            <End Role="TabHistorico" EntitySet="TabHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="TabHistorico_TabLeitor_FK" Association="Self.TabHistorico_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabHistorico" EntitySet="TabHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="TabLeitor_TabLogradouroEnd_FK" Association="Self.TabLeitor_TabLogradouroEnd_FK">
+            <End Role="TabLogradouroEnd" EntitySet="TabLogradouroEnd" />
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+          </AssociationSet>
+          <AssociationSet Name="TabLog_TabLeitor_FK" Association="Self.TabLog_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabLog" EntitySet="TabLog" />
+          </AssociationSet>
+          <AssociationSet Name="TabLogradouroEnd_TabBairro_FK" Association="Self.TabLogradouroEnd_TabBairro_FK">
+            <End Role="TabBairro" EntitySet="TabBairro" />
+            <End Role="TabLogradouroEnd" EntitySet="TabLogradouroEnd" />
+          </AssociationSet>
+          <AssociationSet Name="TabMensagem_TabSalaChat_FK" Association="Self.TabMensagem_TabSalaChat_FK">
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+            <End Role="TabMensagem" EntitySet="TabMensagem" />
+          </AssociationSet>
+          <AssociationSet Name="TabResenha_TabExemplar_FK" Association="Self.TabResenha_TabExemplar_FK">
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+            <End Role="TabResenha" EntitySet="TabResenha" />
+          </AssociationSet>
+          <AssociationSet Name="TabResenha_TabLeitor_FK" Association="Self.TabResenha_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabResenha" EntitySet="TabResenha" />
+          </AssociationSet>
+          <AssociationSet Name="TabSalaChat_TabLeitor_FK" Association="Self.TabSalaChat_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+          </AssociationSet>
+          <AssociationSet Name="TabSalaChat_TabLeitor_FKv2" Association="Self.TabSalaChat_TabLeitor_FKv2">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLivrosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TabBairro">
+          <Key>
+            <PropertyRef Name="idBairro" />
+          </Key>
+          <Property Name="idBairro" Type="Int32" Nullable="false" />
+          <Property Name="nmBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fkIdCidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabCidade" Relationship="Self.TabBairro_TabCidade_FK" FromRole="TabBairro" ToRole="TabCidade" />
+          <NavigationProperty Name="TabLogradouroEnd" Relationship="Self.TabLogradouroEnd_TabBairro_FK" FromRole="TabBairro" ToRole="TabLogradouroEnd" />
+        </EntityType>
+        <EntityType Name="TabCidade">
+          <Key>
+            <PropertyRef Name="idCidade" />
+          </Key>
+          <Property Name="idCidade" Type="Int32" Nullable="false" />
+          <Property Name="nmCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fkIdEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabBairro" Relationship="Self.TabBairro_TabCidade_FK" FromRole="TabCidade" ToRole="TabBairro" />
+          <NavigationProperty Name="TabEstado" Relationship="Self.TabCidade_TabEstado_FK" FromRole="TabCidade" ToRole="TabEstado" />
+        </EntityType>
+        <EntityType Name="TabEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="nmEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TabCidade" Relationship="Self.TabCidade_TabEstado_FK" FromRole="TabEstado" ToRole="TabCidade" />
+        </EntityType>
+        <EntityType Name="TabExemplar">
+          <Key>
+            <PropertyRef Name="idExemplar" />
+          </Key>
+          <Property Name="idExemplar" Type="Int32" Nullable="false" />
+          <Property Name="nmEditora" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nmAutor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsEdicao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fkIdTitulo" Type="Int32" Nullable="false" />
+          <Property Name="dsStatus" Type="Int32" Nullable="false" />
+          <Property Name="dsObs" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TabTitulo" Relationship="Self.TabExemplar_TabTitulo_FK" FromRole="TabExemplar" ToRole="TabTitulo" />
+          <NavigationProperty Name="TabHistorico" Relationship="Self.TabHistorico_TabExemplar_FK" FromRole="TabExemplar" ToRole="TabHistorico" />
+          <NavigationProperty Name="TabResenha" Relationship="Self.TabResenha_TabExemplar_FK" FromRole="TabExemplar" ToRole="TabResenha" />
+        </EntityType>
+        <EntityType Name="TabHistorico">
+          <Key>
+            <PropertyRef Name="idHistorico" />
+          </Key>
+          <Property Name="idHistorico" Type="Int32" Nullable="false" />
+          <Property Name="dtHistorico" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dsStatus" Type="Int32" Nullable="false" />
+          <Property Name="fkIdExemplar" Type="Int32" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabExemplar" Relationship="Self.TabHistorico_TabExemplar_FK" FromRole="TabHistorico" ToRole="TabExemplar" />
+          <NavigationProperty Name="TabLeitor" Relationship="Self.TabHistorico_TabLeitor_FK" FromRole="TabHistorico" ToRole="TabLeitor" />
+        </EntityType>
+        <EntityType Name="TabLeitor">
+          <Key>
+            <PropertyRef Name="idLeitor" />
+          </Key>
+          <Property Name="idLeitor" Type="Int32" Nullable="false" />
+          <Property Name="dsEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsLogin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsSenha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nmLeitor" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsSexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dtNasc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="numCel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsRgLeitor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noEnd" Type="Int32" Nullable="false" />
+          <Property Name="dsComplementoEnd" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dsReferenciaEnd" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="imFoto" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="fkIdCepEnd" Type="Int32" Nullable="false" />
+          <Property Name="dsStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabHistorico" Relationship="Self.TabHistorico_TabLeitor_FK" FromRole="TabLeitor" ToRole="TabHistorico" />
+          <NavigationProperty Name="TabLogradouroEnd" Relationship="Self.TabLeitor_TabLogradouroEnd_FK" FromRole="TabLeitor" ToRole="TabLogradouroEnd" />
+          <NavigationProperty Name="TabLog" Relationship="Self.TabLog_TabLeitor_FK" FromRole="TabLeitor" ToRole="TabLog" />
+          <NavigationProperty Name="TabResenha" Relationship="Self.TabResenha_TabLeitor_FK" FromRole="TabLeitor" ToRole="TabResenha" />
+          <NavigationProperty Name="TabSalaChat" Relationship="Self.TabSalaChat_TabLeitor_FK" FromRole="TabLeitor" ToRole="TabSalaChat" />
+          <NavigationProperty Name="TabSalaChat1" Relationship="Self.TabSalaChat_TabLeitor_FKv2" FromRole="TabLeitor" ToRole="TabSalaChat" />
+        </EntityType>
+        <EntityType Name="TabLog">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" />
+          <Property Name="dtLog" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabLeitor" Relationship="Self.TabLog_TabLeitor_FK" FromRole="TabLog" ToRole="TabLeitor" />
+        </EntityType>
+        <EntityType Name="TabLogradouroEnd">
+          <Key>
+            <PropertyRef Name="idCepEnd" />
+          </Key>
+          <Property Name="idCepEnd" Type="Int32" Nullable="false" />
+          <Property Name="nmLogradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fkIdBairro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabBairro" Relationship="Self.TabLogradouroEnd_TabBairro_FK" FromRole="TabLogradouroEnd" ToRole="TabBairro" />
+          <NavigationProperty Name="TabLeitor" Relationship="Self.TabLeitor_TabLogradouroEnd_FK" FromRole="TabLogradouroEnd" ToRole="TabLeitor" />
+        </EntityType>
+        <EntityType Name="TabMensagem">
+          <Key>
+            <PropertyRef Name="idMensagem" />
+          </Key>
+          <Property Name="idMensagem" Type="Int32" Nullable="false" />
+          <Property Name="dsMensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fkIdLeitor2" Type="Int32" Nullable="false" />
+          <Property Name="fkIdLeitor1" Type="Int32" Nullable="false" />
+          <Property Name="fkIdSala" Type="Int32" Nullable="false" />
+          <Property Name="dtMensagem" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TabSalaChat" Relationship="Self.TabMensagem_TabSalaChat_FK" FromRole="TabMensagem" ToRole="TabSalaChat" />
+        </EntityType>
+        <EntityType Name="TabResenha">
+          <Key>
+            <PropertyRef Name="idResenha" />
+          </Key>
+          <Property Name="idResenha" Type="Int32" Nullable="false" />
+          <Property Name="dsResenha" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dsTipoResenha" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
+          <Property Name="fkIdExemplar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabExemplar" Relationship="Self.TabResenha_TabExemplar_FK" FromRole="TabResenha" ToRole="TabExemplar" />
+          <NavigationProperty Name="TabLeitor" Relationship="Self.TabResenha_TabLeitor_FK" FromRole="TabResenha" ToRole="TabLeitor" />
+        </EntityType>
+        <EntityType Name="TabSalaChat">
+          <Key>
+            <PropertyRef Name="idSala" />
+            <PropertyRef Name="fkIdLeitor" />
+            <PropertyRef Name="fkIdLeitor2" />
+          </Key>
+          <Property Name="idSala" Type="Int32" Nullable="false" />
+          <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
+          <Property Name="fkIdLeitor2" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TabLeitor" Relationship="Self.TabSalaChat_TabLeitor_FK" FromRole="TabSalaChat" ToRole="TabLeitor" />
+          <NavigationProperty Name="TabLeitor1" Relationship="Self.TabSalaChat_TabLeitor_FKv2" FromRole="TabSalaChat" ToRole="TabLeitor" />
+          <NavigationProperty Name="TabMensagem" Relationship="Self.TabMensagem_TabSalaChat_FK" FromRole="TabSalaChat" ToRole="TabMensagem" />
+        </EntityType>
+        <EntityType Name="TabTitulo">
+          <Key>
+            <PropertyRef Name="idTitulo" />
+          </Key>
+          <Property Name="idTitulo" Type="Int32" Nullable="false" />
+          <Property Name="nmTitulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TabExemplar" Relationship="Self.TabExemplar_TabTitulo_FK" FromRole="TabTitulo" ToRole="TabExemplar" />
+        </EntityType>
+        <Association Name="TabBairro_TabCidade_FK">
+          <End Role="TabCidade" Type="Self.TabCidade" Multiplicity="1" />
+          <End Role="TabBairro" Type="Self.TabBairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabCidade">
+              <PropertyRef Name="idCidade" />
+            </Principal>
+            <Dependent Role="TabBairro">
+              <PropertyRef Name="fkIdCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLogradouroEnd_TabBairro_FK">
+          <End Role="TabBairro" Type="Self.TabBairro" Multiplicity="1" />
+          <End Role="TabLogradouroEnd" Type="Self.TabLogradouroEnd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabBairro">
+              <PropertyRef Name="idBairro" />
+            </Principal>
+            <Dependent Role="TabLogradouroEnd">
+              <PropertyRef Name="fkIdBairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabCidade_TabEstado_FK">
+          <End Role="TabEstado" Type="Self.TabEstado" Multiplicity="1" />
+          <End Role="TabCidade" Type="Self.TabCidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabEstado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="TabCidade">
+              <PropertyRef Name="fkIdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabExemplar_TabTitulo_FK">
+          <End Role="TabTitulo" Type="Self.TabTitulo" Multiplicity="1" />
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabTitulo">
+              <PropertyRef Name="idTitulo" />
+            </Principal>
+            <Dependent Role="TabExemplar">
+              <PropertyRef Name="fkIdTitulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabHistorico_TabExemplar_FK">
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="1" />
+          <End Role="TabHistorico" Type="Self.TabHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabExemplar">
+              <PropertyRef Name="idExemplar" />
+            </Principal>
+            <Dependent Role="TabHistorico">
+              <PropertyRef Name="fkIdExemplar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabResenha_TabExemplar_FK">
+          <End Role="TabExemplar" Type="Self.TabExemplar" Multiplicity="1" />
+          <End Role="TabResenha" Type="Self.TabResenha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabExemplar">
+              <PropertyRef Name="idExemplar" />
+            </Principal>
+            <Dependent Role="TabResenha">
+              <PropertyRef Name="fkIdExemplar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabHistorico_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabHistorico" Type="Self.TabHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabHistorico">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLeitor_TabLogradouroEnd_FK">
+          <End Role="TabLogradouroEnd" Type="Self.TabLogradouroEnd" Multiplicity="1" />
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLogradouroEnd">
+              <PropertyRef Name="idCepEnd" />
+            </Principal>
+            <Dependent Role="TabLeitor">
+              <PropertyRef Name="fkIdCepEnd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabLog_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabLog" Type="Self.TabLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabLog">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabResenha_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabResenha" Type="Self.TabResenha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabResenha">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabSalaChat_TabLeitor_FK">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabSalaChat_TabLeitor_FKv2">
+          <End Role="TabLeitor" Type="Self.TabLeitor" Multiplicity="1" />
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabLeitor">
+              <PropertyRef Name="idLeitor" />
+            </Principal>
+            <Dependent Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TabMensagem_TabSalaChat_FK">
+          <End Role="TabSalaChat" Type="Self.TabSalaChat" Multiplicity="1" />
+          <End Role="TabMensagem" Type="Self.TabMensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TabSalaChat">
+              <PropertyRef Name="fkIdLeitor" />
+              <PropertyRef Name="fkIdLeitor2" />
+              <PropertyRef Name="idSala" />
+            </Principal>
+            <Dependent Role="TabMensagem">
+              <PropertyRef Name="fkIdLeitor2" />
+              <PropertyRef Name="fkIdLeitor1" />
+              <PropertyRef Name="fkIdSala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLivrosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TabBairro" EntityType="Self.TabBairro" />
+          <EntitySet Name="TabCidade" EntityType="Self.TabCidade" />
+          <EntitySet Name="TabEstado" EntityType="Self.TabEstado" />
+          <EntitySet Name="TabExemplar" EntityType="Self.TabExemplar" />
+          <EntitySet Name="TabHistorico" EntityType="Self.TabHistorico" />
+          <EntitySet Name="TabLeitor" EntityType="Self.TabLeitor" />
+          <EntitySet Name="TabLog" EntityType="Self.TabLog" />
+          <EntitySet Name="TabLogradouroEnd" EntityType="Self.TabLogradouroEnd" />
+          <EntitySet Name="TabMensagem" EntityType="Self.TabMensagem" />
+          <EntitySet Name="TabResenha" EntityType="Self.TabResenha" />
+          <EntitySet Name="TabSalaChat" EntityType="Self.TabSalaChat" />
+          <EntitySet Name="TabTitulo" EntityType="Self.TabTitulo" />
+          <AssociationSet Name="TabBairro_TabCidade_FK" Association="Self.TabBairro_TabCidade_FK">
+            <End Role="TabCidade" EntitySet="TabCidade" />
+            <End Role="TabBairro" EntitySet="TabBairro" />
+          </AssociationSet>
+          <AssociationSet Name="TabLogradouroEnd_TabBairro_FK" Association="Self.TabLogradouroEnd_TabBairro_FK">
+            <End Role="TabBairro" EntitySet="TabBairro" />
+            <End Role="TabLogradouroEnd" EntitySet="TabLogradouroEnd" />
+          </AssociationSet>
+          <AssociationSet Name="TabCidade_TabEstado_FK" Association="Self.TabCidade_TabEstado_FK">
+            <End Role="TabEstado" EntitySet="TabEstado" />
+            <End Role="TabCidade" EntitySet="TabCidade" />
+          </AssociationSet>
+          <AssociationSet Name="TabExemplar_TabTitulo_FK" Association="Self.TabExemplar_TabTitulo_FK">
+            <End Role="TabTitulo" EntitySet="TabTitulo" />
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+          </AssociationSet>
+          <AssociationSet Name="TabHistorico_TabExemplar_FK" Association="Self.TabHistorico_TabExemplar_FK">
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+            <End Role="TabHistorico" EntitySet="TabHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="TabResenha_TabExemplar_FK" Association="Self.TabResenha_TabExemplar_FK">
+            <End Role="TabExemplar" EntitySet="TabExemplar" />
+            <End Role="TabResenha" EntitySet="TabResenha" />
+          </AssociationSet>
+          <AssociationSet Name="TabHistorico_TabLeitor_FK" Association="Self.TabHistorico_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabHistorico" EntitySet="TabHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="TabLeitor_TabLogradouroEnd_FK" Association="Self.TabLeitor_TabLogradouroEnd_FK">
+            <End Role="TabLogradouroEnd" EntitySet="TabLogradouroEnd" />
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+          </AssociationSet>
+          <AssociationSet Name="TabLog_TabLeitor_FK" Association="Self.TabLog_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabLog" EntitySet="TabLog" />
+          </AssociationSet>
+          <AssociationSet Name="TabResenha_TabLeitor_FK" Association="Self.TabResenha_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabResenha" EntitySet="TabResenha" />
+          </AssociationSet>
+          <AssociationSet Name="TabSalaChat_TabLeitor_FK" Association="Self.TabSalaChat_TabLeitor_FK">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+          </AssociationSet>
+          <AssociationSet Name="TabSalaChat_TabLeitor_FKv2" Association="Self.TabSalaChat_TabLeitor_FKv2">
+            <End Role="TabLeitor" EntitySet="TabLeitor" />
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+          </AssociationSet>
+          <AssociationSet Name="TabMensagem_TabSalaChat_FK" Association="Self.TabMensagem_TabSalaChat_FK">
+            <End Role="TabSalaChat" EntitySet="TabSalaChat" />
+            <End Role="TabMensagem" EntitySet="TabMensagem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLivrosModelStoreContainer" CdmEntityContainer="QLivrosEntities">
+          <EntitySetMapping Name="TabBairro">
+            <EntityTypeMapping TypeName="QLivrosModel.TabBairro">
+              <MappingFragment StoreEntitySet="TabBairro">
+                <ScalarProperty Name="idBairro" ColumnName="idBairro" />
+                <ScalarProperty Name="nmBairro" ColumnName="nmBairro" />
+                <ScalarProperty Name="fkIdCidade" ColumnName="fkIdCidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabCidade">
+            <EntityTypeMapping TypeName="QLivrosModel.TabCidade">
+              <MappingFragment StoreEntitySet="TabCidade">
+                <ScalarProperty Name="idCidade" ColumnName="idCidade" />
+                <ScalarProperty Name="nmCidade" ColumnName="nmCidade" />
+                <ScalarProperty Name="fkIdEstado" ColumnName="fkIdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabEstado">
+            <EntityTypeMapping TypeName="QLivrosModel.TabEstado">
+              <MappingFragment StoreEntitySet="TabEstado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="nmEstado" ColumnName="nmEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabExemplar">
+            <EntityTypeMapping TypeName="QLivrosModel.TabExemplar">
+              <MappingFragment StoreEntitySet="TabExemplar">
+                <ScalarProperty Name="idExemplar" ColumnName="idExemplar" />
+                <ScalarProperty Name="nmEditora" ColumnName="nmEditora" />
+                <ScalarProperty Name="nmAutor" ColumnName="nmAutor" />
+                <ScalarProperty Name="dsEdicao" ColumnName="dsEdicao" />
+                <ScalarProperty Name="fkIdTitulo" ColumnName="fkIdTitulo" />
+                <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+                <ScalarProperty Name="dsObs" ColumnName="dsObs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabHistorico">
+            <EntityTypeMapping TypeName="QLivrosModel.TabHistorico">
+              <MappingFragment StoreEntitySet="TabHistorico">
+                <ScalarProperty Name="idHistorico" ColumnName="idHistorico" />
+                <ScalarProperty Name="dtHistorico" ColumnName="dtHistorico" />
+                <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+                <ScalarProperty Name="fkIdExemplar" ColumnName="fkIdExemplar" />
+                <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabLeitor">
+            <EntityTypeMapping TypeName="QLivrosModel.TabLeitor">
+              <MappingFragment StoreEntitySet="TabLeitor">
+                <ScalarProperty Name="idLeitor" ColumnName="idLeitor" />
+                <ScalarProperty Name="dsEmail" ColumnName="dsEmail" />
+                <ScalarProperty Name="dsLogin" ColumnName="dsLogin" />
+                <ScalarProperty Name="dsSenha" ColumnName="dsSenha" />
+                <ScalarProperty Name="nmLeitor" ColumnName="nmLeitor" />
+                <ScalarProperty Name="dsSexo" ColumnName="dsSexo" />
+                <ScalarProperty Name="dtNasc" ColumnName="dtNasc" />
+                <ScalarProperty Name="numCel" ColumnName="numCel" />
+                <ScalarProperty Name="dsRgLeitor" ColumnName="dsRgLeitor" />
+                <ScalarProperty Name="noEnd" ColumnName="noEnd" />
+                <ScalarProperty Name="dsComplementoEnd" ColumnName="dsComplementoEnd" />
+                <ScalarProperty Name="dsReferenciaEnd" ColumnName="dsReferenciaEnd" />
+                <ScalarProperty Name="imFoto" ColumnName="imFoto" />
+                <ScalarProperty Name="fkIdCepEnd" ColumnName="fkIdCepEnd" />
+                <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabLog">
+            <EntityTypeMapping TypeName="QLivrosModel.TabLog">
+              <MappingFragment StoreEntitySet="TabLog">
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+                <ScalarProperty Name="dtLog" ColumnName="dtLog" />
+                <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabLogradouroEnd">
+            <EntityTypeMapping TypeName="QLivrosModel.TabLogradouroEnd">
+              <MappingFragment StoreEntitySet="TabLogradouroEnd">
+                <ScalarProperty Name="idCepEnd" ColumnName="idCepEnd" />
+                <ScalarProperty Name="nmLogradouro" ColumnName="nmLogradouro" />
+                <ScalarProperty Name="fkIdBairro" ColumnName="fkIdBairro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabMensagem">
+            <EntityTypeMapping TypeName="QLivrosModel.TabMensagem">
+              <MappingFragment StoreEntitySet="TabMensagem">
+                <ScalarProperty Name="idMensagem" ColumnName="idMensagem" />
+                <ScalarProperty Name="dsMensagem" ColumnName="dsMensagem" />
+                <ScalarProperty Name="fkIdLeitor2" ColumnName="fkIdLeitor2" />
+                <ScalarProperty Name="fkIdLeitor1" ColumnName="fkIdLeitor1" />
+                <ScalarProperty Name="fkIdSala" ColumnName="fkIdSala" />
+                <ScalarProperty Name="dtMensagem" ColumnName="dtMensagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabResenha">
+            <EntityTypeMapping TypeName="QLivrosModel.TabResenha">
+              <MappingFragment StoreEntitySet="TabResenha">
+                <ScalarProperty Name="idResenha" ColumnName="idResenha" />
+                <ScalarProperty Name="dsResenha" ColumnName="dsResenha" />
+                <ScalarProperty Name="dsTipoResenha" ColumnName="dsTipoResenha" />
+                <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
+                <ScalarProperty Name="fkIdExemplar" ColumnName="fkIdExemplar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabSalaChat">
+            <EntityTypeMapping TypeName="QLivrosModel.TabSalaChat">
+              <MappingFragment StoreEntitySet="TabSalaChat">
+                <ScalarProperty Name="idSala" ColumnName="idSala" />
+                <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
+                <ScalarProperty Name="fkIdLeitor2" ColumnName="fkIdLeitor2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabTitulo">
+            <EntityTypeMapping TypeName="QLivrosModel.TabTitulo">
+              <MappingFragment StoreEntitySet="TabTitulo">
+                <ScalarProperty Name="idTitulo" ColumnName="idTitulo" />
+                <ScalarProperty Name="nmTitulo" ColumnName="nmTitulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
