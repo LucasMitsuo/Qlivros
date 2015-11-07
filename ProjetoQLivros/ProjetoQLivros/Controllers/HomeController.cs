@@ -10,12 +10,17 @@ namespace ProjetoQLivros.Controllers
     {
         public ActionResult Index()
         {
+            var thays = "S2";
+            //asdjashdhaskdhsad
+            //asdajsdhjashdsad
             return View();
         }
 
         public ActionResult About()
         {
+
             string MitsuoTeste;
+            //asdhhasdsadasd
 
             return View();
         }
