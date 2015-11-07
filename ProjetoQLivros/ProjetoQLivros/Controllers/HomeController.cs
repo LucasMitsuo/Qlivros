@@ -10,13 +10,16 @@ namespace ProjetoQLivros.Controllers
     {
         public ActionResult Index()
         {
+            var thays = "S2";
+            //asdjashdhaskdhsad
+            //asdajsdhjashdsad
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            //asdhhasdsadasd
             return View();
         }
 
