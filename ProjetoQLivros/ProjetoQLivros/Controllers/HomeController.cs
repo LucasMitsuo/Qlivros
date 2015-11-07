@@ -15,7 +15,7 @@ namespace ProjetoQLivros.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            string MitsuoTeste;
 
             return View();
         }
