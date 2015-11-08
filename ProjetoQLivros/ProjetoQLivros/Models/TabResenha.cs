@@ -19,6 +19,7 @@ namespace ProjetoQLivros.Models
         public string dsTipoResenha { get; set; }
         public int fkIdLeitor { get; set; }
         public int fkIdExemplar { get; set; }
+        public System.DateTime dtPublicacao { get; set; }
     
         public virtual TabExemplar TabExemplar { get; set; }
         public virtual TabLeitor TabLeitor { get; set; }

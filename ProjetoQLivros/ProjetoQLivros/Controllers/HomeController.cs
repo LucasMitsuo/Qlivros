@@ -15,7 +15,6 @@ namespace ProjetoQLivros.Controllers
 
         public ActionResult About()
         {
-
             return View();
         }
 

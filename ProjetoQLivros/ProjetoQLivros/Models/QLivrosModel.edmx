@@ -106,6 +106,7 @@
           <Property Name="dsTipoResenha" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="fkIdLeitor" Type="int" Nullable="false" />
           <Property Name="fkIdExemplar" Type="int" Nullable="false" />
+          <Property Name="dtPublicacao" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TabSalaChat">
           <Key>
@@ -476,6 +477,7 @@
           <Property Name="dsTipoResenha" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
           <Property Name="fkIdExemplar" Type="Int32" Nullable="false" />
+          <Property Name="dtPublicacao" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="TabExemplar" Relationship="Self.TabResenha_TabExemplar_FK" FromRole="TabResenha" ToRole="TabExemplar" />
           <NavigationProperty Name="TabLeitor" Relationship="Self.TabResenha_TabLeitor_FK" FromRole="TabResenha" ToRole="TabLeitor" />
         </EntityType>
@@ -841,6 +843,7 @@
                 <ScalarProperty Name="dsTipoResenha" ColumnName="dsTipoResenha" />
                 <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
                 <ScalarProperty Name="fkIdExemplar" ColumnName="fkIdExemplar" />
+                <ScalarProperty Name="dtPublicacao" ColumnName="dtPublicacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
