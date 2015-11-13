@@ -46,7 +46,8 @@
           </Key>
           <Property Name="idHistorico" Type="int" Nullable="false" />
           <Property Name="dtHistorico" Type="date" Nullable="false" />
-          <Property Name="dsStatus" Type="int" Nullable="false" />
+          <Property Name="dsStatus" Type="int" />
+          <Property Name="idReceptor" Type="int" />
           <Property Name="fkIdExemplar" Type="int" Nullable="false" />
           <Property Name="fkIdLeitor" Type="int" Nullable="false" />
         </EntityType>
@@ -405,7 +406,8 @@
           </Key>
           <Property Name="idHistorico" Type="Int32" Nullable="false" />
           <Property Name="dtHistorico" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="dsStatus" Type="Int32" Nullable="false" />
+          <Property Name="dsStatus" Type="Int32" />
+          <Property Name="idReceptor" Type="Int32" />
           <Property Name="fkIdExemplar" Type="Int32" Nullable="false" />
           <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabExemplar" Relationship="Self.TabHistorico_TabExemplar_FK" FromRole="TabHistorico" ToRole="TabExemplar" />
@@ -779,6 +781,7 @@
                 <ScalarProperty Name="idHistorico" ColumnName="idHistorico" />
                 <ScalarProperty Name="dtHistorico" ColumnName="dtHistorico" />
                 <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+                <ScalarProperty Name="idReceptor" ColumnName="idReceptor" />
                 <ScalarProperty Name="fkIdExemplar" ColumnName="fkIdExemplar" />
                 <ScalarProperty Name="fkIdLeitor" ColumnName="fkIdLeitor" />
               </MappingFragment>

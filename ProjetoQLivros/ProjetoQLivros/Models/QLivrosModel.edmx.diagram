@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="791d8d57a9dc4c64a05e5e6bc84a64ff" Name="Diagram1">
+      <Diagram DiagramId="e5b1d7de675d4b7ca9b7ed1787c05810" Name="Diagram1">
         <EntityTypeShape EntityType="QLivrosModel.TabBairro" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabCidade" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabEstado" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabExemplar" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabHistorico" Width="1.5" PointX="12" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabLeitor" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLivrosModel.TabLog" Width="1.5" PointX="12" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLivrosModel.TabLog" Width="1.5" PointX="12" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabLogradouroEnd" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLivrosModel.TabMensagem" Width="1.5" PointX="14.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLivrosModel.TabMensagem" Width="1.5" PointX="14.25" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabResenha" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLivrosModel.TabSalaChat" Width="1.5" PointX="12" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLivrosModel.TabSalaChat" Width="1.5" PointX="12" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="QLivrosModel.TabTitulo" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="QLivrosModel.TabBairro_TabCidade_FK" ManuallyRouted="false" />
         <AssociationConnector Association="QLivrosModel.TabLogradouroEnd_TabBairro_FK" ManuallyRouted="false" />

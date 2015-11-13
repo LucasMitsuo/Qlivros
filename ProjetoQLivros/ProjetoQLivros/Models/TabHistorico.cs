@@ -16,7 +16,8 @@ namespace ProjetoQLivros.Models
     {
         public int idHistorico { get; set; }
         public System.DateTime dtHistorico { get; set; }
-        public int dsStatus { get; set; }
+        public Nullable<int> dsStatus { get; set; }
+        public Nullable<int> idReceptor { get; set; }
         public int fkIdExemplar { get; set; }
         public int fkIdLeitor { get; set; }
     
