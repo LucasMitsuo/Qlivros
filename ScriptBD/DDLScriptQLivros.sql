@@ -87,6 +87,7 @@ CREATE
     idHistorico  INTEGER NOT NULL ,
     dtHistorico  DATE NOT NULL DEFAULT 'getdate' ,
     dsStatus     INTEGER NOT NULL ,
+    idReceptor	 INTEGER NOT NULL ,
     fkIdExemplar INTEGER NOT NULL ,
     fkIdLeitor   INTEGER NOT NULL ,
     CONSTRAINT TabHistorico_PK PRIMARY KEY CLUSTERED (idHistorico)

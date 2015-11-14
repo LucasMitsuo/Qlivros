@@ -118,10 +118,38 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ExemplarController.cs" />
+    <Compile Include="Controllers\HistoricoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeitorController.cs" />
+    <Compile Include="Controllers\ResenhaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BusinessController\BairroBusinessController.cs" />
+    <Compile Include="Models\BusinessController\CidadeBusinessController.cs" />
+    <Compile Include="Models\BusinessController\EstadoBusinessController.cs" />
+    <Compile Include="Models\BusinessController\ExemplarBusinessController.cs" />
+    <Compile Include="Models\BusinessController\HistoricoBusinessController.cs" />
+    <Compile Include="Models\BusinessController\LeitorBusinessController.cs" />
+    <Compile Include="Models\BusinessController\LogBusinessController.cs" />
+    <Compile Include="Models\BusinessController\LogradouroBusinessController.cs" />
+    <Compile Include="Models\BusinessController\MensagemBusinessController.cs" />
+    <Compile Include="Models\BusinessController\ResenhaBusinessController.cs" />
+    <Compile Include="Models\BusinessController\SalaChatBusinessController.cs" />
+    <Compile Include="Models\BusinessController\TituloBusinessController.cs" />
+    <Compile Include="Models\Partials\_TabBairro.cs" />
+    <Compile Include="Models\Partials\_TabCidade.cs" />
+    <Compile Include="Models\Partials\_TabEstado.cs" />
+    <Compile Include="Models\Partials\_TabExemplar.cs" />
+    <Compile Include="Models\Partials\_TabHistorico.cs" />
+    <Compile Include="Models\Partials\_TabLeitor.cs" />
+    <Compile Include="Models\Partials\_TabLog.cs" />
+    <Compile Include="Models\Partials\_TabLogradouroEnd.cs" />
+    <Compile Include="Models\Partials\_TabMensagem.cs" />
+    <Compile Include="Models\Partials\_TabResenha.cs" />
+    <Compile Include="Models\Partials\_TabSalaChat.cs" />
+    <Compile Include="Models\Partials\_TabTitulo.cs" />
     <Compile Include="Models\QLivrosModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\BusinessController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
