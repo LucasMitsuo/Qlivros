@@ -138,67 +138,67 @@
     <Compile Include="Models\BusinessController\ResenhaBusinessController.cs" />
     <Compile Include="Models\BusinessController\SalaChatBusinessController.cs" />
     <Compile Include="Models\BusinessController\TituloBusinessController.cs" />
-    <Compile Include="Models\Partials\_TabBairro.cs" />
-    <Compile Include="Models\Partials\_TabCidade.cs" />
-    <Compile Include="Models\Partials\_TabEstado.cs" />
-    <Compile Include="Models\Partials\_TabExemplar.cs" />
-    <Compile Include="Models\Partials\_TabHistorico.cs" />
-    <Compile Include="Models\Partials\_TabLeitor.cs" />
-    <Compile Include="Models\Partials\_TabLog.cs" />
-    <Compile Include="Models\Partials\_TabLogradouroEnd.cs" />
-    <Compile Include="Models\Partials\_TabMensagem.cs" />
-    <Compile Include="Models\Partials\_TabResenha.cs" />
-    <Compile Include="Models\Partials\_TabSalaChat.cs" />
-    <Compile Include="Models\Partials\_TabTitulo.cs" />
-    <Compile Include="Models\QLivrosModel.Context.cs">
+    <Compile Include="Models\TabModels\_TabBairro.cs" />
+    <Compile Include="Models\TabModels\_TabCidade.cs" />
+    <Compile Include="Models\TabModels\_TabEstado.cs" />
+    <Compile Include="Models\TabModels\_TabExemplar.cs" />
+    <Compile Include="Models\TabModels\_TabHistorico.cs" />
+    <Compile Include="Models\TabModels\_TabLeitor.cs" />
+    <Compile Include="Models\TabModels\_TabLog.cs" />
+    <Compile Include="Models\TabModels\_TabLogradouroEnd.cs" />
+    <Compile Include="Models\TabModels\_TabMensagem.cs" />
+    <Compile Include="Models\TabModels\_TabResenha.cs" />
+    <Compile Include="Models\TabModels\_TabSalaChat.cs" />
+    <Compile Include="Models\TabModels\_TabTitulo.cs" />
+    <Compile Include="Models\TabModels\QLivrosModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLivrosModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLivrosModel.cs">
+    <Compile Include="Models\TabModels\QLivrosModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLivrosModel.Designer.cs">
+    <Compile Include="Models\TabModels\QLivrosModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLivrosModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabBairro.cs">
+    <Compile Include="Models\TabModels\TabBairro.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabCidade.cs">
+    <Compile Include="Models\TabModels\TabCidade.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabEstado.cs">
+    <Compile Include="Models\TabModels\TabEstado.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabExemplar.cs">
+    <Compile Include="Models\TabModels\TabExemplar.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabHistorico.cs">
+    <Compile Include="Models\TabModels\TabHistorico.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabLeitor.cs">
+    <Compile Include="Models\TabModels\TabLeitor.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabLog.cs">
+    <Compile Include="Models\TabModels\TabLog.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabLogradouroEnd.cs">
+    <Compile Include="Models\TabModels\TabLogradouroEnd.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabMensagem.cs">
+    <Compile Include="Models\TabModels\TabMensagem.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabResenha.cs">
+    <Compile Include="Models\TabModels\TabResenha.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabSalaChat.cs">
+    <Compile Include="Models\TabModels\TabSalaChat.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TabTitulo.cs">
+    <Compile Include="Models\TabModels\TabTitulo.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,29 +206,208 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.custom.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\jasny-bootstrap.css" />
+    <Content Include="Content\css\jasny-bootstrap.min.css" />
+    <Content Include="Content\css\navmenu-reveal.css" />
+    <Content Include="Content\css\styles.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jasny-bootstrap.js" />
+    <Content Include="Content\js\jasny-bootstrap.min.js" />
+    <Content Include="Content\js\jquery-2.1.4.min.js" />
+    <Content Include="Content\js\modernizr-custom.js" />
+    <Content Include="Content\js\npm.js" />
+    <Content Include="Content\js\polyfiller.js" />
+    <Content Include="Content\js\scripts.js" />
+    <Content Include="Content\js\shims\canvas-blob.js" />
+    <Content Include="Content\js\shims\color-picker.js" />
+    <Content Include="Content\js\shims\combos\1.js" />
+    <Content Include="Content\js\shims\combos\10.js" />
+    <Content Include="Content\js\shims\combos\11.js" />
+    <Content Include="Content\js\shims\combos\12.js" />
+    <Content Include="Content\js\shims\combos\13.js" />
+    <Content Include="Content\js\shims\combos\14.js" />
+    <Content Include="Content\js\shims\combos\15.js" />
+    <Content Include="Content\js\shims\combos\16.js" />
+    <Content Include="Content\js\shims\combos\17.js" />
+    <Content Include="Content\js\shims\combos\18.js" />
+    <Content Include="Content\js\shims\combos\2.js" />
+    <Content Include="Content\js\shims\combos\21.js" />
+    <Content Include="Content\js\shims\combos\22.js" />
+    <Content Include="Content\js\shims\combos\23.js" />
+    <Content Include="Content\js\shims\combos\25.js" />
+    <Content Include="Content\js\shims\combos\27.js" />
+    <Content Include="Content\js\shims\combos\28.js" />
+    <Content Include="Content\js\shims\combos\29.js" />
+    <Content Include="Content\js\shims\combos\3.js" />
+    <Content Include="Content\js\shims\combos\30.js" />
+    <Content Include="Content\js\shims\combos\31.js" />
+    <Content Include="Content\js\shims\combos\33.js" />
+    <Content Include="Content\js\shims\combos\34.js" />
+    <Content Include="Content\js\shims\combos\4.js" />
+    <Content Include="Content\js\shims\combos\5.js" />
+    <Content Include="Content\js\shims\combos\6.js" />
+    <Content Include="Content\js\shims\combos\7.js" />
+    <Content Include="Content\js\shims\combos\8.js" />
+    <Content Include="Content\js\shims\combos\9.js" />
+    <Content Include="Content\js\shims\combos\97.js" />
+    <Content Include="Content\js\shims\combos\98.js" />
+    <Content Include="Content\js\shims\combos\99.js" />
+    <Content Include="Content\js\shims\details.js" />
+    <Content Include="Content\js\shims\dom-extend.js" />
+    <Content Include="Content\js\shims\es5.js" />
+    <Content Include="Content\js\shims\es6.js" />
+    <Content Include="Content\js\shims\excanvas.js" />
+    <Content Include="Content\js\shims\filereader-xhr.js" />
+    <Content Include="Content\js\shims\FlashCanvasPro\canvas2png.js" />
+    <Content Include="Content\js\shims\FlashCanvasPro\flash10canvas.swf" />
+    <Content Include="Content\js\shims\FlashCanvasPro\flash9canvas.swf" />
+    <Content Include="Content\js\shims\FlashCanvasPro\flashcanvas.js" />
+    <Content Include="Content\js\shims\FlashCanvas\canvas2png.js" />
+    <Content Include="Content\js\shims\FlashCanvas\flashcanvas.js" />
+    <Content Include="Content\js\shims\FlashCanvas\flashcanvas.swf" />
+    <Content Include="Content\js\shims\form-combat.js" />
+    <Content Include="Content\js\shims\form-core.js" />
+    <Content Include="Content\js\shims\form-datalist-lazy.js" />
+    <Content Include="Content\js\shims\form-datalist.js" />
+    <Content Include="Content\js\shims\form-fixrangechange.js" />
+    <Content Include="Content\js\shims\form-inputmode.js" />
+    <Content Include="Content\js\shims\form-message.js" />
+    <Content Include="Content\js\shims\form-native-extend.js" />
+    <Content Include="Content\js\shims\form-number-date-api.js" />
+    <Content Include="Content\js\shims\form-number-date-ui.js" />
+    <Content Include="Content\js\shims\form-shim-extend.js" />
+    <Content Include="Content\js\shims\form-shim-extend2.js" />
+    <Content Include="Content\js\shims\form-validation.js" />
+    <Content Include="Content\js\shims\form-validators.js" />
+    <Content Include="Content\js\shims\forms-picker.js" />
+    <Content Include="Content\js\shims\geolocation.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-ar.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-bg.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-ca.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-ch-CN.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-cs.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-de.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-el.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-en.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-es.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-fa.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-fi.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-fr.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-he.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-hi.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-hu.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-it.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-ja.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-lt.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-nl.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-no.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-pl.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-pt-BR.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-pt-PT.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-pt.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-ru.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-sv.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-zh-CN.js" />
+    <Content Include="Content\js\shims\i18n\formcfg-zh-TW.js" />
+    <Content Include="Content\js\shims\jme\alternate-media.js" />
+    <Content Include="Content\js\shims\jme\base.js" />
+    <Content Include="Content\js\shims\jme\controls.css" />
+    <Content Include="Content\js\shims\jme\jme.svg" />
+    <Content Include="Content\js\shims\jme\mediacontrols-lazy.js" />
+    <Content Include="Content\js\shims\jme\mediacontrols.js" />
+    <Content Include="Content\js\shims\jme\playlist.js" />
+    <Content Include="Content\js\shims\jpicker\images\AlphaBar.png" />
+    <Content Include="Content\js\shims\jpicker\images\bar-opacity.png" />
+    <Content Include="Content\js\shims\jpicker\images\Bars.png" />
+    <Content Include="Content\js\shims\jpicker\images\map-opacity.png" />
+    <Content Include="Content\js\shims\jpicker\images\mappoint.gif" />
+    <Content Include="Content\js\shims\jpicker\images\Maps.png" />
+    <Content Include="Content\js\shims\jpicker\images\NoColor.png" />
+    <Content Include="Content\js\shims\jpicker\images\picker.gif" />
+    <Content Include="Content\js\shims\jpicker\images\preview-opacity.png" />
+    <Content Include="Content\js\shims\jpicker\images\rangearrows.gif" />
+    <Content Include="Content\js\shims\jpicker\jpicker.css" />
+    <Content Include="Content\js\shims\matchMedia.js" />
+    <Content Include="Content\js\shims\mediacapture-picker.js" />
+    <Content Include="Content\js\shims\mediacapture.js" />
+    <Content Include="Content\js\shims\mediaelement-core.js" />
+    <Content Include="Content\js\shims\mediaelement-debug.js" />
+    <Content Include="Content\js\shims\mediaelement-jaris.js" />
+    <Content Include="Content\js\shims\mediaelement-native-fix.js" />
+    <Content Include="Content\js\shims\mediaelement-yt.js" />
+    <Content Include="Content\js\shims\moxie\flash\Moxie.cdn.swf" />
+    <Content Include="Content\js\shims\moxie\flash\Moxie.min.swf" />
+    <Content Include="Content\js\shims\moxie\js\moxie-html4.js" />
+    <Content Include="Content\js\shims\moxie\js\moxie-swf.js" />
+    <Content Include="Content\js\shims\picture.js" />
+    <Content Include="Content\js\shims\plugins\jquery.ui.position.js" />
+    <Content Include="Content\js\shims\range-ui.js" />
+    <Content Include="Content\js\shims\sizzle.js" />
+    <Content Include="Content\js\shims\sticky.js" />
+    <Content Include="Content\js\shims\styles\color-picker.png" />
+    <Content Include="Content\js\shims\styles\forms-ext.css" />
+    <Content Include="Content\js\shims\styles\forms-picker.css" />
+    <Content Include="Content\js\shims\styles\progress.gif" />
+    <Content Include="Content\js\shims\styles\progress.png" />
+    <Content Include="Content\js\shims\styles\shim-ext.css" />
+    <Content Include="Content\js\shims\styles\shim.css" />
+    <Content Include="Content\js\shims\styles\transparent.png" />
+    <Content Include="Content\js\shims\styles\widget.svg" />
+    <Content Include="Content\js\shims\swfmini-embed.js" />
+    <Content Include="Content\js\shims\swfmini.js" />
+    <Content Include="Content\js\shims\swf\JarisFLVPlayer.swf" />
+    <Content Include="Content\js\shims\track-ui.js" />
+    <Content Include="Content\js\shims\track.js" />
+    <Content Include="Content\js\shims\url.js" />
+    <Content Include="Content\js\shims\usermedia-core.js" />
+    <Content Include="Content\js\shims\usermedia-shim.js" />
+    <Content Include="Content\js\wow.js" />
+    <Content Include="Content\js\wow.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\QLivrosModel.Context.tt">
+    <Content Include="Models\TabModels\QLivrosModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLivrosModel.edmx</DependentUpon>
       <LastGenOutput>QLivrosModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QLivrosModel.tt">
+    <Content Include="Models\TabModels\QLivrosModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLivrosModel.edmx</DependentUpon>
       <LastGenOutput>QLivrosModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\QLivrosModel.edmx">
+    <EntityDeploy Include="Models\TabModels\QLivrosModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QLivrosModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\QLivrosModel.edmx.diagram">
+    <Content Include="Models\TabModels\QLivrosModel.edmx.diagram">
       <DependentUpon>QLivrosModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\js\shims\jme\jme.eot" />
+    <Content Include="Content\js\shims\jme\jme.ttf" />
+    <Content Include="Content\js\shims\jme\jme.woff" />
+    <Content Include="Content\js\shims\styles\widget.eot" />
+    <Content Include="Content\js\shims\styles\widget.ttf" />
+    <Content Include="Content\js\shims\styles\widget.woff" />
+    <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\jasny-bootstrap.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\Roboto.zip" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -258,9 +437,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutInterno.cshtml" />
+    <Content Include="Views\Exemplar\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Start\App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

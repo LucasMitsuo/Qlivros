@@ -68,8 +68,11 @@ INSERT INTO TabExemplar VALUES
 (4,'Record','Shigueo Tomomitsu','3',1,1,'')
 
 SELECT * FROM TabHistorico
+-- Status 1 = Cadastrado, 2 = Pendente, 3 = Aceito, 4 = Recusado.
 INSERT INTO TabHistorico VALUES 
-(1,CONVERT(DATETIME,'14/11/2015',103),'','',1,1),
-(2,CONVERT(DATETIME,'22/07/2015',103),'','',2,2),
-(3,CONVERT(DATETIME,'11/10/2015',103),'','',3,3),
-(4,CONVERT(DATETIME,'13/10/2015',103),'','',4,4)
+(1,CONVERT(DATETIME,'14/11/2015',103),1,1,1,null),
+(2,CONVERT(DATETIME,'22/07/2015',103),1,2,2,null),
+(3,CONVERT(DATETIME,'11/10/2015',103),1,3,3,null),
+(4,CONVERT(DATETIME,'13/10/2015',103),1,4,4,null)
+
+

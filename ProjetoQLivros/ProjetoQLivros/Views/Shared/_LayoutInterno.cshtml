@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QLivros</title>
+    <meta name="description" content="QLivros - Doação e troca de livros" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link href="~/Content/css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/navmenu-reveal.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.custom.css" />
+    <link rel="stylesheet" href="~/Content/css/styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!--MENU LATERAL-->
+    <div class="navmenu navmenu-default navmenu-fixed-left">
+        <div class="navmenu-brand" href="#">Menu Principal</div>
+        <ul class="nav navmenu-nav">
+            <li><a href="#corrente">Comece uma corrente<span class="glyphicon glyphicon-share"></span></a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#exemplares">
+                    Meus exemplares
+                    <span class="glyphicon glyphicon-book"></span>
+                </a>
+                <ul class="dropdown-menu navmenu-nav">
+                    <li>
+                        <a href="#">Romper Corrente</a>
+                    </li>
+                    <li>
+                        <a href="#">Disponibilizar Exemplar</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#ranking">Verificar Ranking<span class="glyphicon glyphicon-star"></span></a></li>
+            <li><a href="#dados">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
+            <li><a href="#cancel-participacao">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>
+            <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+            <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+            <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+            <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+        </ul>
+    </div>
+
+    <!--MENU SUPERIOR-->
+    <div class="canvas">
+        <div class="navbar navbar-blue navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle navbar-toggle-blue" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapsible">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#section1">Comece uma corrente<span class="glyphicon glyphicon-share"></span></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#exemplares">
+                            Meus exemplares
+                            <span class="glyphicon glyphicon-book"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Romper Corrente</a>
+                            </li>
+                            <li>
+                                <a href="#">Disponibilizar Exemplar</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#section3">Verificar Ranking<span class="glyphicon glyphicon-star"></span></a></li>
+                    <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
+                    <li><a href="#section5">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>
+                    <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+                    <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+                    <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+                    <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid center-content">
+            <header class="row header-main">
+                <div class="col-xs-12 text-right">
+                    <div class="user">
+                        <a href="#dados" id="logout">
+                            Olá, João
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <section class="row text-center section-main">
+                <div class="col-xs-12 main-content">
+                    <div class="main-block main-search">
+                        <header class="main-title h1 logo-text">QLivros</header>
+                        @RenderBody();
+                    </div>
+                </div>
+            </section>
+            <footer class="row footer-main">
+                <small class="copyright">Copyright ® 2015 - QLivros. Todos os direitos reservados. All rights reserved.</small>
+            </footer>
+        </div>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jasny-bootstrap.min.js"></script>
+</body>
+</html>

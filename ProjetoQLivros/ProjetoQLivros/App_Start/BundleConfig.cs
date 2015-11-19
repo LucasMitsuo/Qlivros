@@ -25,7 +25,10 @@ namespace ProjetoQLivros
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/navmenu-reveal.css",
+                      "~/Content/bootstrap.custom.css"));
+
         }
     }
 }
