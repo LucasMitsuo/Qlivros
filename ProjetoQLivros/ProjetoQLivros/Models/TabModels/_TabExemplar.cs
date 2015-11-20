@@ -10,9 +10,9 @@ namespace ProjetoQLivros.Models.TabModels
     [MetadataType(typeof(TabExemplarMetadata))]
     public partial class TabExemplar
     {
-        public bool IsAtivo()
+        public bool IsDisponivel()
         {
-            if (this.dsStatus.Equals((int)StatusRegistroExemplar.ATIVO))
+            if (this.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL))
             {
                 return true;
             }
@@ -27,7 +27,8 @@ namespace ProjetoQLivros.Models.TabModels
 
     public enum StatusRegistroExemplar
     {
-        ATIVO = 1,
+        DISPONIVEL = 1,
+        INDISPONIVEL,
         INATIVO
     }
 }

@@ -138,18 +138,6 @@
     <Compile Include="Models\BusinessController\ResenhaBusinessController.cs" />
     <Compile Include="Models\BusinessController\SalaChatBusinessController.cs" />
     <Compile Include="Models\BusinessController\TituloBusinessController.cs" />
-    <Compile Include="Models\TabModels\_TabBairro.cs" />
-    <Compile Include="Models\TabModels\_TabCidade.cs" />
-    <Compile Include="Models\TabModels\_TabEstado.cs" />
-    <Compile Include="Models\TabModels\_TabExemplar.cs" />
-    <Compile Include="Models\TabModels\_TabHistorico.cs" />
-    <Compile Include="Models\TabModels\_TabLeitor.cs" />
-    <Compile Include="Models\TabModels\_TabLog.cs" />
-    <Compile Include="Models\TabModels\_TabLogradouroEnd.cs" />
-    <Compile Include="Models\TabModels\_TabMensagem.cs" />
-    <Compile Include="Models\TabModels\_TabResenha.cs" />
-    <Compile Include="Models\TabModels\_TabSalaChat.cs" />
-    <Compile Include="Models\TabModels\_TabTitulo.cs" />
     <Compile Include="Models\TabModels\QLivrosModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +189,18 @@
     <Compile Include="Models\TabModels\TabTitulo.cs">
       <DependentUpon>QLivrosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TabModels\_TabBairro.cs" />
+    <Compile Include="Models\TabModels\_TabCidade.cs" />
+    <Compile Include="Models\TabModels\_TabEstado.cs" />
+    <Compile Include="Models\TabModels\_TabExemplar.cs" />
+    <Compile Include="Models\TabModels\_TabHistorico.cs" />
+    <Compile Include="Models\TabModels\_TabLeitor.cs" />
+    <Compile Include="Models\TabModels\_TabLog.cs" />
+    <Compile Include="Models\TabModels\_TabLogradouroEnd.cs" />
+    <Compile Include="Models\TabModels\_TabMensagem.cs" />
+    <Compile Include="Models\TabModels\_TabResenha.cs" />
+    <Compile Include="Models\TabModels\_TabSalaChat.cs" />
+    <Compile Include="Models\TabModels\_TabTitulo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -387,13 +387,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\TabModels\QLivrosModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLivrosModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TabModels\QLivrosModel.edmx.diagram">
-      <DependentUpon>QLivrosModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\js\shims\jme\jme.eot" />
     <Content Include="Content\js\shims\jme\jme.ttf" />
     <Content Include="Content\js\shims\jme\jme.woff" />
@@ -408,6 +401,13 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\Roboto.zip" />
+    <EntityDeploy Include="Models\TabModels\QLivrosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLivrosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TabModels\QLivrosModel.edmx.diagram">
+      <DependentUpon>QLivrosModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

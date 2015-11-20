@@ -10,7 +10,7 @@ GO
 CREATE
   TABLE TabBairro
   (
-    idBairro   INTEGER NOT NULL ,
+    idBairro   INTEGER NOT NULL IDENTITY ,
     nmBairro   VARCHAR (100) NOT NULL ,
     fkIdCidade INTEGER NOT NULL ,
     CONSTRAINT TabBairro_PK PRIMARY KEY CLUSTERED (idBairro)
@@ -27,7 +27,7 @@ GO
 CREATE
   TABLE TabCidade
   (
-    idCidade   INTEGER NOT NULL ,
+    idCidade   INTEGER NOT NULL IDENTITY,
     nmCidade   VARCHAR (100) NOT NULL ,
     fkIdEstado INTEGER NOT NULL ,
     CONSTRAINT TabCidade_PK PRIMARY KEY CLUSTERED (idCidade)
@@ -44,7 +44,7 @@ GO
 CREATE
   TABLE TabEstado
   (
-    idEstado INTEGER NOT NULL ,
+    idEstado INTEGER NOT NULL IDENTITY,
     nmEstado VARCHAR (100) NOT NULL ,
     CONSTRAINT TabEstado_PK PRIMARY KEY CLUSTERED (idEstado)
 WITH
@@ -60,7 +60,7 @@ GO
 CREATE
   TABLE TabExemplar
   (
-    idExemplar INTEGER NOT NULL ,
+    idExemplar INTEGER NOT NULL IDENTITY,
     nmEditora  VARCHAR (70) NOT NULL ,
     nmAutor    VARCHAR (100) NOT NULL ,
     dsEdicao   VARCHAR (10) NOT NULL ,
@@ -81,7 +81,7 @@ GO
 CREATE
   TABLE TabHistorico
   (
-    idHistorico  INTEGER NOT NULL ,
+    idHistorico  INTEGER NOT NULL IDENTITY,
     dtHistorico  DATE NOT NULL DEFAULT 'getdate' ,
     dsStatus     INTEGER NOT NULL ,
     fkIdExemplar INTEGER NOT NULL ,
@@ -101,7 +101,7 @@ GO
 CREATE
   TABLE TabLeitor
   (
-    idLeitor         INTEGER NOT NULL ,
+    idLeitor         INTEGER NOT NULL IDENTITY,
     dsEmail          VARCHAR (40) NOT NULL ,
     dsLogin          VARCHAR (20) NOT NULL ,
     dsSenha          VARCHAR (20) NOT NULL ,
@@ -130,7 +130,7 @@ GO
 CREATE
   TABLE TabLog
   (
-    idLog      INTEGER NOT NULL ,
+    idLog      INTEGER NOT NULL IDENTITY,
     dtLog      DATETIME NOT NULL ,
     fkIdLeitor INTEGER NOT NULL ,
     CONSTRAINT TabLog_PK PRIMARY KEY CLUSTERED (idLog)
@@ -147,7 +147,7 @@ GO
 CREATE
   TABLE TabLogradouroEnd
   (
-    idCepEnd     INTEGER NOT NULL ,
+    idCepEnd     INTEGER NOT NULL IDENTITY,
     nmLogradouro VARCHAR (100) NOT NULL ,
     fkIdBairro   INTEGER NOT NULL ,
     CONSTRAINT TabLogradouroEnd_PK PRIMARY KEY CLUSTERED (idCepEnd)
@@ -164,7 +164,7 @@ GO
 CREATE
   TABLE TabMensagem
   (
-    idMensagem  INTEGER NOT NULL ,
+    idMensagem  INTEGER NOT NULL IDENTITY,
     dsMensagem  VARCHAR (300) NOT NULL ,
     fkIdLeitor2 INTEGER NOT NULL ,
     fkIdLeitor1 INTEGER NOT NULL ,
@@ -184,7 +184,7 @@ GO
 CREATE
   TABLE TabResenha
   (
-    idResenha     INTEGER NOT NULL ,
+    idResenha     INTEGER NOT NULL IDENTITY,
     dsResenha     VARCHAR (300) NOT NULL ,
     dsTipoResenha CHAR (1) NOT NULL ,
     fkIdLeitor    INTEGER NOT NULL ,
@@ -204,7 +204,7 @@ GO
 CREATE
   TABLE TabSalaChat
   (
-    idSala      INTEGER NOT NULL ,
+    idSala      INTEGER NOT NULL IDENTITY,
     fkIdLeitor  INTEGER NOT NULL ,
     fkIdLeitor2 INTEGER NOT NULL ,
     CONSTRAINT TabSalaChat_PK PRIMARY KEY CLUSTERED (fkIdLeitor, fkIdLeitor2,
@@ -222,7 +222,7 @@ GO
 CREATE
   TABLE TabTitulo
   (
-    idTitulo INTEGER NOT NULL ,
+    idTitulo INTEGER NOT NULL IDENTITY,
     nmTitulo VARCHAR (70) NOT NULL ,
     CONSTRAINT TabTitulo_PK PRIMARY KEY CLUSTERED (idTitulo)
 WITH

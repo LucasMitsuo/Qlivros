@@ -8,5 +8,6 @@ namespace ProjetoQLivros.Models.BusinessController
 {
     public class MensagemBusinessController
     {
+
     }
 }

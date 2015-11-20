@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="idBairro" />
           </Key>
-          <Property Name="idBairro" Type="int" Nullable="false" />
+          <Property Name="idBairro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmBairro" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="fkIdCidade" Type="int" Nullable="false" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="idCidade" />
           </Key>
-          <Property Name="idCidade" Type="int" Nullable="false" />
+          <Property Name="idCidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmCidade" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="fkIdEstado" Type="int" Nullable="false" />
         </EntityType>
@@ -25,14 +25,14 @@
           <Key>
             <PropertyRef Name="idEstado" />
           </Key>
-          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmEstado" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="TabExemplar">
           <Key>
             <PropertyRef Name="idExemplar" />
           </Key>
-          <Property Name="idExemplar" Type="int" Nullable="false" />
+          <Property Name="idExemplar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmEditora" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="nmAutor" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="dsEdicao" Type="varchar" MaxLength="10" Nullable="false" />
@@ -44,7 +44,7 @@
           <Key>
             <PropertyRef Name="idHistorico" />
           </Key>
-          <Property Name="idHistorico" Type="int" Nullable="false" />
+          <Property Name="idHistorico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dtHistorico" Type="date" Nullable="false" />
           <Property Name="dsStatus" Type="int" Nullable="false" />
           <Property Name="fkIdExemplar" Type="int" Nullable="false" />
@@ -55,7 +55,7 @@
           <Key>
             <PropertyRef Name="idLeitor" />
           </Key>
-          <Property Name="idLeitor" Type="int" Nullable="false" />
+          <Property Name="idLeitor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dsEmail" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="dsLogin" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="dsSenha" Type="varchar" MaxLength="20" Nullable="false" />
@@ -75,7 +75,7 @@
           <Key>
             <PropertyRef Name="idLog" />
           </Key>
-          <Property Name="idLog" Type="int" Nullable="false" />
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dtLog" Type="datetime" Nullable="false" />
           <Property Name="fkIdLeitor" Type="int" Nullable="false" />
         </EntityType>
@@ -83,7 +83,7 @@
           <Key>
             <PropertyRef Name="idCepEnd" />
           </Key>
-          <Property Name="idCepEnd" Type="int" Nullable="false" />
+          <Property Name="idCepEnd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmLogradouro" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="fkIdBairro" Type="int" Nullable="false" />
         </EntityType>
@@ -91,7 +91,7 @@
           <Key>
             <PropertyRef Name="idMensagem" />
           </Key>
-          <Property Name="idMensagem" Type="int" Nullable="false" />
+          <Property Name="idMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dsMensagem" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="fkIdLeitor2" Type="int" Nullable="false" />
           <Property Name="fkIdLeitor1" Type="int" Nullable="false" />
@@ -102,7 +102,7 @@
           <Key>
             <PropertyRef Name="idResenha" />
           </Key>
-          <Property Name="idResenha" Type="int" Nullable="false" />
+          <Property Name="idResenha" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dsResenha" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="dsTipoResenha" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="fkIdLeitor" Type="int" Nullable="false" />
@@ -115,7 +115,7 @@
             <PropertyRef Name="fkIdLeitor" />
             <PropertyRef Name="fkIdLeitor2" />
           </Key>
-          <Property Name="idSala" Type="int" Nullable="false" />
+          <Property Name="idSala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fkIdLeitor" Type="int" Nullable="false" />
           <Property Name="fkIdLeitor2" Type="int" Nullable="false" />
         </EntityType>
@@ -123,7 +123,7 @@
           <Key>
             <PropertyRef Name="idTitulo" />
           </Key>
-          <Property Name="idTitulo" Type="int" Nullable="false" />
+          <Property Name="idTitulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nmTitulo" Type="varchar" MaxLength="70" Nullable="false" />
         </EntityType>
         <Association Name="TabBairro_TabCidade_FK">
@@ -377,7 +377,7 @@
           <Key>
             <PropertyRef Name="idBairro" />
           </Key>
-          <Property Name="idBairro" Type="Int32" Nullable="false" />
+          <Property Name="idBairro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fkIdCidade" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabCidade" Relationship="Self.TabBairro_TabCidade_FK" FromRole="TabBairro" ToRole="TabCidade" />
@@ -387,7 +387,7 @@
           <Key>
             <PropertyRef Name="idCidade" />
           </Key>
-          <Property Name="idCidade" Type="Int32" Nullable="false" />
+          <Property Name="idCidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fkIdEstado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabBairro" Relationship="Self.TabBairro_TabCidade_FK" FromRole="TabCidade" ToRole="TabBairro" />
@@ -397,7 +397,7 @@
           <Key>
             <PropertyRef Name="idEstado" />
           </Key>
-          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TabCidade" Relationship="Self.TabCidade_TabEstado_FK" FromRole="TabEstado" ToRole="TabCidade" />
         </EntityType>
@@ -405,7 +405,7 @@
           <Key>
             <PropertyRef Name="idExemplar" />
           </Key>
-          <Property Name="idExemplar" Type="Int32" Nullable="false" />
+          <Property Name="idExemplar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmEditora" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nmAutor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dsEdicao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -420,7 +420,7 @@
           <Key>
             <PropertyRef Name="idHistorico" />
           </Key>
-          <Property Name="idHistorico" Type="Int32" Nullable="false" />
+          <Property Name="idHistorico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dtHistorico" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dsStatus" Type="Int32" Nullable="false" />
           <Property Name="fkIdExemplar" Type="Int32" Nullable="false" />
@@ -434,7 +434,7 @@
           <Key>
             <PropertyRef Name="idLeitor" />
           </Key>
-          <Property Name="idLeitor" Type="Int32" Nullable="false" />
+          <Property Name="idLeitor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dsLogin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dsSenha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -461,7 +461,7 @@
           <Key>
             <PropertyRef Name="idLog" />
           </Key>
-          <Property Name="idLog" Type="Int32" Nullable="false" />
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dtLog" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabLeitor" Relationship="Self.TabLog_TabLeitor_FK" FromRole="TabLog" ToRole="TabLeitor" />
@@ -470,7 +470,7 @@
           <Key>
             <PropertyRef Name="idCepEnd" />
           </Key>
-          <Property Name="idCepEnd" Type="Int32" Nullable="false" />
+          <Property Name="idCepEnd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmLogradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fkIdBairro" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabBairro" Relationship="Self.TabLogradouroEnd_TabBairro_FK" FromRole="TabLogradouroEnd" ToRole="TabBairro" />
@@ -480,7 +480,7 @@
           <Key>
             <PropertyRef Name="idMensagem" />
           </Key>
-          <Property Name="idMensagem" Type="Int32" Nullable="false" />
+          <Property Name="idMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsMensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fkIdLeitor2" Type="Int32" Nullable="false" />
           <Property Name="fkIdLeitor1" Type="Int32" Nullable="false" />
@@ -492,7 +492,7 @@
           <Key>
             <PropertyRef Name="idResenha" />
           </Key>
-          <Property Name="idResenha" Type="Int32" Nullable="false" />
+          <Property Name="idResenha" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsResenha" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dsTipoResenha" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
@@ -507,7 +507,7 @@
             <PropertyRef Name="fkIdLeitor" />
             <PropertyRef Name="fkIdLeitor2" />
           </Key>
-          <Property Name="idSala" Type="Int32" Nullable="false" />
+          <Property Name="idSala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fkIdLeitor" Type="Int32" Nullable="false" />
           <Property Name="fkIdLeitor2" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TabLeitor" Relationship="Self.TabSalaChat_TabLeitor_FK" FromRole="TabSalaChat" ToRole="TabLeitor" />
@@ -518,7 +518,7 @@
           <Key>
             <PropertyRef Name="idTitulo" />
           </Key>
-          <Property Name="idTitulo" Type="Int32" Nullable="false" />
+          <Property Name="idTitulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nmTitulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TabExemplar" Relationship="Self.TabExemplar_TabTitulo_FK" FromRole="TabTitulo" ToRole="TabExemplar" />
         </EntityType>

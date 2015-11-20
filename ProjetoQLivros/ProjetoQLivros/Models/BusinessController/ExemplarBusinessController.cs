@@ -13,7 +13,7 @@ namespace ProjetoQLivros.Models.BusinessController
         public IQueryable<TabExemplar> FiltrarTitulo(string titulo)
         {
             //Pesquisa no banco os exemplares que possuem o título informado e que estejam ativo
-            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)StatusRegistroExemplar.ATIVO));
+            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL));
             return exemplares;
         }
     }
