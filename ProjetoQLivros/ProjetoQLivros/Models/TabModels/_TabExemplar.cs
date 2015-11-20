@@ -27,8 +27,7 @@ namespace ProjetoQLivros.Models.TabModels
 
     public enum StatusRegistroExemplar
     {
-        DISPONIVEL = 1,
-        INDISPONIVEL,
+        ATIVO = 1,
         INATIVO
     }
 }
