@@ -12,7 +12,7 @@ namespace ProjetoQLivros.Models.TabModels
     {
         public bool IsDisponivel()
         {
-            if (this.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL))
+            if (this.dsStatus.Equals((int)StatusRegistroExemplar.ATIVO))
             {
                 return true;
             }
