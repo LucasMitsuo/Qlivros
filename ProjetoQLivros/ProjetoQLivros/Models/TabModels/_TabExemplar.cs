@@ -12,7 +12,7 @@ namespace ProjetoQLivros.Models.TabModels
     {
         public bool IsDisponivel()
         {
-            if (this.dsStatus.Equals((int)StatusRegistroExemplar.ATIVO))
+            if (this.dsStatus.Equals((int)EnumStatusRegistroExemplar.ATIVO))
             {
                 return true;
             }
@@ -25,7 +25,7 @@ namespace ProjetoQLivros.Models.TabModels
 
     }
 
-    public enum StatusRegistroExemplar
+    public enum EnumStatusRegistroExemplar
     {
         ATIVO = 1,
         INATIVO

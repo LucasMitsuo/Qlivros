@@ -118,6 +118,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DoacaoController.cs" />
     <Compile Include="Controllers\ExemplarController.cs" />
     <Compile Include="Controllers\HistoricoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -128,6 +129,7 @@
     </Compile>
     <Compile Include="Models\BusinessController\BairroBusinessController.cs" />
     <Compile Include="Models\BusinessController\CidadeBusinessController.cs" />
+    <Compile Include="Models\BusinessController\DoacaoBusinessController.cs" />
     <Compile Include="Models\BusinessController\EstadoBusinessController.cs" />
     <Compile Include="Models\BusinessController\ExemplarBusinessController.cs" />
     <Compile Include="Models\BusinessController\HistoricoBusinessController.cs" />
@@ -440,6 +442,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutInterno.cshtml" />
     <Content Include="Views\Exemplar\Lista.cshtml" />
+    <Content Include="Views\Exemplar\FormDoar.cshtml" />
+    <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
