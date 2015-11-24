@@ -58,14 +58,18 @@ SELECT * FROM TabTitulo
 INSERT INTO TabTitulo VALUES
 ('Engenharia de Software'),
 ('Mortos'),
-('Molejo')
+('Molejo'),
+('Futebol'),
+('Pensamentos de mulher')
 
 SELECT * FROM TabExemplar
 INSERT INTO TabExemplar VALUES
 ('Ática','Shigueo Tomomitsu','2',1,1,''),
 ('Universal','Murilo Gun','1',2,1,''),
 ('Globo','Fábio Moura','1',3,1,''),
-('Record','Shigueo Tomomitsu','3',1,1,'')
+('Record','Shigueo Tomomitsu','3',1,1,''),
+('Esportiva','Edson Arantes','1',4,1,''),
+('Estilo','Maria Godoy','3',5,1,'')
 
 SELECT * FROM TabHistorico
 -- Status 1 = Cadastrado, 2 = Pendente, 3 = Aceito, 4 = Recusado.
@@ -93,7 +97,11 @@ INSERT INTO TabHistorico VALUES
 -- O leitor 1 aceita a solicitação -> ACEITO
 (CONVERT(DATETIME,'13/10/2015',103),3,2,2,1),
 -- O leitor 1 passa a ser o proprietário -> Status DOADO
-(CONVERT(DATETIME,'13/10/2015',103),5,2,1,null)
+(CONVERT(DATETIME,'13/10/2015',103),5,2,1,null),
+
+(CONVERT(DATETIME,'13/10/2015',103),1,5,3,null),
+(CONVERT(DATETIME,'13/10/2015',103),1,6,3,null)
+
 
 SELECT * FROM TabHistorico WHERE fkIdExemplar = 1 and (dsStatus = 1 or dsStatus = 5)
 SELECT * FROM TabHistorico WHERE fkIdLeitor = 1 and (dsStatus = 1 or dsStatus = 5)

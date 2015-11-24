@@ -44,4 +44,10 @@ namespace ProjetoQLivros.Models.TabModels
         MASCULINO = 1,
         FEMININO
     }
+
+    public enum EnumStatusLeitor
+    {
+        ATIVO = 1,
+        INATIVO
+    }
 }
