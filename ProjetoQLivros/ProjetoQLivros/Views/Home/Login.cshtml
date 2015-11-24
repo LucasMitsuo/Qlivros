@@ -3,27 +3,24 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using(Html.BeginForm("Autenticar", "Leitor", FormMethod.Post, new { }))
+@using (Html.BeginForm("Autenticar", "Leitor", FormMethod.Post, new { }))
 {
     <div class="panel-body">
         <div class="form-group">
-            @Html.Label("Login", new { @for = "input-titulo", @class = "form-horizontal" })  
-                @Html.TextBoxFor(model => model.dsLogin, new { @class = "form-control", id = "input-titulo", placeholder = "Entre com o login" })
-                @Html.ValidationMessageFor(model => model.dsLogin)
+            @Html.Label("Login", new { @for = "input-titulo", @class = "form-horizontal" })
+            @Html.TextBoxFor(model => model.dsLogin, new { @class = "form-control", id = "input-titulo", placeholder = "Entre com o login" })
+            @Html.ValidationMessageFor(model => model.dsLogin)
         </div>
         <div class="form-group">
             @Html.Label("Senha", new { @for = "input-titulo", @class = "form-horizontal" })
-            
-                @Html.TextBoxFor(model => model.dsSenha, new { @class = "form-control", id = "input-descricao", placeholder = "Entre com a senha", type="password" })
-                @Html.ValidationMessageFor(model => model.dsSenha)
-                @if (ViewBag.ErroAutentica != null)
-                {
-                    @ViewBag.ErroAutentica
-                }        
-        </div>
 
+            @Html.TextBoxFor(model => model.dsSenha, new { @class = "form-control", id = "input-descricao", placeholder = "Entre com a senha", type = "password" })
+            @Html.ValidationMessageFor(model => model.dsSenha)
+            @if (ViewBag.ErroAutentica != null)
+            {
+                @ViewBag.ErroAutentica
+            }
+        </div>
         <button type="submit" class="btn btn-default">Entrar</button>
     </div>
 }
-

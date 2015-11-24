@@ -139,6 +139,7 @@
     <Compile Include="Models\BusinessController\LogBusinessController.cs" />
     <Compile Include="Models\BusinessController\LogradouroBusinessController.cs" />
     <Compile Include="Models\BusinessController\MensagemBusinessController.cs" />
+    <Compile Include="Models\BusinessController\NotificacaoBusinessController.cs" />
     <Compile Include="Models\BusinessController\ResenhaBusinessController.cs" />
     <Compile Include="Models\BusinessController\SalaChatBusinessController.cs" />
     <Compile Include="Models\BusinessController\TituloBusinessController.cs" />

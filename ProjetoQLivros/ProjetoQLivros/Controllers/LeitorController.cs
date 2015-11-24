@@ -15,19 +15,17 @@ namespace ProjetoQLivros.Controllers
         LeitorBusinessController leitorBC = new LeitorBusinessController();
         public ActionResult Autenticar(TabLeitor leitor)
         {
-            if (ModelState.IsValid)
-            {
-                if (leitorBC.VerificaLogin(leitor))
+                var result = leitorBC.VerificaLogin(leitor);
+
+                if (result.Item2)
                 {
-                    return View("~/Views/Home/Index.cshtml",leitor);
+                    return View("~/Views/Home/Index.cshtml",result.Item1);
                 }
                 else
                 {
                     ViewBag.ErroAutentica = "Login ou senha incorretos";
                     return View("~/Views/Home/Login.cshtml");
                 }
-            }
-            return View("~/Views/Home/Login.cshtml", leitor);
         }
     }
 }

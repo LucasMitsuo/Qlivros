@@ -14,6 +14,7 @@ namespace ProjetoQLivros.Models.BusinessController
         {
             var receptor = db.TabLeitor.Where(model => model.dsLogin.ToLower() == login.ToLower() && model.dsEmail.ToLower() == email.ToLower()).FirstOrDefault();
             var doador = db.TabLeitor.Where(model => model.idLeitor == idDoador).FirstOrDefault();
+            var exemplar = db.TabExemplar.Where(model => model.idExemplar == idExemplar).FirstOrDefault();
 
             //Verifica se o leitor digitou um login ou email desconhecidos ou de um leitor que está inativo
             if (receptor == null || receptor.dsStatus == (int)EnumStatusLeitor.INATIVO)
@@ -34,6 +35,8 @@ namespace ProjetoQLivros.Models.BusinessController
                 dtHistorico = DateTime.Now,
                 dsStatus = (int)EnumStatusHistorico.PENDENTE
             };
+
+            exemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
 
             db.TabHistorico.Add(historico);
             db.SaveChanges();

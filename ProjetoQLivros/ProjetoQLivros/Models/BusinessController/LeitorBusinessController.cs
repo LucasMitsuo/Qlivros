@@ -10,16 +10,16 @@ namespace ProjetoQLivros.Models.BusinessController
     public class LeitorBusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
-        public bool VerificaLogin(TabLeitor leitor)
+        public Tuple<TabLeitor,bool> VerificaLogin(TabLeitor dadosLeitor)
         {
-            var dadosLogin = db.TabLeitor.Where(model => model.dsLogin == leitor.dsLogin && model.dsSenha == leitor.dsSenha).FirstOrDefault();
-            if (dadosLogin == null)
+            var leitor = db.TabLeitor.Where(model => model.dsLogin == dadosLeitor.dsLogin && model.dsSenha == dadosLeitor.dsSenha).FirstOrDefault();
+            if (leitor == null)
             {
-                return false;
+                return new Tuple<TabLeitor,bool>(null,false);
             }
             else
             {
-                return true;
+                return new Tuple<TabLeitor, bool>(leitor, false);
             }
         }
 

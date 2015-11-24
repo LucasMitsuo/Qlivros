@@ -13,8 +13,8 @@ namespace ProjetoQLivros.Models.BusinessController
 
         public IQueryable<TabExemplar> FiltrarTitulo(string titulo)
         {
-            //Pesquisa no banco os exemplares que possuem o título informado e que estejam ativo
-            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)EnumStatusRegistroExemplar.ATIVO));
+            //Pesquisa no banco os exemplares que possuem o título informado e que estejam disponíveis
+            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL));
             return exemplares;
         }
 
@@ -47,7 +47,7 @@ namespace ProjetoQLivros.Models.BusinessController
             //  Recupera o registro que eu quero atualizar e guarda em uma variável do tipo TabExemplar
             TabExemplar e = db.TabExemplar.First(model => model.idExemplar == idExemplar);
             // Atualiza os campos, colocando o nome da variavel que recebeu o registro seguido de "." e o nome do campo.
-            e.dsStatus = (int)EnumStatusRegistroExemplar.INATIVO;
+            e.dsStatus = (int)StatusRegistroExemplar.INATIVO;
             e.dsObs = texto;
             // Salvando as alterações
             db.SaveChanges();
