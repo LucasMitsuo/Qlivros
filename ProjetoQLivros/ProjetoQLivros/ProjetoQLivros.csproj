@@ -124,6 +124,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeitorController.cs" />
     <Compile Include="Controllers\ResenhaController.cs" />
+    <Compile Include="Controllers\SalaChatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -447,6 +448,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
+    <Folder Include="Views\SalaChat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

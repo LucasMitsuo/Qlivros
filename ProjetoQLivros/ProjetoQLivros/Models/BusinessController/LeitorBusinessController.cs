@@ -22,5 +22,11 @@ namespace ProjetoQLivros.Models.BusinessController
                 return true;
             }
         }
+
+        public IQueryable<TabLeitor> Obter(long idLeitor)
+        {
+            var leitor = db.TabLeitor.Where(model => model.idLeitor == idLeitor);
+            return leitor;
+        }
     }
 }
