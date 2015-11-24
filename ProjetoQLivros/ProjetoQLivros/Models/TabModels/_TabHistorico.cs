@@ -23,6 +23,7 @@ namespace ProjetoQLivros.Models.TabModels
         CADASTRADO = 1,
         PENDENTE,
         ACEITO,
-        RECUSADO
+        RECUSADO,
+        DOADO
     }
 }

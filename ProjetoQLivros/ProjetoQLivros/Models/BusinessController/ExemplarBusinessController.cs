@@ -10,6 +10,7 @@ namespace ProjetoQLivros.Models.BusinessController
     public class ExemplarBusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
+
         public IQueryable<TabExemplar> FiltrarTitulo(string titulo)
         {
             //Pesquisa no banco os exemplares que possuem o título informado e que estejam ativo
