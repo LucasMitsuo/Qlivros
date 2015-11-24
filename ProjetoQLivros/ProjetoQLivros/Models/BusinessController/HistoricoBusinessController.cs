@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjetoQLivros.Models.TabModels;
 
 namespace ProjetoQLivros.Models.BusinessController
 {
@@ -51,6 +50,19 @@ namespace ProjetoQLivros.Models.BusinessController
             {
                 return new Tuple<List<TabHistorico>, bool>(historicos, true);
             }
+        }
+
+        public IQueryable<TabHistorico> ObterLidos(long idLeitor)
+        {
+            var historicos = db.TabHistorico.Where(model => model.fkIdLeitor == idLeitor && (model.dsStatus == (int)EnumStatusHistorico.CADASTRADO || model.dsStatus == (int)EnumStatusHistorico.DOADO));
+            return historicos;
+
+        }
+
+        public IQueryable<TabHistorico> ListaHistorico(long idExemplar)
+        {
+            var historicos = db.TabHistorico.Where(model => model.fkIdExemplar == idExemplar && (model.dsStatus == (int)EnumStatusHistorico.CADASTRADO || model.dsStatus == (int)EnumStatusHistorico.DOADO));
+            return historicos;
         }
     }
 }

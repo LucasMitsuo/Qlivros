@@ -1,4 +1,5 @@
-﻿using ProjetoQLivros.Models.TabModels;
+﻿using ProjetoQLivros.Models.BusinessController;
+using ProjetoQLivros.Models.TabModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,25 @@ namespace ProjetoQLivros.Controllers
 {
     public class HistoricoController : Controller
     {
-        
+        HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+        public ActionResult AcompanharHistorico(long idLeitor)
+        {
+
+            if (historicoBC.ObterLidos(idLeitor).Count() == 0)
+            {
+                ViewBag.HistNulo("Você não possui históricos.");
+                return View("~/Views/Home/Index.cshtml");
+            }
+            else
+            {
+
+                return View("AcompanharHistorico", historicoBC.ObterLidos(idLeitor));
+            }
+        }
+        public ActionResult VisualizarHistorico(long idExemplar)
+        {
+            var historico = historicoBC.ListaHistorico(idExemplar);
+            return View("VisualizarHistorico", historico);
+        } 
     }
 }

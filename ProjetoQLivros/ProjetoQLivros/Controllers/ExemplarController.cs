@@ -40,5 +40,43 @@ namespace ProjetoQLivros.Controllers
                 return View("~/Views/Home/Index.cshtml");
             }
         }
+
+        public ActionResult RomperCorrente(long idLeitor)
+        {
+            var lista = exemplarBC.ObterPorLeitor(idLeitor);
+            return View(lista);
+        }
+
+        public ActionResult PesquisarExemplar(long idExemplar = 1)
+        {
+            var result = exemplarBC.ObterPorid(idExemplar);
+            // Caso o exemplar esteja pendente, retorna false, caso contrário, retorna verdadeiro.
+
+            if (result.Item2)
+            {
+                return View("ConfirmRomper", result.Item1);
+            }
+            else
+            {
+                ViewBag.Romper = "Sua corrente não pode ser rompida! Há doação pendente. Espere o receptor elegível responder";
+                return View("RomperCorrente");
+            }
+
+        }
+
+        public ActionResult ExcluirExemplar(long idExemplar = 2, string texto = null)
+        {
+            if (texto == null)
+            {
+                ViewBag.Romper = "Registre uma justificativa";
+                return View("ConfirmRomper");
+            }
+            else
+            {
+                var msg = exemplarBC.Romper(idExemplar, texto);
+                return View("ConfirmSucessoRomper", msg);
+            }
+
+        }
     }
 }
