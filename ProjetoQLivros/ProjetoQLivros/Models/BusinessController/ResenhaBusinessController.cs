@@ -10,6 +10,7 @@ namespace ProjetoQLivros.Models.BusinessController
     public class ResenhaBusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
+
         public IQueryable<TabResenha> ObterPorExemplar(int idExemplar)
         {
             var listaResenha = db.TabResenha.Where(model => model.fkIdExemplar == idExemplar);
@@ -21,5 +22,13 @@ namespace ProjetoQLivros.Models.BusinessController
             var resenha = db.TabResenha.Where(model => model.idResenha == idResenha).FirstOrDefault();
             return resenha;
         }
-    }
+        
+
+        public void Criar(TabResenha resenha)
+        {
+            db.TabResenha.Add(resenha);
+            db.SaveChanges();
+        }
+     }
 }
+

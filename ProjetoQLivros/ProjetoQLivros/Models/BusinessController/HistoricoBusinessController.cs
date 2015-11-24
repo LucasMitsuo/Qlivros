@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetoQLivros.Models.TabModels;
 
 namespace ProjetoQLivros.Models.BusinessController
 {
     public class HistoricoBusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
-        public Tuple<List<TabHistorico>,bool> VerificaPropriedade(long idLeitor)
+
+        public Tuple<List<TabHistorico>, bool> VerificaPropriedade(long idLeitor)
         {
             List<TabHistorico> historicos = new List<TabHistorico>();
 
@@ -22,7 +24,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 //pega cada exemplar de cadastrados e verifica se ele ja foi doado
                 var doacoes = db.TabHistorico.Where(model => model.fkIdExemplar == registro.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
 
-                //se doacoes vier nulo, quer dizer que o exemplar nunca foi doado, logo, o leitor é proprietário atual desse exemplar
+                //se doacoes vier menor que 0, quer dizer que o exemplar nunca foi doado, logo, o leitor é proprietário atual desse exemplar
                 if (doacoes.Count() == 0)
                 {
                     //então adiciona o registro desse exemplar em HISTORICOS

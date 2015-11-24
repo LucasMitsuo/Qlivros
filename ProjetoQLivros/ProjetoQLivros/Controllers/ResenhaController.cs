@@ -1,5 +1,5 @@
 ﻿using ProjetoQLivros.Models.BusinessController;
-using System;
+using ProjetoQLivros.Models.TabModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,8 @@ namespace ProjetoQLivros.Controllers
     public class ResenhaController : Controller
     {
         ResenhaBusinessController resenhaBC = new ResenhaBusinessController();
+        HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+
         public ActionResult Lista(int idExemplar)
         {
             
@@ -27,6 +29,26 @@ namespace ProjetoQLivros.Controllers
         {
             var result = resenhaBC.ObterConteudo(idResenha);
             return View(result);
+        }
+
+        public ActionResult FormResenha(int idLeitor)
+        {
+            var validaStatusExemplar = historicoBC.VerificaPropriedade(idLeitor);
+
+            if (validaStatusExemplar.Item2) 
+            {
+                return RedirectToAction("~/Views/Resenha/FormResenha.cshtml", validaStatusExemplar.Item1);
+            }
+            else
+            {
+                ViewBag.Erro = "Não existem exemplares para o leitor";
+                return View("~/Views/Home/Index.cshtml");
+            }
+        }
+            
+        public ActionResult Publicar(TabResenha resenha)
+        {
+            return View("~/Views/Resenha/ConfirmPublicacao.cshtml");
         }
     }
 }

@@ -1,0 +1,23 @@
+﻿<h2>Publicar Resenha</h2>
+
+<form action="/Resenha/Publica">
+    <label>Descrição da Resenha: <input name="resenha.DsResenha" value="@ViewBag.Leitor.dsResenha"/></label><br />
+    @Html.ValidationMessage("resenha.DsResenha")
+    <label>Tipo de Resenha: <input name="resenha.DsTipoResenha" value="@ViewBag.Leitor.DsTipoResenha"/></label> <br />
+    @Html.ValidationMessage("resenha.DsTipoResenha")
+    <label>
+        Exemplar:
+       <select name="resenha.Exemplar.Id">
+            @foreach (var exemplar in Model)
+            {
+                if (exemplar.IdExemplar.Equals(ViewBag.Leitor.fkIdTitulo))
+                {
+                    <option value="@exemplar.IdExemplar" selected="selected">@exemplar.fkIdTitulo</option>
+                }
+                <option value="@exemplar.IdExemplar">@exemplar.fkIdTitulo</option>
+            }
+        </select>
+        <br />
+    </label>
+    <input type="submit" />
+</form>
