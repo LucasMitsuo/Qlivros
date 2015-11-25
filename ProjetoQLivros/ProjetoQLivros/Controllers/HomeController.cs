@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoQLivros.Models.BusinessController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,17 @@ namespace ProjetoQLivros.Controllers
 {
     public class HomeController : Controller
     {
+        NotificacaoBusinessController notificacaoBC = new NotificacaoBusinessController();
         public ActionResult Login()
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int idLeitor)
         {
+            if (notificacaoBC.VerificaNotificacao(idLeitor))
+            {
+                ViewBag.TemNotificacao = "SIM";
+            }
             return View();
         }
 

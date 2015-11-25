@@ -12,6 +12,7 @@ namespace ProjetoQLivros.Controllers
     public class HistoricoController : Controller
     {
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+        NotificacaoBusinessController notificacaoBC = new NotificacaoBusinessController();
         public ActionResult AcompanharHistorico(long idLeitor)
         {
 
@@ -30,6 +31,12 @@ namespace ProjetoQLivros.Controllers
         {
             var historico = historicoBC.ListaHistorico(idExemplar);
             return View("VisualizarHistorico", historico);
-        } 
+        }
+
+        public ActionResult Lista(int idLeitor)
+        {
+            var lista = notificacaoBC.ObterLista(idLeitor);
+            return View(lista);
+        }
     }
 }

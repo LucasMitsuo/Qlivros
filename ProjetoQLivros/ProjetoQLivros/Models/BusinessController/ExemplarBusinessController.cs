@@ -11,11 +11,21 @@ namespace ProjetoQLivros.Models.BusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
 
-        public IQueryable<TabExemplar> FiltrarTitulo(string titulo)
+        public List<TabHistorico> FiltrarTitulo(string titulo)
         {
+            List<TabHistorico> historicos = new List<TabHistorico>();
             //Pesquisa no banco os exemplares que possuem o título informado e que estejam disponíveis
             var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL));
-            return exemplares;
+
+            foreach (var exemplar in exemplares)
+            {
+                var ultimoRegistro = exemplar.TabHistorico.Where(model => model.fkIdExemplar == exemplar.idExemplar).LastOrDefault();
+                if (ultimoRegistro.TabExemplar.dsStatus == (int)StatusRegistroExemplar.DISPONIVEL)
+                {
+                    historicos.Add(ultimoRegistro);
+                }
+            }    
+            return historicos;
         }
 
         public IQueryable<TabExemplar> ObterPorLeitor(long idLeitor)

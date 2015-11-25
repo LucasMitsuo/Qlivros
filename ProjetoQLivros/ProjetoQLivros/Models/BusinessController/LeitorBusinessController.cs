@@ -19,7 +19,7 @@ namespace ProjetoQLivros.Models.BusinessController
             }
             else
             {
-                return new Tuple<TabLeitor, bool>(leitor, false);
+                return new Tuple<TabLeitor, bool>(leitor, true);
             }
         }
 

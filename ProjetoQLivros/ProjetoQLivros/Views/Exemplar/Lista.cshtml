@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetoQLivros.Models.TabModels.TabExemplar>
+﻿@model List<TabHistorico>
 
 @{
     ViewBag.Title = "Lista";
@@ -33,34 +33,33 @@
                     <h3 class="text-left">Resultado da pesquisa:</h3>
                     @foreach (var item in Model)
                     {
-                        foreach (var leitor in item.TabHistorico) { 
                         <div class="panel panel-default">
-                            <a class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#panel1">
-                                @item.TabTitulo.nmTitulo -
-                                @leitor.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado
+                            <a class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#@item.idHistorico">
+                                @item.TabExemplar.TabTitulo.nmTitulo -
+                                @item.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado
                                 <span class="glyphicon glyphicon-option-horizontal"></span>
                             </a>
-                            <div id="panel1" class="panel-collapse collapse">
+                            <div id="@item.idHistorico" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6 book-info">
                                             <div class="row panel-content-header"><h4><strong>Informações do Livro:</strong></h4></div>
-                                            <div class="row"><strong>Título: </strong>@item.TabTitulo.nmTitulo</div>
-                                            <div class="row"><strong>Autor: </strong>@item.nmAutor</div>
-                                            <div class="row"><strong>Edição: </strong>@item.dsEdicao</div>
-                                            <div class="row"><strong>Editora: </strong>@item.nmEditora</div>
-                                            <div class="row"><a href="#resenhas"><strong>Resenhas: </strong>@item.TabResenha.Count()</a></div>
+                                            <div class="row"><strong>Título: </strong>@item.TabExemplar.TabTitulo.nmTitulo</div>
+                                            <div class="row"><strong>Autor: </strong>@item.TabExemplar.nmAutor</div>
+                                            <div class="row"><strong>Edição: </strong>@item.TabExemplar.dsEdicao</div>
+                                            <div class="row"><strong>Editora: </strong>@item.TabExemplar.nmEditora</div>
+                                            <div class="row"><a href="#resenhas"><strong>Resenhas: </strong>@item.TabExemplar.TabResenha.Count()</a></div>
                                         </div>
                                         <div class="col-md-6 book-owner">
                                             <div class="row panel-content-header"><h4><strong>Informações do Proprietário:</strong></h4></div>
-                                            <div class="row"><strong>Login: </strong>@leitor.TabLeitor.dsLogin</div>
-                                            <div class="row"><strong>Email: </strong>@leitor.TabLeitor.dsEmail</div>
-                                            <div class="row"><strong>Celular: </strong>@leitor.TabLeitor.numCel</div>
+                                            <div class="row"><strong>Login: </strong>@item.TabLeitor.dsLogin</div>
+                                            <div class="row"><strong>Email: </strong>@item.TabLeitor.dsEmail</div>
+                                            <div class="row"><strong>Celular: </strong>@item.TabLeitor.numCel</div>
                                             <div class="row">
                                                 <strong>Local: </strong>
-                                                @leitor.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado,
-                                                @leitor.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.nmCidade -
-                                                @leitor.TabLeitor.TabLogradouroEnd.TabBairro.nmBairro
+                                                @item.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado,
+                                                @item.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.nmCidade -
+                                                @item.TabLeitor.TabLogradouroEnd.TabBairro.nmBairro
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +67,7 @@
                             </div>
                         </div>
                         }
-                    }
+                    
                 </div>
             }
         </section>

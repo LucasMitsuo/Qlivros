@@ -450,6 +450,7 @@
     <Content Include="Views\Resenha\ConfirmPublicacao.cshtml" />
     <Content Include="Views\Exemplar\FormDoar.cshtml" />
     <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
+    <Content Include="Views\Historico\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
