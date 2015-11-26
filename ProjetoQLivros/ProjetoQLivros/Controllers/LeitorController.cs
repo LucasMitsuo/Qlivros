@@ -13,13 +13,15 @@ namespace ProjetoQLivros.Controllers
     public class LeitorController : Controller
     {
         LeitorBusinessController leitorBC = new LeitorBusinessController();
+        [HttpPost]
+        [Route("qlivros/login")]
         public ActionResult Autenticar(TabLeitor leitor)
         {
                 var result = leitorBC.VerificaLogin(leitor);
 
                 if (result.Item2)
                 {
-                    return View("~/Views/Home/Index.cshtml",result.Item1);
+                    return RedirectToAction("Index","Home",new{idLeitor = result.Item1.idLeitor});
                 }
                 else
                 {

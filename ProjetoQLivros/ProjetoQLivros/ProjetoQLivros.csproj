@@ -451,6 +451,8 @@
     <Content Include="Views\Exemplar\FormDoar.cshtml" />
     <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
     <Content Include="Views\Historico\Lista.cshtml" />
+    <Content Include="Views\Historico\Info.cshtml" />
+    <Content Include="Views\Historico\RespNotificacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

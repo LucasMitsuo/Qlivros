@@ -11,7 +11,7 @@ namespace ProjetoQLivros.Models.BusinessController
         QLivrosEntities db = new QLivrosEntities();
         private Tuple<List<TabHistorico>,bool> ObterNotificacoes(int idLeitor)
         {
-            List<TabHistorico> historicos = null;
+            List<TabHistorico> historicos = new List<TabHistorico>();
             //Verifica se o leitor possui algum registro na tabela histórico com status PENDENTE. Porém, isso não garante que todos 
             //os registros retornados NÃO TENHAM SIDO RESPONDIDOS
             var pendentes = db.TabHistorico.Where(model => model.fkIdReceptor == idLeitor && model.dsStatus == (int)EnumStatusHistorico.PENDENTE);
@@ -26,7 +26,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 }
             }
 
-            if (historicos.Count >= 0)
+            if (historicos.Count() > 0)
             {
                 return new Tuple<List<TabHistorico>,bool>(historicos,true);
             }
@@ -45,6 +45,11 @@ namespace ProjetoQLivros.Models.BusinessController
         {
             var lista = this.ObterNotificacoes(idLeitor).Item1;
             return lista;
+        }
+
+        public TabHistorico Detalhes(int idHistorico)
+        {
+            return db.TabHistorico.Where(model => model.idHistorico == idHistorico).FirstOrDefault();
         }
     }
 }

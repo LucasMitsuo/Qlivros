@@ -30,13 +30,19 @@ namespace ProjetoQLivros.Models.BusinessController
                     historicos.Add(registro);
                 }
             }
-
-            //Pega todos os exemplares que o leitor recebeu como doação
+            //==========================================
+            //Pega todos os exemplares que o leitor recebeu como doação, mas não é certo se ele ainda está com o exemplar doado
             var recebidos = db.TabHistorico.Where(model => model.fkIdLeitor == idLeitor && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
             foreach (var recebido in recebidos)
             {
-                //adiciona esses registros a variável historicos
-                historicos.Add(recebido);
+                //Pesquisa se o exemplar recebido como doação já foi doado alguma vez
+                var doado = db.TabHistorico.Where(model=> model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
+
+                //se não foi, adiciona em historicos
+                if (doado.Count() == 0)
+                {
+                    historicos.Add(recebido);
+                }
             }
 
             historicos = historicos.Where(model => model.TabExemplar.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL)).ToList();
@@ -63,6 +69,45 @@ namespace ProjetoQLivros.Models.BusinessController
         {
             var historicos = db.TabHistorico.Where(model => model.fkIdExemplar == idExemplar && (model.dsStatus == (int)EnumStatusHistorico.CADASTRADO || model.dsStatus == (int)EnumStatusHistorico.DOADO));
             return historicos;
+        }
+
+        public string VerificaResposta(int idReceptor,int idDoador, int idExemplar, string resposta)
+        {
+            TabHistorico resultado = new TabHistorico();
+            if (resposta.Equals("aceito"))
+            {
+                //registra a aceitação
+                resultado.fkIdLeitor = idDoador;
+                resultado.fkIdExemplar = idExemplar;
+                resultado.fkIdReceptor = idReceptor;
+                resultado.dsStatus = (int)EnumStatusHistorico.ACEITO;
+                resultado.dtHistorico = DateTime.Now;
+                db.SaveChanges();
+
+                //registra a doação
+                TabHistorico historico = new TabHistorico();
+                historico.fkIdLeitor = idReceptor;
+                historico.fkIdExemplar = idExemplar;
+                historico.dsStatus = (int)EnumStatusHistorico.DOADO;
+                historico.dtHistorico = DateTime.Now;
+                db.SaveChanges();
+            }
+            else
+            {
+                var exemplar = db.TabExemplar.Where(model => model.idExemplar == idExemplar).FirstOrDefault();
+                //altera o status para disponível
+                exemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
+
+                //registra a aceitação
+                resultado.fkIdLeitor = idDoador;
+                resultado.fkIdExemplar = idExemplar;
+                resultado.fkIdReceptor = idReceptor;
+                resultado.dsStatus = (int)EnumStatusHistorico.RECUSADO;
+                resultado.dtHistorico = DateTime.Now;
+                db.SaveChanges();
+            }
+
+            return "Uma notificação foi enviada ao Doador";
         }
     }
 }

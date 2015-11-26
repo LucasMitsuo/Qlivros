@@ -33,10 +33,22 @@ namespace ProjetoQLivros.Controllers
             return View("VisualizarHistorico", historico);
         }
 
-        public ActionResult Lista(int idLeitor)
+        public ActionResult Lista(int idLeitor = 3)
         {
             var lista = notificacaoBC.ObterLista(idLeitor);
             return View(lista);
+        }
+
+        public ActionResult Info(int idHistorico = 14)
+        {
+            var notificacao = notificacaoBC.Detalhes(idHistorico);
+            return View(idHistorico);
+        }
+
+        public ActionResult Resultado(int idReceptor,int idDoador, int idExemplar, string resposta)
+        {
+            var resultado = historicoBC.VerificaResposta(idReceptor, idDoador, idExemplar, resposta);
+            return View("RespNotificacao", resultado);
         }
     }
 }
