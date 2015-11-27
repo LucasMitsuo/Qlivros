@@ -129,6 +129,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ViewModels\DoacaoViewModel.cs" />
     <Compile Include="Models\BusinessController\BairroBusinessController.cs" />
     <Compile Include="Models\BusinessController\CidadeBusinessController.cs" />
     <Compile Include="Models\BusinessController\DoacaoBusinessController.cs" />
@@ -231,6 +232,7 @@
     <Content Include="Content\js\modernizr-custom.js" />
     <Content Include="Content\js\npm.js" />
     <Content Include="Content\js\polyfiller.js" />
+    <Content Include="Content\js\qlivros-modal.js" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\shims\canvas-blob.js" />
     <Content Include="Content\js\shims\color-picker.js" />

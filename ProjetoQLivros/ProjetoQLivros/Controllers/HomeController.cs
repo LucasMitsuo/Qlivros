@@ -16,11 +16,12 @@ namespace ProjetoQLivros.Controllers
         }
         public ActionResult Index(int idLeitor)
         {
-            if (notificacaoBC.VerificaNotificacao(idLeitor))
+            var result = notificacaoBC.VerificaNotificacao(idLeitor);
+            if (result.Item2)
             {
-                ViewBag.TemNotificacao = "SIM";
+                ViewBag.Notificacao = "SIM";
             }
-            return View();
+            return View(result.Item1);
         }
 
         public ActionResult About()

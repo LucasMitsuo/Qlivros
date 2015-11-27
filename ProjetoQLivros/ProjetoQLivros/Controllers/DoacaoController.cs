@@ -10,13 +10,13 @@ namespace ProjetoQLivros.Controllers
     public class DoacaoController : Controller
     {
         DoacaoBusinessController doacaoBC = new DoacaoBusinessController();
-        public ActionResult DadosReceptor(string email = "jobson@gmail.com", string login = "jobson", int idExemplar = 4, int idDoador = 3)
+        public ActionResult DadosReceptor(string email, string login, int idExemplar, int idDoador)
         {
             var result = doacaoBC.Doar(email, login, idExemplar, idDoador);
 
             if (result.Item1)
             {
-                return View("ConfirmDoacao", result.Item2);
+                return View("~/Views/Doacao/ConfirmDoacao.cshtml", result.Item2);
             }
             else
             {

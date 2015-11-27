@@ -21,6 +21,7 @@ namespace ProjetoQLivros.Controllers
 
                 if (result.Item2)
                 {
+                    Session["usuario"] = result.Item1;
                     return RedirectToAction("Index","Home",new{idLeitor = result.Item1.idLeitor});
                 }
                 else

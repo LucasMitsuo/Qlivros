@@ -13,7 +13,7 @@
 .navbar-toggle-blue:focus {
   outline: 0;
 }
-@media (min-width: 1359px) {
+@media (min-width: 1599px) {
   .navbar-toggle-blue {
     display: none;
   }
@@ -303,7 +303,7 @@ fieldset[disabled] .btn-blue.active {
 .text-white {
   color: #fff !important;
 }
-@media screen and (max-width: 1360px){
+@media screen and (max-width: 1600px){
     .navbar-collapse.collapse {
       display: none !important;
     }
@@ -388,3 +388,6 @@ fieldset[disabled] .btn-blue.active {
 }
 
 
+.alert {
+    margin-top: 20px;
+}

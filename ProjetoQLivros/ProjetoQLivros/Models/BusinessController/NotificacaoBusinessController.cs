@@ -9,8 +9,10 @@ namespace ProjetoQLivros.Models.BusinessController
     public class NotificacaoBusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
-        private Tuple<List<TabHistorico>,bool> ObterNotificacoes(int idLeitor)
+        private Tuple<TabLeitor,List<TabHistorico>,bool> ObterNotificacoes(int idLeitor)
         {
+            var leitor = db.TabLeitor.Where(model => model.idLeitor == idLeitor).FirstOrDefault();
+
             List<TabHistorico> historicos = new List<TabHistorico>();
             //Verifica se o leitor possui algum registro na tabela histórico com status PENDENTE. Porém, isso não garante que todos 
             //os registros retornados NÃO TENHAM SIDO RESPONDIDOS
@@ -28,22 +30,23 @@ namespace ProjetoQLivros.Models.BusinessController
 
             if (historicos.Count() > 0)
             {
-                return new Tuple<List<TabHistorico>,bool>(historicos,true);
+                return new Tuple<TabLeitor,List<TabHistorico>,bool>(leitor,historicos,true);
             }
             else
             {
-                return new Tuple<List<TabHistorico>, bool>(null, false);
+                return new Tuple<TabLeitor, List<TabHistorico>, bool>(null,null, false);
             }
         }
 
-        public bool VerificaNotificacao(int idLeitor)
+        public Tuple<TabLeitor,bool> VerificaNotificacao(int idLeitor)
         {
-            return this.ObterNotificacoes(idLeitor).Item2;
+            var result = this.ObterNotificacoes(idLeitor);
+            return new Tuple<TabLeitor, bool>(result.Item1, result.Item3);
         }
 
         public List<TabHistorico> ObterLista(int idLeitor)
         {
-            var lista = this.ObterNotificacoes(idLeitor).Item1;
+            var lista = this.ObterNotificacoes(idLeitor).Item2;
             return lista;
         }
 

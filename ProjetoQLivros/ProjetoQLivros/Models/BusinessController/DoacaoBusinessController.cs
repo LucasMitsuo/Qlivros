@@ -36,7 +36,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 dsStatus = (int)EnumStatusHistorico.PENDENTE
             };
 
-            exemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
+            exemplar.dsStatus = (int)StatusRegistroExemplar.INDISPONIVEL;
 
             db.TabHistorico.Add(historico);
             db.SaveChanges();

@@ -1,4 +1,5 @@
-﻿using ProjetoQLivros.Models.BusinessController;
+﻿using ProjetoQLivros.Helpers.ViewModels;
+using ProjetoQLivros.Models.BusinessController;
 using ProjetoQLivros.Models.TabModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace ProjetoQLivros.Controllers
     {
         ExemplarBusinessController exemplarBC = new ExemplarBusinessController();
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+
+        [HttpGet]
+        [Route("exemplares/lista/{titulo}")]
         public ActionResult Lista(string titulo)
         {
             var retornoLista = exemplarBC.FiltrarTitulo(titulo);
@@ -27,12 +31,28 @@ namespace ProjetoQLivros.Controllers
             }
         }
 
-        public ActionResult FormDoar(long idLeitor = 3)
+        [HttpGet]
+        [Route("exemplares/formdoar/{idLeitor}")]
+        public ActionResult FormDoar(int idLeitor)
         {
             var result = historicoBC.VerificaPropriedade(idLeitor);
             if (result.Item2)
             {
-                return View("FormDoar", result.Item1);
+                List<SelectListItem> opcoesExemplares = new List<SelectListItem>();
+
+                foreach (var exemplar in result.Item1)
+                {
+                    opcoesExemplares.Add(new SelectListItem { Text = String.Format("{0} - {1}ª Edição", exemplar.TabExemplar.TabTitulo.nmTitulo,exemplar.TabExemplar.dsEdicao), Value = exemplar.TabExemplar.idExemplar.ToString() });
+                }
+
+                DoacaoViewModel dadosRetorno = new DoacaoViewModel()
+                {
+                    Historicos = result.Item1,
+                    OpcoesExemplares = opcoesExemplares,
+                    idDoador = idLeitor
+                };
+
+                return View(dadosRetorno);
             }
             else
             {

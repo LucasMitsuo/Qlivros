@@ -48,7 +48,7 @@ namespace ProjetoQLivros.Models.BusinessController
             historicos = historicos.Where(model => model.TabExemplar.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL)).ToList();
 
             //Se não for adicionado nenhum registro a historicos, quer dizer que ele não é proprietário atual de nenhum exemplar
-            if (historicos == null)
+            if (historicos.Count() == 0)
             {
                 return new Tuple<List<TabHistorico>, bool>(null, false);
             }
