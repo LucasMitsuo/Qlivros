@@ -19,11 +19,11 @@ namespace ProjetoQLivros.Models.TabModels
         public int idLeitor { get; set; }
         public string dsEmail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Informe o login")]
         [Display(Name="Login")]
         public string dsLogin { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Informe a senha")]
         [Display(Name="Senha")]
         public string dsSenha { get; set; }
         public string nmLeitor { get; set; }

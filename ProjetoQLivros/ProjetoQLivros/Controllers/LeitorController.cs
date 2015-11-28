@@ -17,18 +17,27 @@ namespace ProjetoQLivros.Controllers
         [Route("qlivros/login")]
         public ActionResult Autenticar(TabLeitor leitor)
         {
+            if (ModelState.IsValid)
+            {
                 var result = leitorBC.VerificaLogin(leitor);
 
                 if (result.Item2)
                 {
                     Session["usuario"] = result.Item1;
-                    return RedirectToAction("Index","Home",new{idLeitor = result.Item1.idLeitor});
+                    return RedirectToAction("Index", "Home", new { idLeitor = result.Item1.idLeitor });
                 }
                 else
                 {
                     ViewBag.ErroAutentica = "Login ou senha incorretos";
                     return View("~/Views/Home/Login.cshtml");
                 }
+            }
+            return View("~/Views/Home/Login.cshtml");
+        }
+
+        public ActionResult ConfirmCancelamento()
+        {
+            return View("~/Views/Leitor/ConfirmCancelamento.cshtml");
         }
     }
 }
