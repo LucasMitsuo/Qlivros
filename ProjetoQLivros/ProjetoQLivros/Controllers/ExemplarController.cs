@@ -99,5 +99,32 @@ namespace ProjetoQLivros.Controllers
             }
 
         }
+
+        public ActionResult FormDisponibilizar(long idLeitor)
+        {
+            var result = exemplarBC.ObterIndisponiveis(idLeitor);
+            if (result.Item2)
+            {
+                return View(result.Item1);
+            }
+            else
+            {
+                ViewBag.Disp = "Você não possui exemplares indisponíveis";
+                return View("~/Views/Home/Index.cshtml");
+            }
+
+        }
+        public ActionResult Disponibilizar (long idExemplar)
+        {
+            var result = exemplarBC.ObterPorIdDisp(idExemplar);
+            return View("ConfirmDisponibilizar",result);
+        }
+
+        public ActionResult AlterarStatus(long idExemplar = 3)
+        {
+            var msg = exemplarBC.Alterar(idExemplar);
+
+            return View("ConfirmSucessoDisponibilizar", msg);
+        }
     }
 }
