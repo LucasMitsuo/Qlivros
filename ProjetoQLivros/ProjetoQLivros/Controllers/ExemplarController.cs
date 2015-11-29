@@ -49,7 +49,8 @@ namespace ProjetoQLivros.Controllers
                 {
                     Historicos = result.Item1,
                     OpcoesExemplares = opcoesExemplares,
-                    idDoador = idLeitor
+                    idDoador = idLeitor,
+                    Mensagem = null
                 };
 
                 return View(dadosRetorno);

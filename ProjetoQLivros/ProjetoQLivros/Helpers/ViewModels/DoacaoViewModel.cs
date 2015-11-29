@@ -15,5 +15,7 @@ namespace ProjetoQLivros.Helpers.ViewModels
         public List<SelectListItem> OpcoesExemplares { get; set; }
 
         public int idDoador { get; set; }
+
+        public string Mensagem { get; set; }
     }
 }
