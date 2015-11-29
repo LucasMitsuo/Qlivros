@@ -1,4 +1,4 @@
-USE QLivros
+USE DB_9E447A_projetoqlivros
 SELECT * FROM TabEstado
 INSERT INTO TabEstado VALUES
 ('AC'),

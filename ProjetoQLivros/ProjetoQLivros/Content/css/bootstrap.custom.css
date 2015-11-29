@@ -391,3 +391,49 @@ fieldset[disabled] .btn-blue.active {
 .alert {
     margin-top: 20px;
 }
+
+
+.form-login {
+    background-color: rgba(255,255,255,0);
+    background-image: none;
+    border: 0 solid transparent;
+    border-bottom: 1px solid #eeeeee;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+
+.form-login:focus {
+  border-color: #d5d5d5;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.form-login::-moz-placeholder {
+  color: #eeeeee;
+  opacity: 1;
+}
+.form-login:-ms-input-placeholder {
+  color: #eeeeee;
+}
+.form-login::-webkit-input-placeholder {
+  color: #eeeeee;
+}
+
+
+.main-login .btn, .main-login .btn:hover, .main-login .btn:focus, .main-login .btn.focus, .main-login .btn:active, .main-login .btn.active{
+    border:0px !important;
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #eeeeee !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    box-shadow: none !important;
+}

@@ -1,42 +1,36 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <title>QLivros</title>
+    <meta name="description" content="QLivros - Doação e troca de livros" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="generator" content="Codeply">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link href="~/Content/css/navmenu-reveal.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.custom.css" />
+    <link rel="stylesheet" href="~/Content/css/styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <!--MENU SUPERIOR-->
+    <div class="container-fluid login-content">
+        <section class="row text-center">
+            <div class="col-xs-12 main-content-login">
+                <div class="main-block main-login">
+                    <h1 class="logo-text"></h1>
+                    @RenderBody()
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </section>
+        <footer class="row footer-main">
+            <small class="copyright">Copyright ® 2015 - QLivros. Todos os direitos reservados. All rights reserved.</small>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Content/js/qlivros-modal.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

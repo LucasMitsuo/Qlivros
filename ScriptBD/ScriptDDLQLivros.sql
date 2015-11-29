@@ -1,10 +1,10 @@
 --Drop Database QLivros --Caso já tenham criado o banco, descomentem ESSA linha e a abaixo.
 --GO
 
-Create Database QLivros
+Create Database DB_9E447A_projetoqlivros
 GO
 
-Use QLivros
+Use DB_9E447A_projetoqlivros
 GO
 
 CREATE
