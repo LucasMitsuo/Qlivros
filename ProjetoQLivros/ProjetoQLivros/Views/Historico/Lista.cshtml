@@ -1,8 +1,17 @@
-﻿
+﻿@model List<TabHistorico>
 @{
     ViewBag.Title = "Lista";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
 
-<h2>Lista</h2>
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        Você possui notificações de:
+    </a>
+    @foreach (var registro in Model)
+    {
+       <a href="Historico/Info/@registro.idHistorico" class="list-group-item">@registro.TabLeitor.dsLogin</a>
+    }
+
+</div>
 

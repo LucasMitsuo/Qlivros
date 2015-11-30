@@ -19,7 +19,7 @@ namespace ProjetoQLivros.Controllers
             var result = notificacaoBC.VerificaNotificacao(idLeitor);
             if (result.Item2)
             {
-                ViewBag.Notificacao = "SIM";
+                Session["notificacao"] = "SIM";
             }
             return View(result.Item1);
         }

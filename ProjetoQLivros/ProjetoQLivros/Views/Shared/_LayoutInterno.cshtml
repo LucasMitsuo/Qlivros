@@ -1,5 +1,6 @@
 ﻿@{
     var usuarioAtual = Session["usuario"] as TabLeitor;
+    var notificacao = Session["notificacao"] as string;
 }
 <!DOCTYPE html>
 <html>
@@ -95,6 +96,10 @@
         <div class="container-fluid center-content">
             <header class="row header-main">
                 <div class="col-xs-12 text-right">
+                    @if (notificacao == "SIM")
+                    {
+                        @Html.IconActionLink("glyphicon glyphicon-envelope", "Lista", "Historico", new { idLeitor = usuarioAtual.idLeitor }, new { })
+                    }
                     <div class="user">
                         <a href="#dados" id="logout">
                             Olá, @usuarioAtual.dsLogin

@@ -131,9 +131,6 @@ INSERT INTO TabHistorico VALUES
 -- O leitor 1 passa a ser o proprietário -> Status DOADO
 (CONVERT(DATETIME,'13/10/2015',103),5,2,1,null),
 
-(CONVERT(DATETIME,'13/10/2015',103),1,5,3,null),
-(CONVERT(DATETIME,'13/10/2015',103),1,6,3,null),
-
 -- O leitor 2 manda solicitação pro leitor 1 -> Status PENDENTE
 (CONVERT(DATETIME,'13/10/2015',103),2,7,7,8),
 -- O leitor 1 aceita a solicitação -> ACEITO

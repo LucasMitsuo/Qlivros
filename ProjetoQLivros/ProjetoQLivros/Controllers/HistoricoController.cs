@@ -33,9 +33,10 @@ namespace ProjetoQLivros.Controllers
             return View("VisualizarHistorico", historico);
         }
 
-        public ActionResult Lista(int idLeitor = 3)
+        public ActionResult Lista(int idLeitor)
         {
             var lista = notificacaoBC.ObterLista(idLeitor);
+            Session["notificacao"] = "NAO";
             return View(lista);
         }
 

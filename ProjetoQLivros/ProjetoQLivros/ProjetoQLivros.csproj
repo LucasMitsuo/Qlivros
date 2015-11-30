@@ -129,6 +129,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Html\ActionLinkExtension.cs" />
     <Compile Include="Helpers\ViewModels\DoacaoViewModel.cs" />
     <Compile Include="Models\BusinessController\BairroBusinessController.cs" />
     <Compile Include="Models\BusinessController\CidadeBusinessController.cs" />
