@@ -1,1 +1,46 @@
 ﻿@model TabHistorico
+
+<div class="modal-content bs-callout">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true" onclick="location.reload()">&times;</span>
+            <span class="sr-only">Fechar</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Notificação</h4>
+    </div>
+    <div class="modal-body">
+        <p class="lead"><span class="glyphicon glyphicon-flag"></span> Você recebeu notificação de @Model.TabLeitor.dsLogin</p>
+        <div class="row">
+            <div class="col-sm-12">
+                <strong>Título:</strong>@Model.TabExemplar.TabTitulo.nmTitulo<br>
+                <strong>Autor:</strong>@Model.TabExemplar.nmAutor<br>
+                <strong>Editora:</strong>@Model.TabExemplar.nmEditora
+                <strong>Edição: </strong>@Model.TabExemplar.dsEdicao
+            </div>
+        </div>
+    </div> <!-- /.modal-content -->
+    <div class="modal-footer">
+        <div class="col-md-3">
+            @Ajax.ActionLink("Aceitar", "Resultado", "Historico", new { idReceptor = @Model.fkIdReceptor, idDoador = @Model.fkIdLeitor, idExemplar = @Model.fkIdExemplar, resposta = "aceito" },
+            new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "qlivros-modal-content",
+                OnSuccess = "QLivrosModal",
+            }, new { @class = "btn btn-default" , style = "color:black;"})
+        </div>
+        <div class="col-md-3">
+            @Ajax.ActionLink("Rejeitar", "Resultado", "Historico", new { idReceptor = @Model.fkIdReceptor, idDoador = @Model.fkIdLeitor, idExemplar = @Model.fkIdExemplar, resposta = "recusado" },
+            new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "qlivros-modal-content",
+                OnSuccess = "QLivrosModal",
+            }, new { @class = "btn btn-default" })
+        </div>
+
+        </div>
+</div>
+

@@ -40,10 +40,10 @@ namespace ProjetoQLivros.Controllers
             return View(lista);
         }
 
-        public ActionResult Info(int idHistorico = 14)
+        public ActionResult Info(int idHistorico)
         {
             var notificacao = notificacaoBC.Detalhes(idHistorico);
-            return View(idHistorico);
+            return View(notificacao);
         }
 
         public ActionResult Resultado(int idReceptor,int idDoador, int idExemplar, string resposta)

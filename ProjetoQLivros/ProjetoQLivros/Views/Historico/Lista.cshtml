@@ -10,7 +10,7 @@
     </a>
     @foreach (var registro in Model)
     {
-       <a href="Historico/Info/@registro.idHistorico" class="list-group-item">@registro.TabLeitor.dsLogin</a>
+       @Ajax.ActionLink(@registro.TabLeitor.dsLogin, "Info", "Historico", new { idHistorico = registro.idHistorico }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
     }
 
 </div>
