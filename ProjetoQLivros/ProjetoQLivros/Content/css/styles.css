@@ -4,6 +4,7 @@ html, body{
 body{
   background-color: #6495ED;
   color: #fff;
+  font-family: 'Roboto';
 }
 .center-content{
   height: 85%;
@@ -155,14 +156,10 @@ footer{
     content: "QLivros";
 }
 .main-login .btn {
-    width: 58%;
+    width: 35%;
     margin-top: 16px;
     margin-bottom: 36px;
     display: inline-block;
-}
-
-.main-login button {
-    width: 40% !important;
 }
 
 .main-login a {
@@ -173,3 +170,33 @@ footer{
 
 
 /* FIM DA TELA DE LOGIN */
+
+
+
+
+/* INICIO DO MODAL */
+
+.modal.in .table{
+    height:100%;
+    margin: 0;
+    display: table;
+    color: #3A5FCD; 
+}
+
+.modal.in .table .modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-dialog .container-fluid {
+    width: inherit;
+    margin: inherit;
+}
+
+.modal-body{
+    color:#555;
+}
+
+.modal-body .lead {
+    color: #3A5FCD;
+}
+/* FIM DO MODAL */

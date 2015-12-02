@@ -463,6 +463,7 @@
     <Content Include="Views\Exemplar\FormDisponibilizar.cshtml" />
     <Content Include="Views\Exemplar\ConfirmSucessoDisponibilizar.cshtml" />
     <Content Include="Views\Historico\ListaRanking.cshtml" />
+    <Content Include="Views\Shared\_LayoutModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
