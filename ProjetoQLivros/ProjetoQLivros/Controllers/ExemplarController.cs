@@ -15,8 +15,6 @@ namespace ProjetoQLivros.Controllers
         ExemplarBusinessController exemplarBC = new ExemplarBusinessController();
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
 
-        [HttpGet]
-        [Route("exemplares/lista/{titulo}")]
         public ActionResult Lista(string titulo)
         {
             var retornoLista = exemplarBC.FiltrarTitulo(titulo);
