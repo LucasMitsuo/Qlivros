@@ -462,6 +462,7 @@
     <Content Include="Views\Leitor\ConfirmCancelamento.cshtml" />
     <Content Include="Views\Exemplar\FormDisponibilizar.cshtml" />
     <Content Include="Views\Exemplar\ConfirmSucessoDisponibilizar.cshtml" />
+    <Content Include="Views\Historico\ListaRanking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

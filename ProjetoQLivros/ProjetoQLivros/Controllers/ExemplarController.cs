@@ -56,7 +56,7 @@ namespace ProjetoQLivros.Controllers
             else
             {
                 ViewBag.SemPropriedade = "Você não possui exemplares para doar";
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/Index.cshtml",result.Item3);
             }
         }
 

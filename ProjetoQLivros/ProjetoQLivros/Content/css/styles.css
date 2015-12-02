@@ -155,10 +155,14 @@ footer{
     content: "QLivros";
 }
 .main-login .btn {
-    width: 35%;
+    width: 58%;
     margin-top: 16px;
     margin-bottom: 36px;
     display: inline-block;
+}
+
+.main-login button {
+    width: 40% !important;
 }
 
 .main-login a {

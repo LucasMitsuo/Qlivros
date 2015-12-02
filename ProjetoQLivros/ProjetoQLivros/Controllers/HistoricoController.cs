@@ -51,5 +51,27 @@ namespace ProjetoQLivros.Controllers
             var resultado = historicoBC.VerificaResposta(idReceptor, idDoador, idExemplar, resposta);
             return View("RespNotificacao", resultado);
         }
+
+        public ActionResult ListaRanking(long idLeitor = 1)
+        {
+
+            List<TabHistorico> retornoLeitores = historicoBC.RankingLeitores();
+            List<TabHistorico> retornoExemplares = historicoBC.RankingExemplares();
+
+            var Posicao = retornoLeitores.Where(model => model.fkIdLeitor == idLeitor).FirstOrDefault();
+            if (Posicao != null)
+            {
+                ViewBag.Pos = Posicao;
+            }
+            else
+            {
+                ViewBag.Pos = "Não Classificado ainda";
+            }
+
+            ViewBag.Leitor = retornoLeitores;
+            ViewBag.Livro = retornoExemplares;
+
+            return View();
+        }
     }
 }

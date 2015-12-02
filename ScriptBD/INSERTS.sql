@@ -112,7 +112,7 @@ INSERT INTO TabHistorico VALUES
 (CONVERT(DATETIME,'13/10/2015',103),1,8,8,null),
 (CONVERT(DATETIME,'13/10/2015',103),1,9,1,null),
 (CONVERT(DATETIME,'13/10/2015',103),1,10,2,null),
-(CONVERT(DATETIME,'13/10/2015',103),1,11,3,null)
+(CONVERT(DATETIME,'13/10/2015',103),1,11,3,null),
 
 -- O leitor 1 manda solicitação pro leitor 3 -> Status PENDENTE
 (CONVERT(DATETIME,'15/10/2015',103),2,1,1,3),
@@ -139,7 +139,11 @@ INSERT INTO TabHistorico VALUES
 -- O leitor 1 aceita a solicitação -> ACEITO
 (CONVERT(DATETIME,'13/10/2015',103),3,7,7,8),
 -- O leitor 1 passa a ser o proprietário -> Status DOADO
-(CONVERT(DATETIME,'13/10/2015',103),5,7,8,null)
+(CONVERT(DATETIME,'13/10/2015',103),5,7,8,null),
+
+-- Leitor 6 possui 2 notificações pendentes
+(CONVERT(DATETIME,'14/11/2015',103),2,4,4,6),
+(CONVERT(DATETIME,'14/11/2015',103),2,5,5,6)
 
 
 SELECT * FROM TabHistorico WHERE fkIdExemplar = 1 and (dsStatus = 1 or dsStatus = 5)

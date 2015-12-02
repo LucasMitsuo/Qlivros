@@ -25,6 +25,12 @@
                     @ViewBag.SemLista
                 </div>
             }
+            @if (ViewBag.SemPropriedade != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.SemPropriedade
+                </div>
+            }
         </section>
     </div>
 }

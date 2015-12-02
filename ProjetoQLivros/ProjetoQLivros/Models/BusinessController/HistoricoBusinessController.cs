@@ -11,9 +11,11 @@ namespace ProjetoQLivros.Models.BusinessController
     {
         QLivrosEntities db = new QLivrosEntities();
 
-        public Tuple<List<TabHistorico>, bool> VerificaPropriedade(long idLeitor)
+        public Tuple<List<TabHistorico>, bool,TabLeitor> VerificaPropriedade(long idLeitor)
         {
             List<TabHistorico> historicos = new List<TabHistorico>();
+
+            var leitor = db.TabLeitor.Where(model => model.idLeitor == idLeitor).FirstOrDefault();
 
             //Pega todos os registros no qual o leitor cadastrou um exemplar, porém, não é certo que o leitor ainda seja o 
             //proprietário atual desses exemplares
@@ -36,7 +38,7 @@ namespace ProjetoQLivros.Models.BusinessController
             foreach (var recebido in recebidos)
             {
                 //Pesquisa se o exemplar recebido como doação já foi doado alguma vez
-                var doado = db.TabHistorico.Where(model=> model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
+                var doado = db.TabHistorico.Where(model=> model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO) && model.idHistorico > recebido.idHistorico);
 
                 //se não foi, adiciona em historicos
                 if (doado.Count() == 0)
@@ -50,11 +52,11 @@ namespace ProjetoQLivros.Models.BusinessController
             //Se não for adicionado nenhum registro a historicos, quer dizer que ele não é proprietário atual de nenhum exemplar
             if (historicos.Count() == 0)
             {
-                return new Tuple<List<TabHistorico>, bool>(null, false);
+                return new Tuple<List<TabHistorico>, bool,TabLeitor>(null, false,leitor);
             }
             else
             {
-                return new Tuple<List<TabHistorico>, bool>(historicos, true);
+                return new Tuple<List<TabHistorico>, bool,TabLeitor>(historicos, true,leitor);
             }
         }
 
@@ -108,6 +110,68 @@ namespace ProjetoQLivros.Models.BusinessController
             }
 
             return "Uma notificação foi enviada ao Doador";
+        }
+
+        public List<TabHistorico> RankingExemplares()
+        {
+            List<TabHistorico> exRank = new List<TabHistorico>();
+
+            var teste = (from p in db.TabHistorico
+                         where p.dsStatus == 5
+                         group p by p.fkIdExemplar into g
+                         select new { fkIdExemplar = g.Key, Quantidade = g.Count() }
+                        ).OrderByDescending(c => c.Quantidade);
+            var count = 1;
+            foreach (var registro in teste)
+            {
+                TabHistorico exemplar = new TabHistorico();
+                TabExemplar tbex = new TabExemplar();
+                TabTitulo tbTit = new TabTitulo();
+                tbex = db.TabExemplar.Where(model => model.idExemplar == registro.fkIdExemplar).FirstOrDefault();
+                tbTit = db.TabTitulo.Where(model => model.idTitulo == tbex.fkIdTitulo).FirstOrDefault();
+
+                tbex.TabTitulo = tbTit;
+                exemplar.idHistorico = count;
+                count++;
+                exemplar.fkIdExemplar = registro.fkIdExemplar;
+                exemplar.dsStatus = registro.Quantidade;
+                exemplar.TabExemplar = tbex;
+                exRank.Add(exemplar);
+            }
+            return exRank;
+        }
+
+        public List<TabHistorico> RankingLeitores()
+        {
+            List<TabHistorico> ltrRank = new List<TabHistorico>();
+
+            var teste = (from p in db.TabHistorico
+                         where p.dsStatus == 5
+                         group p by p.fkIdLeitor into g
+                         select new { fkIdLeitor = g.Key, Quantidade = g.Count() }
+                        ).OrderByDescending(c => c.Quantidade);
+            var count = 1;
+            foreach (var registro in teste)
+            {
+                TabHistorico exemplar = new TabHistorico();
+
+                TabLeitor tbleitor = new TabLeitor();
+                tbleitor = db.TabLeitor.Where(model => model.idLeitor == registro.fkIdLeitor).FirstOrDefault();
+
+                exemplar.idHistorico = count;
+                count++;
+                exemplar.fkIdLeitor = registro.fkIdLeitor;
+                exemplar.dsStatus = registro.Quantidade;
+                exemplar.TabLeitor = tbleitor;
+                ltrRank.Add(exemplar);
+            }
+            return ltrRank;
+        }
+
+
+        internal object RankingRegioes()
+        {
+            throw new NotImplementedException();
         }
     }
 }

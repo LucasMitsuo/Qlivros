@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "ListaRanking";
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid white;
+        background-color: white;
+    }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    h2 {
+        color: blue;
+    }
+</style>
+
+<h2>Ranking Exemplares</h2>
+
+
+<table border="1" class="center" width="300" align="center" cellspacing="5">
+    <thead>
+        <tr>
+            <th>Posição</th>
+            <th>Exemplar</th>
+            <th>Leitores</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exemplar in ViewBag.Livro)
+        {
+            <tr>
+                <td>@exemplar.idHistorico</td>
+                <td>@exemplar.TabExemplar.TabTitulo.nmTitulo</td>
+                <td>@exemplar.dsStatus</td>
+            </tr>
+        }
+        <br />
+
+    </tbody>
+</table>
+<br />
+<h2>Ranking Leitores</h2>
+<table border="1" class="center" width="300" align="center" cellspacing="5">
+    <thead>
+        <tr>
+            <th>Posição</th>
+            <th>Leitor</th>
+            <th>Exemplares</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>@ViewBag.Pos.idHistorico</td>
+        <td>@ViewBag.Pos.TabLeitor.nmLeitor</td>
+        <td>@ViewBag.Pos.dsStatus</td>
+    </tr>
+    <tr>
+        <td> &nbsp;</td>
+        <td> &nbsp;</td>
+        <td> &nbsp;</td>
+    </tr>
+    <tbody>
+        @foreach (var leitor in ViewBag.Leitor)
+        {
+            <tr>
+                <td>@leitor.idHistorico</td>
+                <td>@leitor.TabLeitor.nmLeitor</td>
+                <td>@leitor.dsStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
