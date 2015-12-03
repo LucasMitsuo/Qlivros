@@ -14,6 +14,7 @@ namespace ProjetoQLivros.Controllers
     {
         ExemplarBusinessController exemplarBC = new ExemplarBusinessController();
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+        LeitorBusinessController leitorBC = new LeitorBusinessController();
 
         public ActionResult Lista(string titulo)
         {
@@ -123,6 +124,11 @@ namespace ProjetoQLivros.Controllers
             var msg = exemplarBC.Alterar(idExemplar);
 
             return View("ConfirmSucessoDisponibilizar", msg);
+        }
+
+        public ActionResult ComecarCorrente(int idLeitor)
+        {
+            return View(leitorBC.Obter(idLeitor));
         }
     }
 }

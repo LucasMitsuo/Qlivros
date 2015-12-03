@@ -23,9 +23,10 @@
     <div class="navmenu navmenu-default navmenu-fixed-left">
         <div class="navmenu-brand" href="#">Menu Principal</div>
         <ul class="nav navmenu-nav">
-            <li><a href="#corrente">Comece uma corrente<span class="glyphicon glyphicon-share"></span></a></li>
-            <!--<li><a href="#section8">Doar exemplar<span class="glyphicon glyphicon-arrow-right glyphicon"></span></a></li>-->
-            <li>@Html.ActionLink("Doar exemplar", "FormDoar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
+           
+            <li>@Html.IconActionLink("glyphicon glyphicon-share","Comece uma corrente","ComecarCorrente","Exemplar",new{idLeitor = usuarioAtual.idLeitor},new{}) </li>
+            
+            <li>@Html.IconActionLink("glyphicon glyphicon-arrow-right glyphicon", "Doar exemplar", "FormDoar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#exemplares">
                     Meus exemplares
