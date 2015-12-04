@@ -3,31 +3,8 @@
     ViewBag.Title = "ListaRanking";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
-
-<style>
-    table {
-        border-collapse: collapse;
-    }
-
-    table, td, th {
-        border: 1px solid white;
-        background-color: white;
-    }
-
-        table.center {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-    h2 {
-        color: blue;
-    }
-</style>
-
-<h2>Ranking Exemplares</h2>
-
-
-<table border="1" class="center" width="300" align="center" cellspacing="5">
+<h3 class="text-left"><strong>Ranking Exemplares</strong></h3>
+<table class="table center table-striped">
     <thead>
         <tr>
             <th>Posição</th>
@@ -44,13 +21,11 @@
                 <td>@exemplar.dsStatus</td>
             </tr>
         }
-        <br />
-
     </tbody>
 </table>
 <br />
-<h2>Ranking Leitores</h2>
-<table border="1" class="center" width="300" align="center" cellspacing="5">
+<h3 class="text-left"><strong>Ranking Leitores</strong></h3>
+<table class="table center table-striped">
     <thead>
         <tr>
             <th>Posição</th>
@@ -79,5 +54,3 @@
         }
     </tbody>
 </table>
-
-

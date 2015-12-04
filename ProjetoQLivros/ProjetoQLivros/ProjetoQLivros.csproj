@@ -466,6 +466,7 @@
     <Content Include="Views\Shared\_LayoutModal.cshtml" />
     <Content Include="Views\Exemplar\ComecarCorrente.cshtml" />
     <Content Include="Views\Exemplar\ConfirmSucessoCriarExemplar.cshtml" />
+    <Content Include="Views\Historico\AcompanharHistorico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

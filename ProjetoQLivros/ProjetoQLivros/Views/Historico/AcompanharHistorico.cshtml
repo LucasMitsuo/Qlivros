@@ -1,0 +1,17 @@
+﻿@model IQueryable<TabHistorico>
+@{
+    ViewBag.Title = "AcompanharHistorico";
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        Selecione um exemplar para visualizar o histórico
+    </a>
+    @foreach (var registro in Model)
+    {
+        @Ajax.ActionLink(@registro.TabExemplar.TabTitulo.nmTitulo, "Visualizar", "Historico", new { idExemplar = registro.fkIdExemplar }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
+    }
+</div>
+
+

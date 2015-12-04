@@ -23,8 +23,7 @@ namespace ProjetoQLivros.Controllers
             }
             else
             {
-
-                return View("AcompanharHistorico", historicoBC.ObterLidos(idLeitor));
+                return View(historicoBC.ObterLidos(idLeitor));
             }
         }
         public ActionResult VisualizarHistorico(long idExemplar)
@@ -52,7 +51,7 @@ namespace ProjetoQLivros.Controllers
             return View("RespNotificacao", resultado);
         }
 
-        public ActionResult ListaRanking(long idLeitor = 1)
+        public ActionResult ListaRanking(long idLeitor)
         {
 
             List<TabHistorico> retornoLeitores = historicoBC.RankingLeitores();
