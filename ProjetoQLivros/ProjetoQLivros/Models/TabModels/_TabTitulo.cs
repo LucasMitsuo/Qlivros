@@ -15,6 +15,9 @@ namespace ProjetoQLivros.Models.TabModels
 
     public class TabTituloMetadata
     {
-        
+        public int idTitulo { get; set; }
+
+        [Required(ErrorMessage="O título é obrigatório")]
+        public string nmTitulo { get; set; }
     }
 }

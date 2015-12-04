@@ -1,0 +1,11 @@
+﻿@model Tuple<String,int>
+@{
+    ViewBag.Title = "ConfirmSucessoCriarExemplar";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+<div class="modal-content bs-callout">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" onclick="location.href = '@Url.Action("Index","Home",new{idLeitor = Model.Item2}) '">&times;</span><span class="sr-only">Fechar</span></button>
+        <h2>@Model.Item1</h2>
+    </div>
+</div>

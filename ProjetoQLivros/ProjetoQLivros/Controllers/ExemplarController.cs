@@ -128,7 +128,19 @@ namespace ProjetoQLivros.Controllers
 
         public ActionResult ComecarCorrente(int idLeitor)
         {
-            return View(leitorBC.Obter(idLeitor));
+            var leitor = leitorBC.Obter(idLeitor); 
+            return View(new Tuple<TabExemplar,TabLeitor>(null,leitor));
+        }
+
+        public ActionResult Cadastrar(TabExemplar exemplar, string titulo,int idLeitor)
+        {
+            var leitor = leitorBC.Obter(idLeitor);
+            if (ModelState.IsValid)
+            {
+                var result = exemplarBC.Criar(exemplar, titulo, idLeitor);
+                return PartialView("~/Views/Exemplar/ConfirmSucessoCriarExemplar.cshtml",new Tuple<String,int>(result.Item2,idLeitor));
+            }
+            return View("ComecarCorrente", new Tuple<TabExemplar, TabLeitor>(exemplar, leitor));
         }
     }
 }

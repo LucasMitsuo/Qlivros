@@ -130,5 +130,70 @@ namespace ProjetoQLivros.Models.BusinessController
             db.SaveChanges();
             return String.Format("Exemplar {0} disponível com sucesso !",e.TabTitulo.nmTitulo);
         }
+
+        public Tuple<TabExemplar, string> Criar(TabExemplar exemplar, string titulo,int idLeitor)
+        {
+            TabExemplar novoExemplar = new TabExemplar();
+            TabHistorico novoHistorico = new TabHistorico();
+
+            //Pesquisa no banco se o título informado já existe
+            var _titulo = db.TabTitulo.Where(model => model.nmTitulo.ToLower() == titulo.ToLower()).FirstOrDefault();
+
+            //Senão NÃO existir, preenche a TabTitulo e TabExemplar com as informações passada como parâmetro
+            if (_titulo == null)
+            {
+                //Monta o objeto TabTitulo
+                TabTitulo novoTitulo = new TabTitulo();
+                novoTitulo.nmTitulo = titulo;
+                //Adiciona o titulo no contexto do EF
+                novoTitulo = db.TabTitulo.Add(novoTitulo);
+
+                //Monta o objeto TabExemplar
+                novoExemplar.nmEditora = exemplar.nmEditora;
+                novoExemplar.nmAutor = exemplar.nmAutor;
+                novoExemplar.dsEdicao = exemplar.dsEdicao;
+                novoExemplar.fkIdTitulo = novoTitulo.idTitulo;
+                novoExemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
+                //Adiciona o exemplar no contexto do EF
+                novoExemplar = db.TabExemplar.Add(novoExemplar);
+
+                //Monta o objeto historico
+                novoHistorico.dtHistorico = DateTime.Now;
+                novoHistorico.dsStatus = (int)EnumStatusHistorico.CADASTRADO;
+                novoHistorico.fkIdExemplar = novoExemplar.idExemplar;
+                novoHistorico.fkIdLeitor = idLeitor;
+                novoHistorico.fkIdReceptor = null;
+                //Adiciona o historico no contexto do EF
+                db.TabHistorico.Add(novoHistorico);
+
+                db.SaveChanges();
+
+            }
+            //Mas se JÁ existir, preenche somente a tabela exemplar
+            else
+            {
+                //Monta o objeto TabExemplar
+                novoExemplar.nmEditora = exemplar.nmEditora;
+                novoExemplar.nmAutor = exemplar.nmAutor;
+                novoExemplar.dsEdicao = exemplar.dsEdicao;
+                novoExemplar.fkIdTitulo = _titulo.idTitulo;
+                novoExemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
+                //Persiste o exemplar
+                novoExemplar = db.TabExemplar.Add(novoExemplar);
+
+                //Monta o objeto historico
+                novoHistorico.dtHistorico = DateTime.Now;
+                novoHistorico.dsStatus = (int)EnumStatusHistorico.CADASTRADO;
+                novoHistorico.fkIdExemplar = novoExemplar.idExemplar;
+                novoHistorico.fkIdLeitor = idLeitor;
+                novoHistorico.fkIdReceptor = null;
+                 //Adiciona o historico no contexto do EF
+                db.TabHistorico.Add(novoHistorico);
+
+                db.SaveChanges();
+            }
+
+            return new Tuple<TabExemplar, string>(novoExemplar, "Exemplar cadastrado com sucesso");
+        }
     }
 }
