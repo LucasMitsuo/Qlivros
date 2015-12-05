@@ -37,7 +37,7 @@
                         <a href="#">Romper Corrente</a>
                     </li>
                     <li>
-                        <a href="#">Disponibilizar Exemplar</a>
+                        @Html.IconActionLink("glyphicon glyphicon-ok", "Disponibilizar exemplar", "FormDisponibilizar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
                     </li>
                 </ul>
             </li>
@@ -78,7 +78,7 @@
                                 <a href="#">Romper Corrente</a>
                             </li>
                             <li>
-                                <a href="#">Disponibilizar Exemplar</a>
+                                @Html.IconActionLink("glyphicon glyphicon-ok", "Disponibilizar exemplar", "FormDisponibilizar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
                             </li>
                         </ul>
                     </li>

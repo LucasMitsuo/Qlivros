@@ -4,5 +4,15 @@
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
 
-<h2>FormDisponibilizar</h2>
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        Selecione o exemplar que deseja disponibilizar
+    </a>
+    @foreach (var registro in Model)
+    {
+        @Ajax.ActionLink(String.Format("{0} - {1}ª Edição",@registro.TabExemplar.TabTitulo.nmTitulo, @registro.TabExemplar.dsEdicao), "Disponibilizar", "Exemplar", new { idExemplar = registro.fkIdExemplar }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
+    }
+
+</div>
+
 

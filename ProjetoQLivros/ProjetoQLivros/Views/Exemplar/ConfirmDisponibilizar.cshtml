@@ -1,0 +1,48 @@
+﻿@model TabExemplar
+@{
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<div class="modal-content bs-callout bs-callout-danger">
+    <div class="modal-header">
+        
+        <h3 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-flag"></span> Disponibilizar Exemplar</h3>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Deseja mesmo disponibilizar o exemplar ?</p>
+        <p><small>Se o fizer, não será mais possível torná-lo indisponível</small><br />
+            <small>caso queria continuar a leitura.</small>
+        </p>
+
+        <strong>Título:</strong>@Model.TabTitulo.nmTitulo<br>
+        <strong>Autor:</strong>@Model.nmAutor<br>
+        <strong>Editora:</strong>@Model.nmEditora<br>
+        <strong>Edição: </strong>@Model.dsEdicao
+
+    </div>
+
+    <div class="modal-footer text-right">
+
+        @Ajax.ActionLink("Sim, disponibilizar", "AlterarStatus", "Exemplar", new { idExemplar = @Model.idExemplar},
+                new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "qlivros-modal-content",
+                    OnSuccess = "QLivrosModal",
+                }, new { @class = "btn btn-primary" })
+
+
+        @Ajax.ActionLink("Cancelar", "Resultado", "Historico", new { },
+                new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "qlivros-modal-content",
+                    OnSuccess = "QLivrosModal",
+                }, new { @class = "btn btn-default" })
+
+    </div>
+
+</div>
+

@@ -31,6 +31,12 @@
                     @ViewBag.SemPropriedade
                 </div>
             }
+            @if (ViewBag.Disp != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.Disp
+                </div>
+            }
         </section>
     </div>
 }

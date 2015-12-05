@@ -40,6 +40,11 @@ namespace ProjetoQLivros.Controllers
             return View("~/Views/Leitor/ConfirmCancelamento.cshtml");
         }
 
+        public ActionResult FormCadastro()
+        {
+            return View();
+        }
+
         public ActionResult Cadastrar(TabLeitor leitor)
         {
             throw new NotImplementedException();

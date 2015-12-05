@@ -24,7 +24,9 @@
             @Html.TextBoxFor(model => model.dsSenha, new { @class = "form-control form-login", id = "input-descricao", placeholder = "Senha", type = "password", required = "required", oninvalid = "this.setCustomValidity('Digite a senha')", oninput = "setCustomValidity('')" })
 
             <button type="submit" class="btn btn-default">Entrar</button>
-            <a class="btn btn-default" href="#">Cadastre-se</a>
+            @Html.ActionLink("Cadastre-se", "FormCadastro", "Leitor", new { }, new { @class = "btn btn-default" })
+            
+            
         </form>
 
         <a href="#">Esqueceu a senha?</a>
