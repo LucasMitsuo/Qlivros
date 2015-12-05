@@ -99,12 +99,12 @@ namespace ProjetoQLivros.Controllers
 
         }
 
-        public ActionResult FormDisponibilizar(long idLeitor)
+        public ActionResult FormDisponibilizar(int idLeitor)
         {
             var result = exemplarBC.ObterIndisponiveis(idLeitor);
             if (result.Item2)
             {
-                return View(result.Item1);
+                return View(new Tuple<List<TabHistorico>,int>(result.Item1,idLeitor));
             }
             else
             {
@@ -113,17 +113,26 @@ namespace ProjetoQLivros.Controllers
             }
 
         }
-        public ActionResult Disponibilizar (long idExemplar)
+        public ActionResult Disponibilizar (long idExemplar,int idLeitor)
         {
             var result = exemplarBC.ObterPorIdDisp(idExemplar);
-            return View("ConfirmDisponibilizar",result);
+            return View("ConfirmDisponibilizar",new Tuple<TabExemplar,int>(result,idLeitor));
         }
 
-        public ActionResult AlterarStatus(long idExemplar = 3)
+        public ActionResult AlterarStatus(long idExemplar,int idLeitor)
         {
             var msg = exemplarBC.Alterar(idExemplar);
 
-            return View("ConfirmSucessoDisponibilizar", msg);
+            if (msg == "")
+            {
+                ViewBag.erro = "Esse exemplar está pendente";
+                var result = exemplarBC.ObterIndisponiveis(idLeitor);
+                return View("FormDisponibilizar", new Tuple<List<TabHistorico>, int>(result.Item1, idLeitor));
+            }
+            else
+            {
+                return PartialView("ConfirmSucessoDisponibilizar", new Tuple<String, int>(msg, idLeitor));
+            }
         }
 
         public ActionResult ComecarCorrente(int idLeitor)

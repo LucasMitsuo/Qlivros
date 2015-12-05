@@ -89,7 +89,7 @@ namespace ProjetoQLivros.Models.BusinessController
             foreach (var recebido in recebidos)
             {
                 //Pesquisa se o exemplar recebido como doação já foi doado alguma vez
-                var doado = db.TabHistorico.Where(model => model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
+                var doado = db.TabHistorico.Where(model => model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO) && model.idHistorico > recebido.idHistorico);
 
                 //se não foi, adiciona em historicos
                 if (doado.Count() == 0)
@@ -122,6 +122,14 @@ namespace ProjetoQLivros.Models.BusinessController
 
         public string Alterar(long idExemplar)
         {
+            var exemplar = db.TabExemplar.Where(model => model.idExemplar == idExemplar).FirstOrDefault();
+            var historico = exemplar.TabHistorico.Where(model => model.fkIdExemplar == idExemplar).LastOrDefault();
+
+            if (historico.dsStatus == (int)EnumStatusHistorico.PENDENTE)
+            {
+                return "";
+            }
+
             //  Recupera o registro que eu quero atualizar e guarda em uma variável do tipo TabExemplar
             TabExemplar e = db.TabExemplar.First(model => model.idExemplar == idExemplar);
             // Atualiza o campo dsEstatus, colocando o nome da variavel que recebeu o registro seguido de "." e o nome do campo.

@@ -1,4 +1,4 @@
-﻿@model List<TabHistorico>
+﻿@model Tuple<List<TabHistorico>,int>
 @{
     ViewBag.Title = "FormDisponibilizar";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
@@ -8,11 +8,18 @@
     <a href="#" class="list-group-item active">
         Selecione o exemplar que deseja disponibilizar
     </a>
-    @foreach (var registro in Model)
+    @foreach (var registro in Model.Item1)
     {
-        @Ajax.ActionLink(String.Format("{0} - {1}ª Edição",@registro.TabExemplar.TabTitulo.nmTitulo, @registro.TabExemplar.dsEdicao), "Disponibilizar", "Exemplar", new { idExemplar = registro.fkIdExemplar }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
+        @Ajax.ActionLink(String.Format("{0} - {1}ª Edição",@registro.TabExemplar.TabTitulo.nmTitulo, @registro.TabExemplar.dsEdicao), "Disponibilizar", "Exemplar", new { idExemplar = registro.fkIdExemplar,idLeitor = Model.Item2 }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
     }
 
 </div>
+
+@if (ViewBag.erro != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.erro
+    </div>
+}
 
 
