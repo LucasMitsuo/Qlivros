@@ -467,6 +467,7 @@
     <Content Include="Views\Exemplar\ComecarCorrente.cshtml" />
     <Content Include="Views\Exemplar\ConfirmSucessoCriarExemplar.cshtml" />
     <Content Include="Views\Historico\AcompanharHistorico.cshtml" />
+    <Content Include="Views\Historico\VisualizarHistorico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
