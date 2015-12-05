@@ -468,6 +468,7 @@
     <Content Include="Views\Exemplar\ConfirmSucessoCriarExemplar.cshtml" />
     <Content Include="Views\Historico\AcompanharHistorico.cshtml" />
     <Content Include="Views\Historico\VisualizarHistorico.cshtml" />
+    <Content Include="Views\Leitor\Cadastrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

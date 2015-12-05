@@ -64,7 +64,9 @@ body{
   background: none;
 }
 
-
+.section-main {
+  padding-bottom: 80px;
+}
 /* End Main Content */
 
 /* Página de Registro */

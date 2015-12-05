@@ -48,7 +48,7 @@ namespace ProjetoQLivros.Controllers
         public ActionResult Resultado(int idReceptor,int idDoador, int idExemplar, string resposta)
         {
             var resultado = historicoBC.VerificaResposta(idReceptor, idDoador, idExemplar, resposta);
-            return View("RespNotificacao", resultado);
+            return PartialView("RespNotificacao", new Tuple<string,int>(resultado,idReceptor));
         }
 
         public ActionResult ListaRanking(long idLeitor)

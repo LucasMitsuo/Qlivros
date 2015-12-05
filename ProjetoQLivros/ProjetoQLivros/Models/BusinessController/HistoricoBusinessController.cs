@@ -84,6 +84,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 resultado.fkIdReceptor = idReceptor;
                 resultado.dsStatus = (int)EnumStatusHistorico.ACEITO;
                 resultado.dtHistorico = DateTime.Now;
+                db.TabHistorico.Add(resultado);
                 db.SaveChanges();
 
                 //registra a doação
@@ -92,6 +93,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 historico.fkIdExemplar = idExemplar;
                 historico.dsStatus = (int)EnumStatusHistorico.DOADO;
                 historico.dtHistorico = DateTime.Now;
+                db.TabHistorico.Add(historico);
                 db.SaveChanges();
             }
             else
@@ -106,6 +108,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 resultado.fkIdReceptor = idReceptor;
                 resultado.dsStatus = (int)EnumStatusHistorico.RECUSADO;
                 resultado.dtHistorico = DateTime.Now;
+                db.TabHistorico.Add(resultado);
                 db.SaveChanges();
             }
 
