@@ -1,4 +1,5 @@
 ﻿@model TabLeitor
+
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
@@ -35,6 +36,12 @@
             {
                 <div class="alert alert-danger" role="alert">
                     @ViewBag.Disp
+                </div>
+            }
+            @if (ViewBag.ErroRomper != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErroRomper
                 </div>
             }
         </section>

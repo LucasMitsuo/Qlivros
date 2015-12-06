@@ -454,7 +454,6 @@
     <Content Include="Views\Resenha\FormResenha.cshtml" />
     <Content Include="Views\Resenha\ConfirmPublicacao.cshtml" />
     <Content Include="Views\Exemplar\FormDoar.cshtml" />
-    <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
     <Content Include="Views\Historico\Lista.cshtml" />
     <Content Include="Views\Historico\Info.cshtml" />
     <Content Include="Views\Historico\RespNotificacao.cshtml" />
@@ -471,6 +470,10 @@
     <Content Include="Views\Leitor\Cadastrar.cshtml" />
     <Content Include="Views\Exemplar\ConfirmDisponibilizar.cshtml" />
     <Content Include="Views\Leitor\FormCadastro.cshtml" />
+    <Content Include="Views\Exemplar\RomperCorrente.cshtml" />
+    <Content Include="Views\Exemplar\ConfirmRomper.cshtml" />
+    <Content Include="Views\Exemplar\ConfirmSucessoRomper.cshtml" />
+    <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

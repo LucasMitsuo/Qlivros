@@ -1,0 +1,40 @@
+﻿@model Tuple<TabExemplar, int>
+@{
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<div class="modal-content bs-callout bs-callout-danger">
+    <div class="modal-header">
+
+        <h3 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-book"></span> Romper corrente</h3>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Justifique o motivo do rompimento</p>
+        @using (Ajax.BeginForm("ExcluirExemplar", "Exemplar", new { idExemplar = @Model.Item1.idExemplar, idLeitor = @Model.Item2 },
+        new AjaxOptions()
+        {
+            HttpMethod = "Post",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "qlivros-modal-content",
+            OnSuccess = "QLivrosModal",
+        }, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    @Html.TextArea("texto", new { @class = "form-control", id = "input-nome-psettings", placeholder = "Ex: Entre com sua justificativa", rows = 3 })
+                    
+                </div>
+            </div>
+
+            <button id="s9ads-btn-create-psettings" type="submit" class="btn btn-primary btn-sm" data-loading-text="Aguarde..." autocomplete="off">
+                <span class="glyphicon glyphicon-remove"></span> Romper Corrente
+            </button>
+
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cancelar</button>
+
+           
+        }
+
+    </div>
+</div>
+

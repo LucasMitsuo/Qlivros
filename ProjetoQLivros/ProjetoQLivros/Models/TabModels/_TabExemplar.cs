@@ -24,17 +24,15 @@ namespace ProjetoQLivros.Models.TabModels
     {
         public int idExemplar { get; set; }
 
-        [Required(ErrorMessage="A editora é obrigatória")]
         public string nmEditora { get; set; }
 
-        [Required(ErrorMessage = "O autor é obrigatório")]
         public string nmAutor { get; set; }
 
-        [Required(ErrorMessage = "A edição é obrigatória")]
         public string dsEdicao { get; set; }
 
         public int fkIdTitulo { get; set; }
         public int dsStatus { get; set; }
+
         public string dsObs { get; set; }
     }
 

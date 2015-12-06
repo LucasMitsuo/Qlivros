@@ -18,7 +18,7 @@ namespace ProjetoQLivros.Controllers
 
             if (result.Item1)
             {
-                return PartialView("~/Views/Doacao/ConfirmDoacao.cshtml", new Tuple<string,int>(result.Item2,idDoador));
+                return View("~/Views/Doacao/ConfirmDoacao.cshtml", new Tuple<string,int>(result.Item2,idDoador));
             }
             else
             {

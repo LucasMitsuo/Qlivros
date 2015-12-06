@@ -1,23 +1,42 @@
-﻿<h2>Publicar Resenha</h2>
+﻿@model Tuple<List<SelectListItem>, List<SelectListItem>, int>
 
-<form action="/Resenha/Publica">
-    <label>Descrição da Resenha: <input name="resenha.DsResenha" value="@ViewBag.Leitor.dsResenha"/></label><br />
-    @Html.ValidationMessage("resenha.DsResenha")
-    <label>Tipo de Resenha: <input name="resenha.DsTipoResenha" value="@ViewBag.Leitor.DsTipoResenha"/></label> <br />
-    @Html.ValidationMessage("resenha.DsTipoResenha")
-    <label>
-        Exemplar:
-       <select name="resenha.Exemplar.Id">
-            @foreach (var exemplar in Model)
-            {
-                if (exemplar.IdExemplar.Equals(ViewBag.Leitor.fkIdTitulo))
-                {
-                    <option value="@exemplar.IdExemplar" selected="selected">@exemplar.fkIdTitulo</option>
-                }
-                <option value="@exemplar.IdExemplar">@exemplar.fkIdTitulo</option>
-            }
-        </select>
-        <br />
-    </label>
-    <input type="submit" />
-</form>
+@{
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<h2>Publique uma resenha</h2>
+@using (Ajax.BeginForm("Publicar", "Resenha", new { idLeitor = @Model.Item3 },
+new AjaxOptions()
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "qlivros-modal-content",
+    OnSuccess = "QLivrosModal",
+}, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.Hidden("fkIdLeitor",Model.Item3)
+    <div class="form-group">
+        @Html.Label("Selecione o exemplar o qual deseja referenciar", new { })
+    </div>
+    <div class="form-group">
+        @Html.DropDownList("fkIdExemplar", Model.Item1, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Informe o tipo da resenha", new {})
+    </div>
+    <div class="form-group">
+        @Html.DropDownList("dsTipoResenha", Model.Item2, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.TextArea("dsResenha", new { @class = "form-control", placeholder = "Entre com a resenha", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com a resenha')", oninput = "setCustomValidity('')", rows = 5 })
+    </div>
+
+    <button id="s9ads-btn-create-psettings" type="submit" class="btn btn-primary" data-loading-text="Aguarde..." autocomplete="off">
+        Publicar <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+
+    @Html.ActionLink("Cancelar", "Index", "Home", new { idLeitor = @Model.Item3 }, new { @class = "btn btn-default" })
+
+
+}
+

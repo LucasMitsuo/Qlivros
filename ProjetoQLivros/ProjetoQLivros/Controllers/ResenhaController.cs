@@ -1,5 +1,6 @@
 ﻿using ProjetoQLivros.Models.BusinessController;
 using ProjetoQLivros.Models.TabModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace ProjetoQLivros.Controllers
     {
         ResenhaBusinessController resenhaBC = new ResenhaBusinessController();
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
+
 
         public ActionResult Lista(int idExemplar)
         {
@@ -33,11 +35,22 @@ namespace ProjetoQLivros.Controllers
 
         public ActionResult FormResenha(int idLeitor)
         {
-            var validaStatusExemplar = historicoBC.VerificaPropriedade(idLeitor);
+            var result = resenhaBC.VerificaPropriedade(idLeitor);
 
-            if (validaStatusExemplar.Item2) 
+            List<SelectListItem> opcoesExemplares = new List<SelectListItem>();
+            List<SelectListItem> opcoesTipoResenha = new List<SelectListItem>();
+
+            if (result.Item2) 
             {
-                return RedirectToAction("~/Views/Resenha/FormResenha.cshtml", validaStatusExemplar.Item1);
+                foreach (var exemplar in result.Item1)
+                {
+                    opcoesExemplares.Add(new SelectListItem { Text = String.Format("{0} - {1}ª Edição", exemplar.TabExemplar.TabTitulo.nmTitulo, exemplar.TabExemplar.dsEdicao), Value = exemplar.TabExemplar.idExemplar.ToString() });
+                }
+
+                opcoesTipoResenha.Add(new SelectListItem { Text = "Conteúdo", Value = "1" });
+                opcoesTipoResenha.Add(new SelectListItem { Text = "Estado de uso", Value = "2" });
+
+                return View("~/Views/Resenha/FormResenha.cshtml", new Tuple<List<SelectListItem>,List<SelectListItem>,int>(opcoesExemplares,opcoesTipoResenha,idLeitor));
             }
             else
             {
@@ -46,9 +59,10 @@ namespace ProjetoQLivros.Controllers
             }
         }
             
-        public ActionResult Publicar(TabResenha resenha)
+        public ActionResult Publicar(TabResenha resenha,int idLeitor)
         {
-            return View("~/Views/Resenha/ConfirmPublicacao.cshtml");
+            resenhaBC.Criar(resenha);
+            return View("~/Views/Resenha/ConfirmPublicacao.cshtml",new Tuple<String,int>("Resenha criada com sucesso",idLeitor));
         }
     }
 }

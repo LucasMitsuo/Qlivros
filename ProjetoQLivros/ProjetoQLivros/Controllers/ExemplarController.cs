@@ -61,20 +61,25 @@ namespace ProjetoQLivros.Controllers
             }
         }
 
-        public ActionResult RomperCorrente(long idLeitor)
+        public ActionResult RomperCorrente(int idLeitor)
         {
-            var lista = exemplarBC.ObterPorLeitor(idLeitor);
-            return View(lista);
+            //Retorna uma lista com os exemplares que o leitor é proprietário.
+            var result = exemplarBC.ObterPorLeitor(idLeitor);
+            if (result.Item2)
+            {
+                return View(new Tuple<List<TabHistorico>, int>(result.Item1, idLeitor));
+            }
+            ViewBag.ErroRomper = "Não há exemplares para romper corrente";
+            return View("~/Views/Home/Index.cshtml", idLeitor);
         }
 
-        public ActionResult PesquisarExemplar(long idExemplar = 1)
+        public ActionResult PesquisarExemplar(long idExemplar,int idLeitor)
         {
             var result = exemplarBC.ObterPorid(idExemplar);
-            // Caso o exemplar esteja pendente, retorna false, caso contrário, retorna verdadeiro.
 
             if (result.Item2)
             {
-                return View("ConfirmRomper", result.Item1);
+                return View("ConfirmRomper", new Tuple<TabExemplar,int>(result.Item1,idLeitor));
             }
             else
             {
@@ -84,19 +89,22 @@ namespace ProjetoQLivros.Controllers
 
         }
 
-        public ActionResult ExcluirExemplar(long idExemplar = 2, string texto = null)
+        public ActionResult ExcluirExemplar(int idExemplar, string texto,int idLeitor)
         {
-            if (texto == null)
-            {
-                ViewBag.Romper = "Registre uma justificativa";
-                return View("ConfirmRomper");
-            }
-            else
-            {
-                var msg = exemplarBC.Romper(idExemplar, texto);
-                return View("ConfirmSucessoRomper", msg);
-            }
+            var result = exemplarBC.Romper(idExemplar, texto);
 
+            if (texto.Length > 10 && texto.Length < 200)
+            {
+                ViewBag.ErroObs = "A justificativa deve ter entre 10 a 200 caracteres";
+                return View("ConfirmRomper", new Tuple<TabExemplar, int>(result.Item1, idLeitor));
+            }
+            else if (texto == "")
+            {
+                ViewBag.ErroObs = "Informe a justificativa";
+                return View("ConfirmRomper", new Tuple<TabExemplar, int>(result.Item1, idLeitor));
+            }
+                
+            return View("ConfirmSucessoRomper",new Tuple<String,int>(result.Item2,idLeitor));
         }
 
         public ActionResult FormDisponibilizar(int idLeitor)
@@ -147,7 +155,7 @@ namespace ProjetoQLivros.Controllers
             if (ModelState.IsValid)
             {
                 var result = exemplarBC.Criar(exemplar, titulo, idLeitor);
-                return PartialView("~/Views/Exemplar/ConfirmSucessoCriarExemplar.cshtml",new Tuple<String,int>(result.Item2,idLeitor));
+                return View("~/Views/Exemplar/ConfirmSucessoCriarExemplar.cshtml",new Tuple<String,int>(result.Item2,idLeitor));
             }
             return View("ComecarCorrente", new Tuple<TabExemplar, TabLeitor>(exemplar, leitor));
         }

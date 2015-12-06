@@ -34,7 +34,7 @@
                 </a>
                 <ul class="dropdown-menu navmenu-nav">
                     <li>
-                        <a href="#">Romper Corrente</a>
+                        @Html.IconActionLink("glyphicon glyphicon-lock", "Romper corrente", "RomperCorrente", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
                     </li>
                     <li>
                         @Html.IconActionLink("glyphicon glyphicon-ok", "Disponibilizar exemplar", "FormDisponibilizar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
@@ -43,10 +43,10 @@
             </li>
             <li>@Html.IconActionLink("glyphicon glyphicon-flag", "Acompanhar histórico", "AcompanharHistorico", "Historico", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
             <li>@Html.IconActionLink("glyphicon glyphicon-star", "Verificar Ranking", "ListaRanking", "Historico", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
-            <li><a href="#section7">Publicar resenha<span class="glyphicon glyphicon-file"></span></a></li>
+            <li>@Html.IconActionLink("glyphicon glyphicon-file", "Publicar resenha", "FormResenha", "Resenha", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
             <li><a href="#section8">Chat<span class="glyphicon glyphicon-comment"></span></a></li>
             <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
-            <!--<li><a href="#section5">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>-->
+           
             <li>@Ajax.ActionLink("Cancelar participação", "ConfirmCancelamento", "Leitor", new { }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
             <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
 
@@ -75,7 +75,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Romper Corrente</a>
+                                @Html.IconActionLink("glyphicon glyphicon-lock", "Romper corrente", "RomperCorrente", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
                             </li>
                             <li>
                                 @Html.IconActionLink("glyphicon glyphicon-ok", "Disponibilizar exemplar", "FormDisponibilizar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })
@@ -84,7 +84,7 @@
                     </li>
                     <li>@Html.IconActionLink("glyphicon glyphicon-flag", "Acompanhar histórico", "AcompanharHistorico", "Historico", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
                     <li>@Html.IconActionLink("glyphicon glyphicon-star", "Verificar Ranking", "ListaRanking", "Historico", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
-                    <li><a href="#section7">Publicar resenha<span class="glyphicon glyphicon-file"></span></a></li>
+                    <li>@Html.IconActionLink("glyphicon glyphicon-file", "Publicar resenha", "FormResenha", "Resenha", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
                     <li><a href="#section8">Chat<span class="glyphicon glyphicon-comment"></span></a></li>
                     <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
                     @*<li><a href="#section5">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>*@

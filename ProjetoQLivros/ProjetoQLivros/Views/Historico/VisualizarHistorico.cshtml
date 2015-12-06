@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "VisualizarHistorico";
     Layout = "~/Views/Shared/_LayoutModal.cshtml";
+    var total = Model.Count();
+    int cont = 0;
 }
 
 <div class="modal-content bs-callout bs-callout-danger">
@@ -25,15 +27,35 @@
             
             @foreach (var registro in Model)
             {
-                <tr >
+                cont++;
+                if (registro.TabExemplar.dsStatus.Equals((int)StatusRegistroExemplar.INATIVO) && cont == total)
+                {
+                    <tr class="danger">
+                        <td class="col-sm-4">
+                            @registro.TabLeitor.dsLogin
+                        </td>
+                        <td class="col-sm-4">
+                            @registro.TabLeitor.TabLogradouroEnd.TabBairro.nmBairro - @registro.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.nmCidade - @registro.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="col-sm-4" style="color:red" align="center">
+                            Exemplar Rompido
+                        </td>
+                       
+                    </tr>
+                }
+                else
+                {
+                <tr>
                     <td class="col-sm-4">
                         @registro.TabLeitor.dsLogin
                     </td>
                     <td class="col-sm-4">
                         @registro.TabLeitor.TabLogradouroEnd.TabBairro.nmBairro - @registro.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.nmCidade - @registro.TabLeitor.TabLogradouroEnd.TabBairro.TabCidade.TabEstado.nmEstado
                     </td>
-        
                 </tr>
+                }
             }
         </table>
     </div>

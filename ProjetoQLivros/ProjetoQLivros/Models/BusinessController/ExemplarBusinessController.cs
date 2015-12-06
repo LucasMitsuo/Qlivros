@@ -15,7 +15,7 @@ namespace ProjetoQLivros.Models.BusinessController
         {
             List<TabHistorico> historicos = new List<TabHistorico>();
             //Pesquisa no banco os exemplares que possuem o título informado e que estejam disponíveis
-            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower() == titulo.ToLower() && model.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL));
+            var exemplares = db.TabExemplar.Where(model => model.TabTitulo.nmTitulo.ToLower().Contains(titulo.ToLower()) && model.dsStatus.Equals((int)StatusRegistroExemplar.DISPONIVEL));
 
             foreach (var exemplar in exemplares)
             {
@@ -28,18 +28,53 @@ namespace ProjetoQLivros.Models.BusinessController
             return historicos;
         }
 
-        public IQueryable<TabExemplar> ObterPorLeitor(long idLeitor)
+        public Tuple<List<TabHistorico>,bool> ObterPorLeitor(long idLeitor)
         {
-            var leitor = db.TabLeitor.Where(model => model.idLeitor == idLeitor).FirstOrDefault();
+            List<TabHistorico> historicos = new List<TabHistorico>();
 
-            var exemplares = from e in leitor.TabHistorico select e.TabExemplar;
+            //Pega todos os registros no qual o leitor cadastrou um exemplar, porém, não é certo que o leitor ainda seja o 
+            //proprietário atual desses exemplares
+            var cadastrados = db.TabHistorico.Where(model => model.fkIdLeitor == idLeitor && (model.dsStatus == (int)EnumStatusHistorico.CADASTRADO));
+            foreach (var registro in cadastrados)
+            {
+                //pega cada exemplar de cadastrados e verifica se ele ja foi doado
+                var doacoes = db.TabHistorico.Where(model => model.fkIdExemplar == registro.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
 
-            return exemplares.AsQueryable();
+                //se doacoes vier menor que 0, quer dizer que o exemplar nunca foi doado, logo, o leitor é proprietário atual desse exemplar
+                if (doacoes.Count() == 0)
+                {
+                    //então adiciona o registro desse exemplar em HISTORICOS
+                    historicos.Add(registro);
+                }
+            }
+            //==========================================
+            //Pega todos os exemplares que o leitor recebeu como doação, mas não é certo se ele ainda está com o exemplar doado
+            var recebidos = db.TabHistorico.Where(model => model.fkIdLeitor == idLeitor && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO));
+            foreach (var recebido in recebidos)
+            {
+                //Pesquisa se o exemplar recebido como doação já foi doado alguma vez
+                var doado = db.TabHistorico.Where(model => model.fkIdExemplar == recebido.fkIdExemplar && model.dsStatus.Equals((int)EnumStatusHistorico.DOADO) && model.idHistorico > recebido.idHistorico);
 
-            //var leitor2 = from a in db.TabLeitor where a.idLeitor == idLeitor select a;
+                //se não foi, adiciona em historicos
+                if (doado.Count() == 0)
+                {
+                    historicos.Add(recebido);
+                }
+            }
 
+            historicos = historicos.Where(model => model.TabExemplar.dsStatus != (int)StatusRegistroExemplar.INATIVO).ToList();
 
+            //Se não for adicionado nenhum registro a historicos, quer dizer que ele não é proprietário atual de nenhum exemplar
+            if (historicos.Count() == 0)
+            {
+                return new Tuple<List<TabHistorico>, bool>(null, false);
+            }
+            else
+            {
+                return new Tuple<List<TabHistorico>, bool>(historicos, true);
+            }
         }
+
         public Tuple<TabExemplar, bool> ObterPorid(long idExemplar)
         {
             var exemplar = db.TabExemplar.Where(model => model.idExemplar == idExemplar).FirstOrDefault();
@@ -52,7 +87,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 return new Tuple<TabExemplar, bool>(exemplar, true);
         }
 
-        public string Romper(long idExemplar, string texto)
+        public Tuple<TabExemplar,string> Romper(long idExemplar, string texto)
         {
             //  Recupera o registro que eu quero atualizar e guarda em uma variável do tipo TabExemplar
             TabExemplar e = db.TabExemplar.First(model => model.idExemplar == idExemplar);
@@ -61,7 +96,7 @@ namespace ProjetoQLivros.Models.BusinessController
             e.dsObs = texto;
             // Salvando as alterações
             db.SaveChanges();
-            return "Corrente Rompida! :'(";
+            return new Tuple<TabExemplar,string>(e,"Corrente Rompida! :'(");
         }
 
         public Tuple<List<TabHistorico>, bool> ObterIndisponiveis(long idLeitor)
@@ -136,7 +171,7 @@ namespace ProjetoQLivros.Models.BusinessController
             e.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
             // Salvando as alterações
             db.SaveChanges();
-            return String.Format("Exemplar {0} disponível com sucesso !",e.TabTitulo.nmTitulo);
+            return String.Format("{0} disponível com sucesso !",e.TabTitulo.nmTitulo);
         }
 
         public Tuple<TabExemplar, string> Criar(TabExemplar exemplar, string titulo,int idLeitor)
@@ -162,6 +197,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 novoExemplar.dsEdicao = exemplar.dsEdicao;
                 novoExemplar.fkIdTitulo = novoTitulo.idTitulo;
                 novoExemplar.dsStatus = (int)StatusRegistroExemplar.DISPONIVEL;
+                novoExemplar.dsObs = exemplar.dsObs;
                 //Adiciona o exemplar no contexto do EF
                 novoExemplar = db.TabExemplar.Add(novoExemplar);
 
@@ -201,7 +237,7 @@ namespace ProjetoQLivros.Models.BusinessController
                 db.SaveChanges();
             }
 
-            return new Tuple<TabExemplar, string>(novoExemplar, "Exemplar cadastrado com sucesso");
+            return new Tuple<TabExemplar, string>(novoExemplar, "Corrente iniciada !! :D");
         }
     }
 }
