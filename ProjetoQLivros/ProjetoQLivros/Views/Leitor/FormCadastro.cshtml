@@ -1,8 +1,133 @@
-﻿
+﻿@model ProjetoQLivros.Models.TabModels.TabLeitor
 @{
     ViewBag.Title = "FormCadastro";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("Cadastrar", "Leitor", FormMethod.Post, new { }))
+{
+    <div class="panel-body cadastrar">
+        <form>
 
-<h2 style="color:white">FormCadastro</h2>
+            <h1 class="cadastro-header">Cadastro</h1>
 
+            <div class="container-fluid no-padding">
+                <div class="row">
+
+                    <div class="text-left tables">
+                        <h2>Acesso</h2>
+                        <div class="col-md-8">
+                            @Html.LabelFor(model => model.nmLeitor, "Nome")
+                            @Html.TextBoxFor(model => model.nmLeitor, new { @class = "form-control", id = "input-nome", required = "required", oninvalid = "this.setCustomValidity('Digite o nome')", oninput = "setCustomValidity('')" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.dsSexo, "Sexo")
+                            <select name="dsSexo" class="form-control" id="input-sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.dtNasc, "Data de Nascimento")
+                            @Html.TextBoxFor(model => model.dtNasc, new { @class = "form-control", id = "input-nascimento", required = "required", oninvalid = "this.setCustomValidity('Digite a Data de Nascimento')", oninput = "setCustomValidity('')" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.LabelFor(model => model.dsRgLeitor, "RG")
+                            @Html.TextBoxFor(model => model.dsRgLeitor, new { @class = "form-control", id = "input-rg", required = "required", oninvalid = "this.setCustomValidity('Digite o RG')", oninput = "setCustomValidity('')" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.dsLogin, "Login")
+                            @Html.TextBoxFor(model => model.dsLogin, new { @class = "form-control", id = "input-login", required = "required", oninvalid = "this.setCustomValidity('Digite o Login')", oninput = "setCustomValidity('')" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.dsSenha, "Senha")
+                            @Html.TextBoxFor(model => model.dsSenha, new { @class = "form-control", id = "input-senha", type = "password", required = "required", oninvalid = "this.setCustomValidity('Digite a Senha')", oninput = "setCustomValidity('')" })
+                        </div>
+                    </div>
+
+
+                    <div class="text-left tables">
+                        <h2>Contato</h2>
+                        <div class="col-md-7">
+                            @Html.LabelFor(model => model.dsEmail, "Email")
+                            @Html.TextBoxFor(model => model.dsEmail, new { @class = "form-control", id = "input-email", type = "email", required = "required", oninvalid = "this.setCustomValidity('Digite o Email')", oninput = "setCustomValidity('')" })
+                        </div>
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.numCel, "Telefone")
+                            @Html.TextBoxFor(model => model.numCel, new { @class = "form-control", id = "input-telefone", required = "required", oninvalid = "this.setCustomValidity('Digite o Telefone')", oninput = "setCustomValidity('')" })
+                        </div>
+                    </div>
+
+
+                    <div class="text-left tables">
+                        <h2>Endereço</h2>
+                        <div class="col-md-5">
+                            <label for="cep">Cep</label>
+                            <input type="text" value="" required="required" oninvalid="this.setCustomValidity('Digite o CEP')" oninput="setCustomValidity('')" name="cep" id="input-cep" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" value="" required="required" oninvalid="this.setCustomValidity('Digite a Cidade')" oninput="setCustomValidity('')" name="cidade" id="input-cidade" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="estado">Estado</label>
+                            <input type="text" value="" required="required" oninvalid="this.setCustomValidity('Digite o Estado')" oninput="setCustomValidity('')" name="estado" id="input-estado" class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" value="" required="required" oninvalid="this.setCustomValidity('Digite o Bairro')" oninput="setCustomValidity('')" name="bairro" id="input-bairro" class="form-control">
+                        </div>
+                        <div class="col-md-7">
+                            <label for="rua">Rua</label>
+                            <input type="text" value="" required="required" oninvalid="this.setCustomValidity('Digite a Rua')" oninput="setCustomValidity('')" name="rua" id="input-endereco" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.dsComplementoEnd, "Complemento")
+                            @Html.TextBoxFor(model => model.dsComplementoEnd, new { @class = "form-control", id = "input-complemento" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.dsReferenciaEnd, "Referência")
+                            @Html.TextBoxFor(model => model.dsReferenciaEnd, new { @class = "form-control", id = "input-referencia" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-default inline-table text-center">Cadastrar</button>
+            <a class="btn btn-default inline-table" href="javascript:history.back()"><span class="table-cell">Voltar</span></a>
+
+
+        </form>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Content/js/jquery.mask.min.js"></script>
+
+    <script type="text/javascript">
+
+        jQuery(function ($) {
+            $("#input-cep").change(function () {
+                var cep_code = $(this).val();
+                if (cep_code.length <= 0) return;
+                $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
+                   function (result) {
+                       if (result.status != 1) {
+                           alert(result.message || "Houve um erro desconhecido");
+                           return;
+                       }
+                       $("#input-cep").val(result.code);
+                       $("#input-cidade").val(result.city);
+                       $("#input-bairro").val(result.district);
+                       $("#input-endereco").val(result.address);
+                       $("#input-estado").val(result.state);
+                   });
+            });
+            $('#input-telefone').mask('(00) 00000-0000');
+            $('#input-nascimento').mask('00/00/0000');
+            $('#input-cep').mask('00000-000');
+        });
+    </script>
+
+}

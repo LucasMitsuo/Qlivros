@@ -9,6 +9,18 @@ body{
 .center-content{
   height: 85%;
 }
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+.inline-table {
+  display: inline-table !important;
+}
+.no-padding{
+    padding: 0;
+}
+
 /* Main Content */
 
 .header-main, .footer-main, .footer-login{
@@ -47,12 +59,13 @@ body{
   padding-top: 12px;
     text-align: center;
 }
-.main-title{
-  color: #6495ED;
-  font-family: 'Roboto';
-  padding-bottom: 12px;
+.main-title {
+    color: #6495ED;
+    font-family: 'Roboto';
+    padding-bottom: 12px;
 }
-.main-block input{
+
+.main-block input, .cadastrar .btn-default, .cadastrar select{
   height: 3.4em;
 }
 .main-block .glyphicon-search{
@@ -86,7 +99,7 @@ body{
 /*.login-content{
   min-height: 280px;
 }*/
-.logo-text {
+.logo-text, .cadastro-header {
     font-family: 'Fredoka One', cursive;
 }
 
@@ -202,3 +215,26 @@ footer{
     color: #3A5FCD;
 }
 /* FIM DO MODAL */
+
+/* TELA DE CADASTRO DE LEITORES*/
+
+.cadastrar {
+    color: #fff;
+}
+
+
+.cadastrar .container-fluid .row > div > div{
+    margin-bottom: 12px;
+}
+
+    .cadastrar .tables {
+        margin: 18px 0;
+        display: table;
+        width: 100%;
+    }
+
+    .cadastrar label{
+        font-size: 1.25em;
+    }
+
+/* FIM DA TELA DE CADASTRO DE LEITORES */

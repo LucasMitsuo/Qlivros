@@ -14,10 +14,8 @@ namespace ProjetoQLivros.Controllers
         ResenhaBusinessController resenhaBC = new ResenhaBusinessController();
         HistoricoBusinessController historicoBC = new HistoricoBusinessController();
 
-
         public ActionResult Lista(int idExemplar)
-        {
-            
+        {   
             var listaResenhas = resenhaBC.ObterPorExemplar(idExemplar);
             if (listaResenhas.Count() > 0)
             {

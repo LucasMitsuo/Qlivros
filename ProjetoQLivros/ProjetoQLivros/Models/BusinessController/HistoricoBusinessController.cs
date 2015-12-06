@@ -144,16 +144,17 @@ namespace ProjetoQLivros.Models.BusinessController
             return exRank;
         }
 
-        public List<TabHistorico> RankingLeitores()
+        public List<TabHistorico> RankingLeitores(long idLeitor)
         {
             List<TabHistorico> ltrRank = new List<TabHistorico>();
 
             var teste = (from p in db.TabHistorico
-                         where p.dsStatus == 5
+                         where p.dsStatus == 3
                          group p by p.fkIdLeitor into g
                          select new { fkIdLeitor = g.Key, Quantidade = g.Count() }
                         ).OrderByDescending(c => c.Quantidade);
             var count = 1;
+
             foreach (var registro in teste)
             {
                 TabHistorico exemplar = new TabHistorico();
@@ -165,6 +166,21 @@ namespace ProjetoQLivros.Models.BusinessController
                 count++;
                 exemplar.fkIdLeitor = registro.fkIdLeitor;
                 exemplar.dsStatus = registro.Quantidade;
+                exemplar.TabLeitor = tbleitor;
+                ltrRank.Add(exemplar);
+            }
+            var Posicao = ltrRank.Where(model => model.fkIdLeitor == idLeitor).FirstOrDefault();
+            if (Posicao == null)
+            {
+                TabHistorico exemplar = new TabHistorico();
+
+                TabLeitor tbleitor = new TabLeitor();
+                tbleitor = db.TabLeitor.Where(model => model.idLeitor == idLeitor).FirstOrDefault();
+
+                exemplar.idHistorico = count;
+                count++;
+                exemplar.fkIdLeitor = (int)idLeitor;
+                exemplar.dsStatus = 0;
                 exemplar.TabLeitor = tbleitor;
                 ltrRank.Add(exemplar);
             }

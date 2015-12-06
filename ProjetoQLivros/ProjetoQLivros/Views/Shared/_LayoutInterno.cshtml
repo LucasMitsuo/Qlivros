@@ -23,7 +23,7 @@
     <div class="navmenu navmenu-default navmenu-fixed-left">
         <div class="navmenu-brand" href="#">Menu Principal</div>
         <ul class="nav navmenu-nav">
-           
+            <li>@Html.IconActionLink("glyphicon glyphicon-search","Pesquisar exemplares","Index","Home",new{idLeitor = usuarioAtual.idLeitor},new{})</li>
             <li>@Html.IconActionLink("glyphicon glyphicon-share","Comece uma corrente","ComecarCorrente","Exemplar",new{idLeitor = usuarioAtual.idLeitor},new{}) </li>
             
             <li>@Html.IconActionLink("glyphicon glyphicon-arrow-right glyphicon", "Doar exemplar", "FormDoar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
@@ -65,6 +65,7 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapsible">
                 <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.IconActionLink("glyphicon glyphicon-search", "Pesquisar exemplares", "Index", "Home", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
                     <li>@Html.IconActionLink("glyphicon glyphicon-share", "Comece uma corrente", "ComecarCorrente", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { }) </li>
                 
                     <li>@Html.IconActionLink("glyphicon glyphicon-arrow-right glyphicon", "Doar exemplar", "FormDoar", "Exemplar", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>

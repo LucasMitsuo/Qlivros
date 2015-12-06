@@ -53,8 +53,7 @@ namespace ProjetoQLivros.Controllers
 
         public ActionResult ListaRanking(long idLeitor)
         {
-
-            List<TabHistorico> retornoLeitores = historicoBC.RankingLeitores();
+            List<TabHistorico> retornoLeitores = historicoBC.RankingLeitores(idLeitor);
             List<TabHistorico> retornoExemplares = historicoBC.RankingExemplares();
 
             var Posicao = retornoLeitores.Where(model => model.fkIdLeitor == idLeitor).FirstOrDefault();

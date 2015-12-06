@@ -474,6 +474,7 @@
     <Content Include="Views\Exemplar\ConfirmRomper.cshtml" />
     <Content Include="Views\Exemplar\ConfirmSucessoRomper.cshtml" />
     <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
+    <Content Include="Views\Resenha\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

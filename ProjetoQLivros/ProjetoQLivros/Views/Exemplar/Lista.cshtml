@@ -48,7 +48,7 @@
                                             <div class="row"><strong>Autor: </strong>@item.TabExemplar.nmAutor</div>
                                             <div class="row"><strong>Edição: </strong>@item.TabExemplar.dsEdicao</div>
                                             <div class="row"><strong>Editora: </strong>@item.TabExemplar.nmEditora</div>
-                                            <div class="row"><a href="#resenhas"><strong>Resenhas: </strong>@item.TabExemplar.TabResenha.Count()</a></div>
+                                            <div class="row">@Html.ActionLink(String.Format("Resenhas: {0}", @item.TabExemplar.TabResenha.Count().ToString()), "Lista", "Resenha", new { idExemplar = @item.TabExemplar.idExemplar }, new { style = "font-weight:bold" })</div>
                                         </div>
                                         <div class="col-md-6 book-owner">
                                             <div class="row panel-content-header"><h4><strong>Informações do Proprietário:</strong></h4></div>

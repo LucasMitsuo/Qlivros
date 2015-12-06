@@ -1,42 +1,56 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ListaRanking";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
+
 <h3 class="text-left"><strong>Ranking Exemplares</strong></h3>
-<table class="table center table-striped">
+<table id="exemplares" class="table center table-striped">
     <thead>
         <tr>
-            <th>Posição</th>
-            <th>Exemplar</th>
-            <th>Leitores</th>
+            <th class="text-center">Posição</th>
+            <th class="text-left">Exemplar</th>
+            <th class="text-center">Leitores</th>
         </tr>
     </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center">Posição</th>
+            <th class="text-left">Exemplar</th>
+            <th class="text-center">Leitores</th>
+        </tr>
+    </tfoot>
     <tbody>
         @foreach (var exemplar in ViewBag.Livro)
         {
             <tr>
-                <td>@exemplar.idHistorico</td>
-                <td>@exemplar.TabExemplar.TabTitulo.nmTitulo</td>
-                <td>@exemplar.dsStatus</td>
+                <td class="text-center">@exemplar.idHistorico</td>
+                <td class="text-left">@exemplar.TabExemplar.TabTitulo.nmTitulo</td>
+                <td class="text-center">@exemplar.dsStatus</td>
             </tr>
         }
     </tbody>
 </table>
 <br />
 <h3 class="text-left"><strong>Ranking Leitores</strong></h3>
-<table class="table center table-striped">
+<table id="leitores" class="table center table-striped">
     <thead>
         <tr>
-            <th>Posição</th>
-            <th>Leitor</th>
-            <th>Exemplares</th>
+            <th class="text-center">Posição</th>
+            <th class="text-left">Leitor</th>
+            <th class="text-center">Repasses</th>
         </tr>
     </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center">Posição</th>
+            <th class="text-left">Leitor</th>
+            <th class="text-center">Exemplares</th>
+        </tr>
+    </tfoot>
     <tr>
-        <td>@ViewBag.Pos.idHistorico</td>
-        <td>@ViewBag.Pos.TabLeitor.nmLeitor</td>
-        <td>@ViewBag.Pos.dsStatus</td>
+        <td class="text-center">@ViewBag.Pos.idHistorico</td>
+        <td class="text-left">@ViewBag.Pos.TabLeitor.nmLeitor</td>
+        <td class="text-center">@ViewBag.Pos.dsStatus</tdclass>
     </tr>
     <tr>
         <td> &nbsp;</td>
@@ -47,9 +61,9 @@
         @foreach (var leitor in ViewBag.Leitor)
         {
             <tr>
-                <td>@leitor.idHistorico</td>
-                <td>@leitor.TabLeitor.nmLeitor</td>
-                <td>@leitor.dsStatus</td>
+                <td class="text-center">@leitor.idHistorico</td>
+                <td class="text-left">@leitor.TabLeitor.nmLeitor</td>
+                <td class="text-center">@leitor.dsStatus</td>
             </tr>
         }
     </tbody>
