@@ -1,16 +1,15 @@
 ﻿@model DoacaoViewModel
 @{
-    ViewBag.Title = "FormDoar";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
 
-@using (Html.BeginForm("DadosReceptor", "Doacao", FormMethod.Post, new { @class = "" }))
+@using (Ajax.BeginForm("DadosReceptor", "Doacao", FormMethod.Post, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "" }))
 {
-    @Html.Hidden("idDoador", Model.idDoador)
+   @Html.Hidden("idDoador", Model.idDoador)
 
-    <header class="main-title h1 logo-text">QLivros</header>
+    <h1>Doe um exemplar</h1>
+    <h4 class="text-left content-brief">Selecione o exemplar que você deseja doar e os dados respectivos do receptor para que a solicitação de doação seja enviada.</h4>
     <section class="donate">
-        <h2 class="donate-title text-left">Doe um Exemplar</h2>
         <form class="text-center">
             @if (Model.Mensagem != null)
             {

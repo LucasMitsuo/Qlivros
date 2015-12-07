@@ -4,13 +4,12 @@
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
 
+<h1>Disponibilizar exemplar</h1>
+<h4 class="text-left content-brief">Selecione o exemplar que você deseja disponibilizar para que os demais leitores possam pesquisa-lo dentro do QLivros.</h4>
 <div class="list-group">
-    <a href="#" class="list-group-item active">
-        Selecione o exemplar que deseja disponibilizar
-    </a>
     @foreach (var registro in Model.Item1)
     {
-        @Ajax.ActionLink(String.Format("{0} - {1}ª Edição",@registro.TabExemplar.TabTitulo.nmTitulo, @registro.TabExemplar.dsEdicao), "Disponibilizar", "Exemplar", new { idExemplar = registro.fkIdExemplar,idLeitor = Model.Item2 }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
+        @Ajax.ActionLink(String.Format("{0} - {1}ª Edição", @registro.TabExemplar.TabTitulo.nmTitulo, @registro.TabExemplar.dsEdicao), "Disponibilizar", "Exemplar", new { idExemplar = registro.fkIdExemplar, idLeitor = Model.Item2 }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, new { @class = "list-group-item" })
     }
 
 </div>
@@ -21,5 +20,4 @@
         @ViewBag.erro
     </div>
 }
-
 

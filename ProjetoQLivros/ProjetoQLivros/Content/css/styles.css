@@ -20,8 +20,28 @@ body{
 .no-padding{
     padding: 0;
 }
+@media screen and (max-width: 768px) {
+    .center-content h1{
+        font-size: 28px;
+    }
+    .center-content h4 {
+        font-size: 17px;
+    }
+}
+
 
 /* Main Content */
+
+.dropdown-menu {
+   min-width: 220px;
+}
+
+@media (max-width: 767px) {
+    .dropdown-menu {
+        min-width: 220px;
+    }
+    /*min-width: 160px;*/
+}
 
 .header-main, .footer-main, .footer-login{
   height: 10%;
@@ -37,6 +57,10 @@ body{
 .header-main a{
     color: #6495ED;
     font-size: 1.2em;
+}
+
+.content-brief {
+    margin: 24px 0;
 }
 
 .main-search, .main-donate, .main-login{

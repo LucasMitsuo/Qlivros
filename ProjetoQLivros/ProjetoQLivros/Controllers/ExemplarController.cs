@@ -56,7 +56,7 @@ namespace ProjetoQLivros.Controllers
             }
             else
             {
-                ViewBag.SemPropriedade = "Você não possui exemplares para doar";
+                ViewBag.SemPropriedade = "Você não possui exemplares disponíveis para doar";
                 return View("~/Views/Home/Index.cshtml",result.Item3);
             }
         }
@@ -70,7 +70,7 @@ namespace ProjetoQLivros.Controllers
                 return View(new Tuple<List<TabHistorico>, int>(result.Item1, idLeitor));
             }
             ViewBag.ErroRomper = "Não há exemplares para romper corrente";
-            return View("~/Views/Home/Index.cshtml", idLeitor);
+            return View("~/Views/Home/Index.cshtml");
         }
 
         public ActionResult PesquisarExemplar(long idExemplar,int idLeitor)

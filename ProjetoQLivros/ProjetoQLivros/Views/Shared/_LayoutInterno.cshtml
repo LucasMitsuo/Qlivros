@@ -88,7 +88,6 @@
                     <li>@Html.IconActionLink("glyphicon glyphicon-file", "Publicar resenha", "FormResenha", "Resenha", new { idLeitor = usuarioAtual.idLeitor }, new { })</li>
                     <li><a href="#section8">Chat<span class="glyphicon glyphicon-comment"></span></a></li>
                     <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
-                    @*<li><a href="#section5">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>*@
                     <li>@Ajax.ActionLink("Cancelar participação", "ConfirmCancelamento", "Leitor", new { }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content",OnSuccess="QLivrosModal", InsertionMode = InsertionMode.Replace,HttpMethod= "GET" })</li>
                     <li>@Html.IconActionLink("glyphicon glyphicon-off", "Sair", "Login", "Home", new { }, new { })</li>
 

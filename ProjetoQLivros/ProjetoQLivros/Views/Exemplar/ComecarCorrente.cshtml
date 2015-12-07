@@ -7,35 +7,24 @@
 {
     @Html.Hidden("idLeitor", Model.Item2.idLeitor)
     <h1>Comece uma corrente</h1>
+    <h4 class="text-left content-brief">Informe os dados do exemplar que você deseja começar uma corrente para que os demais leitores possam pesquisa-lo dentro do QLivros.</h4>
     <fieldset class="text-left">
         <div class="form-group">
-            <div class="col-md-12">
-            @Html.Label("Título")
-            @Html.TextBox("titulo", null, null, new { @class = "form-control", placeholder = "Entre com o título", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o título')", oninput = "setCustomValidity('')" })
-            </div>
-       </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                @Html.Label("Autor")
-                @Html.TextBox("nmAutor", null, null, new { @class = "form-control", placeholder = "Entre com o autor", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o nome do autor')", oninput = "setCustomValidity('')" })
-            </div>
-       </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                @Html.Label("Editora")
-                @Html.TextBox("nmEditora", null, null, new { @class = "form-control", placeholder = "Entre com a editora", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o nome da editora')", oninput = "setCustomValidity('')" })
-            </div>
+            @Html.TextBox("titulo", null, null, new { @class = "form-control", placeholder = "Título", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o título')", oninput = "setCustomValidity('')" })
         </div>
         <div class="form-group">
-            <div class="col-md-12">
-                @Html.Label("Edição")
-                @Html.TextBox("dsEdicao", null, null, new { @class = "form-control", placeholder = "Entre com a edição", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com a edição do exemplar')", oninput = "setCustomValidity('')" })
-            </div>
-       </div>
+            @Html.TextBox("nmAutor", null, null, new { @class = "form-control", placeholder = "Autor", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o nome do autor')", oninput = "setCustomValidity('')" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("nmEditora", null, null, new { @class = "form-control", placeholder = "Editora", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com o nome da editora')", oninput = "setCustomValidity('')" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("dsEdicao", null, null, new { @class = "form-control", placeholder = "Edição", type = "text", required = "required", oninvalid = "this.setCustomValidity('Entre com a edição do exemplar')", oninput = "setCustomValidity('')" })
+        </div>
     </fieldset>
-    <br/>
-         <input type="submit" class="btn btn-blue" value="Começar corrente" />
-        <input type="reset" class="btn btn-primary btn-md" value="Limpar">
+    <br />
+    <input type="submit" class="btn btn-blue" value="Começar corrente" />
+    <input type="reset" class="btn btn-default btn-md" value="Limpar">
 }
 
         
