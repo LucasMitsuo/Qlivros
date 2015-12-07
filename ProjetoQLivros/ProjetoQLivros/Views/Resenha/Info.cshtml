@@ -1,0 +1,29 @@
+﻿@model TabResenha
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_LayoutModal.cshtml";
+}
+
+<div class="modal-content bs-callout bs-callout-danger">
+    <div class="modal-header">
+
+        <h3 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-book"></span> Resenha</h3>
+    </div>
+    <div class="modal-body">
+        <strong>Leitor:</strong> &nbsp;&nbsp; @Model.TabLeitor.dsLogin<br>
+        <strong>Data de publicação:</strong>&nbsp;&nbsp;@Model.dtPublicacao<br>
+        <strong>Tipo:</strong>&nbsp;&nbsp;@Model.ResolveTipoResenha()<br>
+        <strong>Resenha:</strong><p>@Model.dsResenha</p>
+
+    </div>
+
+    <div class="modal-footer text-right">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Fechar</button>
+
+    </div>
+
+</div>
+
+
+

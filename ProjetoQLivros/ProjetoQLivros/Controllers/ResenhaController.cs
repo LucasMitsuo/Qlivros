@@ -60,7 +60,7 @@ namespace ProjetoQLivros.Controllers
         public ActionResult Publicar(TabResenha resenha,int idLeitor)
         {
             resenhaBC.Criar(resenha);
-            return View("~/Views/Resenha/ConfirmPublicacao.cshtml",new Tuple<String,int>("Resenha criada com sucesso",idLeitor));
+            return View("~/Views/Resenha/ConfirmPublicacao.cshtml",new Tuple<String,int>("Resenha publicada com sucesso",idLeitor));
         }
     }
 }

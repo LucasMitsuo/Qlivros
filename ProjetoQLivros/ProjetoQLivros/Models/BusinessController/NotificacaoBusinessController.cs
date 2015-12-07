@@ -54,5 +54,10 @@ namespace ProjetoQLivros.Models.BusinessController
         {
             return db.TabHistorico.Where(model => model.idHistorico == idHistorico).FirstOrDefault();
         }
+
+        private Tuple<TabLeitor, List<TabHistorico>, bool> ObterRespostas(int idLeitor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
