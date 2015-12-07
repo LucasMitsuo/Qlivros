@@ -18,7 +18,7 @@ namespace ProjetoQLivros.Controllers
 
             if (historicoBC.ObterLidos(idLeitor).Count() == 0)
             {
-                ViewBag.HistNulo("Você não possui históricos.");
+                ViewBag.HistNulo = "Você não possui históricos.";
                 return View("~/Views/Home/Index.cshtml");
             }
             else

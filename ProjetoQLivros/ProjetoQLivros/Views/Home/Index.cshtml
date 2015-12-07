@@ -44,6 +44,19 @@
                     @ViewBag.ErroRomper
                 </div>
             }
+            @if (ViewBag.HistNulo != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.HistNulo
+                </div>
+            }
+            @if (ViewBag.ErroResenha != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErroResenha
+                </div>
+            }
+            
         </section>
     </div>
 }

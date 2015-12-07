@@ -230,6 +230,7 @@
     <Content Include="Content\js\jasny-bootstrap.js" />
     <Content Include="Content\js\jasny-bootstrap.min.js" />
     <Content Include="Content\js\jquery-2.1.4.min.js" />
+    <Content Include="Content\js\jquery.mask.min.js" />
     <Content Include="Content\js\modernizr-custom.js" />
     <Content Include="Content\js\npm.js" />
     <Content Include="Content\js\polyfiller.js" />
@@ -475,6 +476,7 @@
     <Content Include="Views\Exemplar\ConfirmSucessoRomper.cshtml" />
     <Content Include="Views\Doacao\ConfirmDoacao.cshtml" />
     <Content Include="Views\Resenha\Lista.cshtml" />
+    <Content Include="Views\Leitor\ConfirmSucessoCadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

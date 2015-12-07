@@ -45,9 +45,20 @@ namespace ProjetoQLivros.Controllers
             return View();
         }
 
-        public ActionResult Cadastrar(TabLeitor leitor)
+        public ActionResult Cadastrar(TabLeitor leitor,string rua,string bairro,string cidade,string estado)
         {
-            throw new NotImplementedException();
+            var _leitor = leitorBC.CadastrarLeitor(leitor, rua, bairro, cidade, estado);
+
+            if (_leitor == null)
+            {
+                ViewBag.StatusCadastro = "Erro na hora do cadastro";
+                return View();
+            }
+            else
+            {
+                ViewBag.SucessoCadastro = "Cadastro realizado com sucesso.";
+                return View("~/Views/Leitor/ConfirmSucessoCadastro.cshtml");
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ namespace ProjetoQLivros.Controllers
             }
             else
             {
-                ViewBag.Erro = "Não existem exemplares para o leitor";
+                ViewBag.ErroResenha = "Você não é proprietário de nenhum exemplar. Impossível publicar resenha";
                 return View("~/Views/Home/Index.cshtml");
             }
         }

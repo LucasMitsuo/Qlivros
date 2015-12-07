@@ -48,7 +48,7 @@
             <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
            
             <li>@Ajax.ActionLink("Cancelar participação", "ConfirmCancelamento", "Leitor", new { }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content", OnSuccess = "QLivrosModal", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
-            <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+            <li>@Html.IconActionLink("glyphicon glyphicon-off","Sair","Login","Home",new{},new{})</li>
 
         </ul>
     </div>
@@ -90,7 +90,7 @@
                     <li><a href="#section4">Meus dados<span class="glyphicon glyphicon-th-list"></span></a></li>
                     @*<li><a href="#section5">Cancelar participação<span class="glyphicon glyphicon-remove"></span></a></li>*@
                     <li>@Ajax.ActionLink("Cancelar participação", "ConfirmCancelamento", "Leitor", new { }, new AjaxOptions() { UpdateTargetId = "qlivros-modal-content",OnSuccess="QLivrosModal", InsertionMode = InsertionMode.Replace,HttpMethod= "GET" })</li>
-                    <li><a href="#logout">Sair<span class="glyphicon glyphicon-off"></span></a></li>
+                    <li>@Html.IconActionLink("glyphicon glyphicon-off", "Sair", "Login", "Home", new { }, new { })</li>
 
                 </ul>
             </div>
